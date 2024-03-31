@@ -1,7 +1,10 @@
 package controller;
 
+import view.MainPanel;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        GUIController guiController = new GUIController();
+        MainPanel mainPanel = guiController.getMainPanel();
     }
 }

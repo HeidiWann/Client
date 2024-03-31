@@ -1,6 +1,6 @@
 package model;
 
-public enum FooCategory {
+public enum FoodCategory {
     Fish,
     Vegan,
     Cow,
