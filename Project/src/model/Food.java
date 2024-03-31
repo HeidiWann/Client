@@ -5,7 +5,7 @@ import javax.swing.*;
 public class Food {
     private String nameOfFood;
 
-    private FooCategory[] typeOfFood;
+    private FoodCategory[] typeOfFood;
     private int costOfFood;
     private Ingredient[] ingredients;
     public Food() {
