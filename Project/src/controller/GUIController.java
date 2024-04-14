@@ -1,18 +1,17 @@
 package controller;
 
-import view.MainFrame;
-import view.MainPanel;
+
+import view.NorthPanel;
+import view.SouthPanel;
 
 public class GUIController {
-    private MainFrame mainFrame;
+
     private ClientController clientController;
     private RecipeController recipeController;
+    private SouthPanel southPanel;
 
     public GUIController() {
-        mainFrame = new MainFrame();
-    }
-
-    public MainPanel getMainPanel() {
-        return mainFrame.getMainPanel();
+        southPanel = new SouthPanel(this);
+        new NorthPanel();
     }
 }
