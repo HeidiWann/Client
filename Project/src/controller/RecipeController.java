@@ -46,4 +46,6 @@ public class RecipeController {
     }
 
 
+    public void createRecipe(Recipe recipe) {
+    }
 }

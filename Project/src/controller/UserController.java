@@ -23,4 +23,13 @@ public class UserController {
             }
         }
     }
+
+    public User userLoggedIn(String userName, String passWord) {
+        for(User user : users){
+            if(user.getUserName().equals(userName) && user.getPassWord().equals(passWord)){
+                return user;
+            }
+        }
+        return null;
+    }
 }

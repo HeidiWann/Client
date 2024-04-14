@@ -25,4 +25,7 @@ public class User {
         this.profilePicture = profilePicture;
     }
 
+    public String getPassword() {
+        return passWord;
+    }
 }

@@ -11,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import model.Recipe;
+import model.User;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class SouthPanel implements Initializable {
     @FXML
     private ScrollPane scrollPane;
     private GUIController guiController;
+    private User userName;
 
     /**
      * This is a {@link ObservableList} that holds {@link Recipe}. It is basically an ArrayList with the difference
@@ -38,7 +40,9 @@ public class SouthPanel implements Initializable {
         this.guiController = guiController;
     }
 
-    public SouthPanel() {}
+    public SouthPanel() {
+
+    }
 
     /**
      * This method initializes the components from the FXML file SouthPanel. It also creates a custom "CellFactory" to
@@ -92,5 +96,9 @@ public class SouthPanel implements Initializable {
             recipes.add(new Recipe("Gör detta", imageView.getImage(), new ArrayList<>(), "SOUP", new ArrayList<>()));
         }
 
+    }
+
+    public User getUserName() {
+        return userName;
     }
 }
