@@ -1,6 +1,6 @@
 package view.mainStage;
 
-import controller.GUIController;
+import controller.MainGUIController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,17 +17,17 @@ import java.util.ResourceBundle;
 public class NorthPanel implements Initializable {
     @FXML
     private Button profileButton;
-    private GUIController guiController;
+    private MainGUIController mainGuiController;
     public NorthPanel() {
-        this.guiController = GetGUIController.getGuiController();
+        this.mainGuiController = GetGUIController.getGuiController();
     }
 
-    public GUIController getGuiController() {
-        return this.guiController;
+    public MainGUIController getGuiController() {
+        return this.mainGuiController;
     }
 
-    public NorthPanel(GUIController guiController) {
-        this.guiController = guiController;
+    public NorthPanel(MainGUIController mainGuiController) {
+        this.mainGuiController = mainGuiController;
     }
 
     public void showProfileWindow(ActionEvent e) {

@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class ConnectionController {
-    private GUIController guiController;
+    private MainGUIController mainGuiController;
     private ClientController clientController;
     private UserController userController;
     private ClientConnection clientConnection;

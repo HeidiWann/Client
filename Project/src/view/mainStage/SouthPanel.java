@@ -1,6 +1,6 @@
 package view.mainStage;
 
-import controller.GUIController;
+import controller.MainGUIController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -31,7 +31,7 @@ public class SouthPanel implements Initializable {
     private ListView<Recipe> recipeField;
     @FXML
     private ScrollPane scrollPane;
-    private GUIController guiController;
+    private MainGUIController mainGuiController;
 
     /**
      * This is a {@link ObservableList} that holds {@link Recipe}. It is basically an ArrayList with the difference
@@ -41,11 +41,11 @@ public class SouthPanel implements Initializable {
     private ObservableList<Recipe> recipes = FXCollections.observableArrayList();
 
     public SouthPanel() {
-        this.guiController = GetGUIController.getGuiController();
+        this.mainGuiController = GetGUIController.getGuiController();
     }
 
-    public void setGuiController(GUIController guiController) {
-        this.guiController = guiController;
+    public void setGuiController(MainGUIController mainGuiController) {
+        this.mainGuiController = mainGuiController;
     }
 
     /**
@@ -117,7 +117,7 @@ public class SouthPanel implements Initializable {
     private class ListViewHandler extends Thread implements EventHandler<MouseEvent>  { // -Testa om den verligen behöver ärva en tråd
         @Override
         public void handle(MouseEvent mouseEvent) {
-            guiController.showSelectedRecipe(recipeField.getSelectionModel().getSelectedItem());
+            mainGuiController.getRecipeGUIController().showSelectedRecipe(recipeField.getSelectionModel().getSelectedItem());
         }
     }
 }

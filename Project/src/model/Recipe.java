@@ -11,7 +11,6 @@ public class Recipe {
     private ImageView imageOfRecipe;
     private Food dish;
     private String recipeName;
-    private boolean isPrivate;
 
     public Recipe(String instructions, ImageView imageOfRecipe, ArrayList<Ingredient> ingredients, String nameOfFood, ArrayList<FoodCategory> typeOfFood) {
         Food newDish = new Food(nameOfFood, typeOfFood, ingredients);
@@ -19,7 +18,6 @@ public class Recipe {
         this.instructions = instructions;
         this.imageOfRecipe = imageOfRecipe;
         this.recipeName = nameOfFood;
-        this.isPrivate = true;
     }
 
     public String getInstructions() {
@@ -48,13 +46,5 @@ public class Recipe {
 
     public void setRecipeName(String recipeName) {
         this.recipeName = recipeName;
-    }
-
-    public boolean isPrivate() {
-        return isPrivate;
-    }
-
-    public void setPrivate(boolean aPrivate) {
-        isPrivate = aPrivate;
     }
 }

@@ -1,6 +1,7 @@
 package view.recipeStage;
 
-import controller.GUIController;
+import controller.MainGUIController;
+import controller.RecipeGUIController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -9,9 +10,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class RecipeMainScene {
-    private GUIController guiController;
-    public RecipeMainScene(GUIController guiController) {
-        this.guiController = guiController;
+    private RecipeGUIController recipeGUIController;
+    public RecipeMainScene(RecipeGUIController recipeGUIController) {
+        this.recipeGUIController = recipeGUIController;
     }
 
     public void createRecipeWindow() {

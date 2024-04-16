@@ -1,6 +1,6 @@
 package view.mainStage;
 
-import controller.GUIController;
+import controller.MainGUIController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -14,11 +14,11 @@ public class CenterPanel implements Initializable {
     private Button chickenButton, veganButton, cowButton, vegetarianButton, searchButton, pigButton, fishButton;
     @FXML
     private TextField searchField;
-    private GUIController guiController;
+    private MainGUIController mainGuiController;
     public CenterPanel(){}
 
-    public CenterPanel(GUIController guiController) {
-        this.guiController = guiController;
+    public CenterPanel(MainGUIController mainGuiController) {
+        this.mainGuiController = mainGuiController;
 
     }
 

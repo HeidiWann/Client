@@ -23,14 +23,7 @@
    </bottom>
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fx:id="imageOfRecipe" fitHeight="209.0" fitWidth="244.0" pickOnBounds="true" preserveRatio="true" />
-            <ScrollPane fx:id="scrollPane" layoutX="243.0" layoutY="1.0" prefHeight="209.0" prefWidth="290.0">
-               <content>
-                  <TextArea fx:id="ingredientsInfo" editable="false" prefHeight="207.0" prefWidth="273.0" />
-               </content>
-            </ScrollPane>
-         </children>
+         <fx:include source="RecipeCenterPanel.fxml"/>
       </Pane>
    </center>
 </BorderPane>
