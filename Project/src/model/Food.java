@@ -12,16 +12,12 @@ public class Food {
     public Food(String nameOfFood, ArrayList<FoodCategory> typeOfFood, ArrayList<Ingredient> ingredients) {
         this.nameOfFood = nameOfFood;
         this.typeOfFood = typeOfFood;
+        this.ingredients = ingredients;
         double totalCost = 0;
-        if (ingredients != null) {
-            this.ingredients = ingredients;
-
+        if(ingredients != null) {
             for (Ingredient ingredient : ingredients) {
                 totalCost += ingredient.getCostOfIngredient();
             }
-        }
-        else{
-            this.ingredients = new ArrayList<>();
         }
         this.costOfFood = totalCost;
 

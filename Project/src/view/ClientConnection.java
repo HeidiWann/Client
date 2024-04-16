@@ -30,6 +30,9 @@ public class ClientConnection extends Thread {
     boolean ackReceived = false;
     private boolean started;
     private boolean ListenForObjects = false;
+    public ClientConnection() {
+
+    }
 
 
     public ClientConnection(String host, int port, ConnectionController connectionController, Object object) {
@@ -43,11 +46,17 @@ public class ClientConnection extends Thread {
 
 
     public void socketConnect() throws IOException {
+        try {
+
         if (socket == null) {
             socket = new Socket(host, port);
             System.out.println("Connected on " + host + ", " + port);
             oos = new ObjectOutputStream(socket.getOutputStream());
             ois = new ObjectInputStream(socket.getInputStream());
+        }
+
+        } catch (IOException e) {
+            System.out.println("Could not connect " + e.getMessage());
         }
     }
 

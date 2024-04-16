@@ -1,17 +1,22 @@
-package view;
+package view.mainStage;
 
 import controller.GUIController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import model.GetGUIController;
 import model.Recipe;
-import model.User;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -27,7 +32,6 @@ public class SouthPanel implements Initializable {
     @FXML
     private ScrollPane scrollPane;
     private GUIController guiController;
-    private User userName;
 
     /**
      * This is a {@link ObservableList} that holds {@link Recipe}. It is basically an ArrayList with the difference
@@ -36,12 +40,12 @@ public class SouthPanel implements Initializable {
      */
     private ObservableList<Recipe> recipes = FXCollections.observableArrayList();
 
-    public SouthPanel(GUIController guiController) {
-        this.guiController = guiController;
+    public SouthPanel() {
+        this.guiController = GetGUIController.getGuiController();
     }
 
-    public SouthPanel() {
-
+    public void setGuiController(GUIController guiController) {
+        this.guiController = guiController;
     }
 
     /**
@@ -56,12 +60,14 @@ public class SouthPanel implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         scrollPane.setContent(recipeField);
         scrollPane.setPickOnBounds(false);
+        recipeField.setOnMouseClicked(new ListViewHandler());
+
         Image image = new Image("/view/NotLoggedIn.png");
         ImageView imageView = new ImageView(image);
         imageView.setFitWidth(50);
         imageView.setFitHeight(50);
 
-        recipes.add(new Recipe("Gör detta", imageView.getImage(), new ArrayList<>(), "SOUP",new ArrayList<>()));
+        recipes.add(new Recipe("Gör detta", imageView, null, "SOUP",null));
 
 
         recipeField.setCellFactory(listView -> new ListCell<Recipe>() {
@@ -93,12 +99,25 @@ public class SouthPanel implements Initializable {
             ImageView imageView = new ImageView(image);
             imageView.setFitWidth(50);
             imageView.setFitHeight(50);
-            recipes.add(new Recipe("Gör detta", imageView.getImage(), new ArrayList<>(), "SOUP", new ArrayList<>()));
+            recipes.add(new Recipe("Gör detta", imageView, null, "SOUP", null));
         }
 
     }
 
-    public User getUserName() {
-        return userName;
+    /**
+     * This method replaces the list of the recipes and since the list of recipes automatically updates the
+     * {@link ListView}, nothing else needs to be done
+     * @param recipes
+     */
+    public void addRecipes(ArrayList<Recipe> recipes) {
+        this.recipes.removeAll();
+        this.recipes.addAll(recipes);
+    }
+
+    private class ListViewHandler extends Thread implements EventHandler<MouseEvent>  { // -Testa om den verligen behöver ärva en tråd
+        @Override
+        public void handle(MouseEvent mouseEvent) {
+            guiController.showSelectedRecipe(recipeField.getSelectionModel().getSelectedItem());
+        }
     }
 }

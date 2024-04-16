@@ -1,4 +1,4 @@
-package view;
+package view.mainStage;
 
 import controller.ClientController;
 import javafx.application.Application;
@@ -10,8 +10,9 @@ import javafx.stage.Stage;
 public class MainStage extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../view/MainScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../mainStage/MainScene.fxml"));
         primaryStage.setScene(new Scene(root, 850, 550));
+        primaryStage.setResizable(false);
         primaryStage.show();
         new ClientController();
     }

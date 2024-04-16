@@ -2,24 +2,26 @@ package model;
 
 public class Ingredient {
     private String nameOfIngredient;
-    private int costOfIngredient;
+    private double costOfIngredient;
     private double amountOfIngredient;
+    private Measurement measurement;
     private Store store;
-    public Ingredient(String nameOfIngredient, int costOfIngredient, double amountOfIngredient) {
+    public Ingredient(String nameOfIngredient, double costOfIngredient, double amountOfIngredient, Measurement measurement) {
         this.nameOfIngredient = nameOfIngredient;
         this.costOfIngredient = costOfIngredient;
         this.amountOfIngredient = amountOfIngredient;
+        this.measurement = measurement;
     }
 
     public void setAmountOfIngredient(double amountOfIngredient) {
         this.amountOfIngredient = amountOfIngredient;
     }
 
-    public int getCostOfIngredient() {
+    public double getCostOfIngredient() {
         return costOfIngredient;
     }
 
-    public void setCostOfIngredient(int costOfIngredient) {
+    public void setCostOfIngredient(double costOfIngredient) {
         this.costOfIngredient = costOfIngredient;
     }
 
@@ -41,5 +43,8 @@ public class Ingredient {
 
     public void setStore(Store store) {
         this.store = store;
+    }
+    public String toString() {
+        return String.format("%s - %fkr - %f%s", nameOfIngredient, costOfIngredient, amountOfIngredient, measurement);
     }
 }

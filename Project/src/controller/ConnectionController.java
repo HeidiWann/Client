@@ -14,9 +14,11 @@ public class ConnectionController {
     private ClientConnection clientConnection;
     private RecipeController recipeController;
 
-    public ConnectionController(ClientController clientController) {
+    public ConnectionController(ClientController clientController) throws IOException {
         this.clientController = clientController;
         userController = new UserController();
+        this.clientConnection = new ClientConnection();
+        clientConnection.socketConnect();
     }
     public void userDisconnected(Object object) {
         User user = (User) object;
@@ -28,7 +30,7 @@ public class ConnectionController {
 
         try {
 
-            newUser = guiController.getUserName();
+            //newUser = guiController.getUserName();
 
 
         }
@@ -42,7 +44,7 @@ public class ConnectionController {
     public User login(String userLogin, String userPassword) {
         User userThatAreLoggedIn = userController.userLoggedIn(userLogin, userPassword);
         try {
-           userLogin = guiController.getUserName().getPassword();
+           //userLogin = guiController.getUserName().getPassword();
         }
         catch (Exception e) {
             System.out.println("User not logged in");
@@ -54,16 +56,16 @@ public class ConnectionController {
         try {
             switch (intention) {
                 case 1:
-                    clientConnection.sendObject(guiController.getUserName());
+                    //clientConnection.sendObject();
                     break;
                 case 2:
-                    userController.createNewUser(guiController.getUserName().getUserName(), guiController.getUserName().getPassWord());
+                    //userController.createNewUser();
                     break;
                 case 3:
-                    userController.userLoggedIn(guiController.getUserName().getUserName(), guiController.getUserName().getPassWord());
+                    //userController.userLoggedIn();
                     break;
                 case 4:
-                    userController.removeUser(guiController.getUserName().getUserName());
+                    //userController.removeUser();
 
                     break;
                 default:
@@ -76,17 +78,20 @@ public class ConnectionController {
     public void handleInput(Object object) {
         if (object instanceof Recipe) {
             Recipe recipe = (Recipe) object;
-            recipeController.createRecipe(recipe);
+            //recipeController.createRecipe(recipe);
         }
         else if (object instanceof ArrayList<?>) {
             ArrayList<Recipe> recipes = (ArrayList<Recipe>) object;
             for (Recipe recipe : recipes) {
-                recipeController.createRecipe(recipe);
+                //recipeController.createRecipe(recipe);
             }
 
         }
         else {
             System.err.println("No recipe found");
         }
+    }
+    public void sendObject(Object object) throws IOException {
+        clientConnection.sendObject(object);
     }
 }

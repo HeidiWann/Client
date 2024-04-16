@@ -2,7 +2,7 @@ package controller;
 
 
 import javafx.application.Application;
-import view.MainStage;
+import view.mainStage.MainStage;
 
 public class Main {
     public static void main(String[] args) {

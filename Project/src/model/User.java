@@ -3,10 +3,12 @@ package model;
 
 import javafx.scene.image.Image;
 
+import javax.swing.*;
+
 public class User {
     private String userName;
     private String passWord;
-    private Image profilePicture;
+    private ImageIcon profilePicture;
     public User(String userName, String passWord) {
         this.userName = userName;
         this.passWord = passWord;
@@ -21,7 +23,7 @@ public class User {
         this.passWord = passWord;
 
     }
-    public void setProfilePicture(Image profilePicture){
+    public void setProfilePicture(ImageIcon profilePicture){
         this.profilePicture = profilePicture;
     }
 

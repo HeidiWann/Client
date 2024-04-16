@@ -1,20 +1,19 @@
 package model;
 
 
-import javafx.scene.Node;
-import javafx.scene.image.Image;
+
 import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
 
 public class Recipe {
     private String instructions;
-    private Image imageOfRecipe;
+    private ImageView imageOfRecipe;
     private Food dish;
     private String recipeName;
     private boolean isPrivate;
 
-    public Recipe(String instructions, Image imageOfRecipe, ArrayList<Ingredient> ingredients, String nameOfFood, ArrayList<FoodCategory> typeOfFood) {
+    public Recipe(String instructions, ImageView imageOfRecipe, ArrayList<Ingredient> ingredients, String nameOfFood, ArrayList<FoodCategory> typeOfFood) {
         Food newDish = new Food(nameOfFood, typeOfFood, ingredients);
         this.dish = newDish;
         this.instructions = instructions;
@@ -31,14 +30,12 @@ public class Recipe {
         this.instructions = instructions;
     }
 
-    public Node getImageOfRecipe() {
-        return new ImageView(imageOfRecipe);
+    public ImageView getImageOfRecipe() {
+        return imageOfRecipe;
     }
 
-    public void setImageOfRecipe(Image imageOfRecipe) {
+    public void setImageOfRecipe(ImageView imageOfRecipe) {
         this.imageOfRecipe = imageOfRecipe;
-    }    public void setImageOfRecipe(ImageView imageOfRecipe) {
-        this.imageOfRecipe = imageOfRecipe.getImage();
     }
 
     public Food getDish() {
