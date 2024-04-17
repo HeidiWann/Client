@@ -14,7 +14,7 @@ public class UserGUIController {
     private RegisterSouthPanel registerSouthPanel;
     private RegisterMainScene registerMainScene;
     public UserGUIController(){
-        userMainScene = new UserMainScene(this);
+        userMainScene = new UserMainScene();
     }
     public void createUserWindow(){
         userMainScene.createUserWindow();

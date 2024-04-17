@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 import model.GetGUIController;
+import view.userStage.UserMainScene;
 
 import javax.swing.*;
 import java.net.URL;
@@ -31,7 +32,8 @@ public class NorthPanel implements Initializable {
     }
 
     public void showProfileWindow(ActionEvent e) {
-        JOptionPane.showMessageDialog(null, "You have chosen to log in");
+        UserMainScene userMainScene = new UserMainScene();
+        userMainScene.createUserWindow();
     }
 
     @Override

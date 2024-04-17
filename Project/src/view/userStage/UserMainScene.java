@@ -10,10 +10,8 @@ import model.User;
 import java.io.IOException;
 
 public class UserMainScene {
-    private UserGUIController userGUIController;
+    public UserMainScene(){
 
-    public UserMainScene(UserGUIController userGUIController){
-        this.userGUIController = userGUIController;
     }
     public void createUserWindow() {
         Stage userStage = new Stage();
@@ -26,9 +24,5 @@ public class UserMainScene {
        userStage.setScene(new Scene(root, 660, 345));
        userStage.setResizable(false);
        userStage.show();
-    }
-
-    public UserGUIController getUserGUIController() {
-        return userGUIController;
     }
 }
