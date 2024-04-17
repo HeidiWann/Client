@@ -6,5 +6,7 @@ public enum Measurement {
     G,
     L,
     CL,
-    ML;
+    Burk,
+    ML,
+    ST;
 }

@@ -6,6 +6,7 @@ public enum FoodCategory {
     Cow,
     Pig,
     Vegetarian,
+    Chicken,
     Lamb,
     Bunny,
     Sheep,

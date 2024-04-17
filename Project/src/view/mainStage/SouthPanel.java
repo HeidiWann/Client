@@ -15,8 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import model.GetGUIController;
-import model.Recipe;
+import model.*;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -33,6 +32,7 @@ public class SouthPanel implements Initializable {
     private ScrollPane scrollPane;
     private MainGUIController mainGuiController;
 
+
     /**
      * This is a {@link ObservableList} that holds {@link Recipe}. It is basically an ArrayList with the difference
      * being that the list is linked with the {@link ListView} and keeps track of when something is changed in the list.
@@ -42,10 +42,7 @@ public class SouthPanel implements Initializable {
 
     public SouthPanel() {
         this.mainGuiController = GetGUIController.getGuiController();
-    }
-
-    public void setGuiController(MainGUIController mainGuiController) {
-        this.mainGuiController = mainGuiController;
+        mainGuiController.setSouthPanel(this);
     }
 
     /**
@@ -61,14 +58,6 @@ public class SouthPanel implements Initializable {
         scrollPane.setContent(recipeField);
         scrollPane.setPickOnBounds(false);
         recipeField.setOnMouseClicked(new ListViewHandler());
-
-        Image image = new Image("/view/NotLoggedIn.png");
-        ImageView imageView = new ImageView(image);
-        imageView.setFitWidth(50);
-        imageView.setFitHeight(50);
-
-        recipes.add(new Recipe("Gör detta", imageView, null, "SOUP",null));
-
 
         recipeField.setCellFactory(listView -> new ListCell<Recipe>() {
             @Override
@@ -89,19 +78,6 @@ public class SouthPanel implements Initializable {
             }
         });
         recipeField.setItems(recipes);
-        addItems();
-    }
-
-    public void addItems() {
-        Image image = new Image("/view/NotLoggedIn.png");
-
-        for (int i = 0; i < 10; i++) {
-            ImageView imageView = new ImageView(image);
-            imageView.setFitWidth(50);
-            imageView.setFitHeight(50);
-            recipes.add(new Recipe("Gör detta", imageView, null, "SOUP", null));
-        }
-
     }
 
     /**
@@ -110,8 +86,15 @@ public class SouthPanel implements Initializable {
      * @param recipes
      */
     public void addRecipes(ArrayList<Recipe> recipes) {
-        this.recipes.removeAll();
+        this.recipes.clear();
         this.recipes.addAll(recipes);
+        for (Recipe recipe : this.recipes) {
+            System.out.println(recipe);
+        }
+    }
+
+    public void addARecipe(Recipe recipe) {
+        recipes.add(recipe);
     }
 
     private class ListViewHandler extends Thread implements EventHandler<MouseEvent>  { // -Testa om den verligen behöver ärva en tråd

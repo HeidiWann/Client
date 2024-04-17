@@ -45,6 +45,6 @@ public class Ingredient {
         this.store = store;
     }
     public String toString() {
-        return String.format("%s - %fkr - %f%s", nameOfIngredient, costOfIngredient, amountOfIngredient, measurement);
+        return String.format("%s    |    %skr   |   %s%s", nameOfIngredient, costOfIngredient, amountOfIngredient, measurement);
     }
 }

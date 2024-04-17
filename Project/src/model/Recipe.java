@@ -6,7 +6,7 @@ import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
 
-public class Recipe {
+public class Recipe { // --------------------------------------------------------------------------------Klassen har ingen author
     private String instructions;
     private ImageView imageOfRecipe;
     private Food dish;

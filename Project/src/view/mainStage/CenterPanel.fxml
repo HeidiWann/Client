@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.*?>
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.mainStage.CenterPanel">
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="126.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.mainStage.CenterPanel">
     <children>
         <TextField fx:id="searchField" layoutX="29.0" layoutY="35.0" prefHeight="25.0" prefWidth="342.0" promptText="Sök efter recept, maträtter, etc..." />
         <Button fx:id="searchButton" layoutX="371.0" layoutY="35.0" mnemonicParsing="false" style="-fx-background-color: #FFB366;" text="Sök" textFill="WHITE">
@@ -41,6 +44,11 @@
                 <Font name="System Bold" size="12.0" />
             </font>
         </Button>
+      <Label fx:id="currentCategories" layoutX="29.0" layoutY="99.0" prefHeight="25.0" prefWidth="375.0" style="-fx-background-color: #FFB366;" text="Valda kategorier |" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
     </children>
 
 </AnchorPane>

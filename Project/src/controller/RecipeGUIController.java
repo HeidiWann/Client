@@ -1,8 +1,10 @@
 package controller;
 
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.FoodCategory;
 import model.Ingredient;
+import model.Measurement;
 import model.Recipe;
 import view.recipeStage.RecipeCenterPanel;
 import view.recipeStage.RecipeMainScene;
@@ -23,22 +25,32 @@ public class RecipeGUIController {
     public void showSelectedRecipe(Object recipe) {
         Recipe recipeToShow = (Recipe) recipe;
         String recipeInstructions = recipeToShow.getInstructions();
-        ImageView imageInRecipe = recipeToShow.getImageOfRecipe();
         ArrayList<String> ingredientsInRecipe = getFormattedIngredients((recipeToShow.getDish().getIngredients()));
-        String nameOfIngredient = recipeToShow.getRecipeName();
+        String nameOfRecipe = recipeToShow.getRecipeName();
         ArrayList<String> recipesCategories = getFormattedCategories(recipeToShow.getDish().getTypeOfFood());
+        double totalCostOfRecipe = getTotalCostOfRecipe(recipeToShow.getDish().getIngredients());
+
+        Image tempImageInRecipe = recipeToShow.getImageOfRecipe().getImage();
+        ImageView imageInRecipe = new ImageView(tempImageInRecipe);
+        imageInRecipe.setFitHeight(209);
+        imageInRecipe.setFitWidth(400);
 
         recipeMainScene.createRecipeWindow();
-        recipeCenterPanel.insertText("Funkar detta?");
+        recipeCenterPanel.insertIngredientInfo(ingredientsInRecipe, String.valueOf(totalCostOfRecipe));
+        recipeCenterPanel.insertImage(imageInRecipe);
+        recipeSouthPanel.insertInstructions(recipeInstructions);
+        recipeNorthPanel.setHeaders("Anton", nameOfRecipe, recipesCategories.toString());
     }
 
-    public ArrayList<String> getFormattedIngredients(ArrayList<Ingredient> ingredients) {
+    public ArrayList<String> getFormattedIngredients(ArrayList<Ingredient> ingredients) {  // --------------Går att göra till en for loop
         ArrayList<String> formattedIngredients = new ArrayList<>();
+
         if (ingredients != null) {
             for (Ingredient ingredient : ingredients) {
-                formattedIngredients.add(ingredient.toString());
+                formattedIngredients.add(ingredient.toString() + "\n");
             }
         }
+
         return formattedIngredients;
     }
 
@@ -54,5 +66,21 @@ public class RecipeGUIController {
 
     public void setRecipeCenterPanel(RecipeCenterPanel recipeCenterPanel) {
         this.recipeCenterPanel = recipeCenterPanel;
+    }
+
+    public double getTotalCostOfRecipe (ArrayList<Ingredient> ingredients) {
+        double sumOfRecipe = 0;
+        for (Ingredient ingredient : ingredients) {
+            sumOfRecipe += ingredient.getCostOfIngredient();
+        }
+        return sumOfRecipe;
+    }
+
+    public void setRecipeSouthPanel(RecipeSouthPanel recipeSouthPanel) {
+        this.recipeSouthPanel = recipeSouthPanel;
+    }
+
+    public void setRecipeNorthPanel(RecipeNorthPanel recipeNorthPanel) {
+        this.recipeNorthPanel = recipeNorthPanel;
     }
 }
