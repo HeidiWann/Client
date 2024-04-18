@@ -9,6 +9,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * This class's main purpose it to create a new Stage.
+ * @author Anton Persson
+ */
 public class RecipeMainScene {
     private RecipeGUIController recipeGUIController;
     public RecipeMainScene(RecipeGUIController recipeGUIController) {

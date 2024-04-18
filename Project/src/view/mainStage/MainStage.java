@@ -7,6 +7,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * This method launches JavaFX and starts the procces of reading the FXML files
+ * @author Anton Persson
+ */
 public class MainStage extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {

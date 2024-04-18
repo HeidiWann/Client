@@ -9,6 +9,10 @@ import model.GetGUIController;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * This class intializes the south panel of the {@link RecipeSouthPanel}
+ * @author Anton Persson
+ */
 public class RecipeSouthPanel implements Initializable {
     @FXML
     private TextArea textArea;

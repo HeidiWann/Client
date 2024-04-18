@@ -17,6 +17,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * This class initializes the CenterPanel of the {@link MainStage}
+ * @author Anton Persson
+ */
 public class CenterPanel implements Initializable {
     @FXML
     private Button chickenButton, veganButton, cowButton, vegetarianButton, searchButton, pigButton, fishButton;
@@ -30,6 +34,12 @@ public class CenterPanel implements Initializable {
         mainGuiController.setCenterPanel(this);
     }
 
+    /**
+     * This method gives the buttons action handlers.
+     * @param url
+     * @param resourceBundle
+     * @author Anton Persson
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         cowButton.setOnAction(new ButtonHandler());
@@ -45,6 +55,10 @@ public class CenterPanel implements Initializable {
         currentCategories.setText(categories);
     }
 
+    /**
+     * This class is used to handle the functionalities behind the buttons in the panel
+     * @author Anton Persson
+     */
     private class ButtonHandler implements EventHandler<ActionEvent> {
         @Override
         public void handle(ActionEvent actionEvent) {

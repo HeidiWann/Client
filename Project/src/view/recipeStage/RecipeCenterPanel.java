@@ -16,6 +16,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+
+/**
+ * This class initializes the center panel of the {@link RecipeMainScene}
+ * @author Anton Persson
+ */
 public class RecipeCenterPanel implements Initializable {
     @FXML
     ImageView imageOfRecipe;
@@ -27,11 +32,9 @@ public class RecipeCenterPanel implements Initializable {
     public RecipeCenterPanel(){
         this.recipeGUIController = GetGUIController.getrecipeGUIController();
         recipeGUIController.setRecipeCenterPanel(this);
-        System.out.println("Nått centerpanelen");
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("Initierade centerpanelen");
         scrollPane.setContent(ingredientsInfo);
         ingredientsInfo.setWrapText(true);
     }
