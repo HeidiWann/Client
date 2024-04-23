@@ -15,6 +15,10 @@ import javax.swing.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * The method initializes the north panel of the stage.
+ * @author Anton Persson
+ */
 public class NorthPanel implements Initializable {
     @FXML
     private Button profileButton;
@@ -36,6 +40,12 @@ public class NorthPanel implements Initializable {
         userMainScene.createUserWindow();
     }
 
+    /**
+     * This method inserts an image to the panel
+     * @param url
+     * @param resourceBundle
+     * @author Anton Persson
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Image image = new Image("/view/NotLoggedIn.png"); //getClass().getResourceAsStream("/view/NotLoggedIn.png"));
@@ -48,7 +58,5 @@ public class NorthPanel implements Initializable {
         imageView.setClip(clip);
 
         profileButton.setGraphic(imageView);
-
-        System.out.println("Hej");
     }
 }

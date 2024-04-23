@@ -1,53 +1,47 @@
 package controller;
 
-
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.*;
-//import model.User;
 import view.mainStage.CenterPanel;
 import view.mainStage.SouthPanel;
-import view.recipeStage.RecipeCenterPanel;
-import view.recipeStage.RecipeMainScene;
-import view.recipeStage.RecipeNorthPanel;
-import view.recipeStage.RecipeSouthPanel;
 
 import java.util.ArrayList;
 
+/**
+ * This class handles the communication and manipulation of data that is associated to the GUI that is to be shown
+ * in the "home page" of the application
+ * @author Anton Persson
+ */
 public class MainGUIController {
-
-    private RecipeGUIController recipeGUIController;
-    private UserGUIController userGUIController;
-    private ClientController clientController;
-    private RecipeController recipeController;
+    private final RecipeGUIController recipeGUIController;
     private SouthPanel southPanel;
     private CenterPanel centerPanel;
+    /**
+     * List of categories used to filter the recipes.
+     */
     private ArrayList<FoodCategory> filters = new ArrayList<>();
     private ArrayList<Recipe> recipes = new ArrayList<>();
 
     public MainGUIController() {
         this.recipeGUIController = GetGUIController.getrecipeGUIController();
-        this.userGUIController = GetGUIController.getUserGUIController();
     }
-
-
 
     public void updateListOfRecipes(ArrayList<Recipe> recipes) {
         southPanel.addRecipes(recipes);
     }
-
-    public User getUserName(User userName) {
-        return userName;
-    }
-
     public RecipeGUIController getRecipeGUIController() {
         return recipeGUIController;
     }
 
-    public UserGUIController getUserGUIController() {
-        return userGUIController;
-    }
 
+    /**
+     * This method loops through the list of recipes to find recipes that contains the characters entered by the
+     * user from {@link CenterPanel}. If the characters are inside the recipes name, the recipe gets added to a new list.
+     * Lastly, a method in the center panel wth the list containing recipes matching the characters from the GUI.
+     * @param wordToSearchFor A String containing the characters enetered by the user in the GUI
+     * @author Anton Persson
+     */
     public void searchForRecipe(String wordToSearchFor) {
         ArrayList<Recipe> searchedRecipes = new ArrayList<>();
         for (int i = 0; i < recipes.size(); i++) {
@@ -58,6 +52,15 @@ public class MainGUIController {
         southPanel.addRecipes(searchedRecipes);
     }
 
+    /**
+     * This method adds or alternatively removes categories from the list containing categories. If the category
+     * already is in the list, it gets removed, if it's not in the list, it gets added. If the list of categories is
+     * empty after removing a category, a method is called to add every recipe to the list in {@link SouthPanel}.
+     * If the list isn't empty, a method is called that will update the list based on the categories in the list.
+     * Lastly, a method is called that formats the categories into a String.
+     * @param foodCategory The category to add of the type {@link FoodCategory}
+     * @author Anton Persson
+     */
     public void addFilter(FoodCategory foodCategory) {
         if (filters.contains(foodCategory)) {
             filters.remove(foodCategory);
@@ -73,6 +76,10 @@ public class MainGUIController {
         setFormattedCategories();
     }
 
+    /**
+     * This method formats the categories to a string to easily insert it into the {@link CenterPanel}
+     * @author Anton Persson
+     */
     public void setFormattedCategories() {
         StringBuilder formattedCategories = new StringBuilder();
         if (filters != null) {
@@ -83,6 +90,21 @@ public class MainGUIController {
         centerPanel.setCurrentCategories(String.valueOf(formattedCategories));
     }
 
+    /**
+     * This method filters the recipes after the categories. If a recipe has a category in the category list, it gets
+     * added to a new {@link ArrayList}. This ArrayList is then used to update the list in the {@link SouthPanel}
+     * <p>
+     * The first loop loops through the recipes. Each recipe has a boolean which will be set to false if a recipe
+     * contains a category in the category list. This is done to make sure that the same category is not added twice in
+     * case the recipe has two categories that matches.
+     * <p>
+     * The second loop loops through each category in the current recipe.
+     * <p>
+     * The last loop loops through the list of categories. If the category in the recipe matches any of the categories
+     * in the list of categories and a category has not matched yet, the recipe gets added to the list. If a
+     * category has been found, the loop breaks.
+     * @author Anton Persson
+     */
     public void updateRecipeList() {
         ArrayList<Recipe> filteredRecipeList = new ArrayList<>();
 
@@ -103,6 +125,10 @@ public class MainGUIController {
         southPanel.addRecipes(filteredRecipeList);
     }
 
+    /**
+     * This method is just used to create sample data.
+     * @author Anton Persson
+     */
     public void insertRecipes() {
         ArrayList<Ingredient> salmonIngredients = new ArrayList<>();
         ArrayList<FoodCategory> salmonCategory = new ArrayList<>();
