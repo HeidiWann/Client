@@ -3,10 +3,13 @@ package model;
 
 
 import javafx.scene.image.ImageView;
-
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Recipe { // --------------------------------------------------------------------------------Klassen har ingen author
+public class Recipe implements Serializable { // --------------------------------------------------------------------------------Klassen har ingen author
+    @Serial
+    private static final long serialVersionUID = 111222333L;
     private String instructions;
     private ImageView imageOfRecipe;
     private Food dish;
