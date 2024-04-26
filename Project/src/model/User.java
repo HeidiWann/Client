@@ -1,12 +1,12 @@
 package model;
 
-
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import java.io.Serial;
+import java.io.Serializable;
 
-import javax.swing.*;
-
-public class User {
+public class User implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 222333444L;
     private String userName;
     private String passWord;
     private ImageView profilePicture;
@@ -30,5 +30,9 @@ public class User {
 
     public String getPassword() {
         return passWord;
+    }
+
+    public ImageView getProfilePicture() {
+        return profilePicture;
     }
 }
