@@ -7,10 +7,12 @@ import view.mainStage.CenterPanel;
 import view.mainStage.SouthPanel;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * This class handles the communication and manipulation of data that is associated to the GUI that is to be shown
  * in the "home page" of the application
+ *
  * @author Anton Persson
  */
 public class MainGUIController {
@@ -30,6 +32,7 @@ public class MainGUIController {
     public void updateListOfRecipes(ArrayList<Recipe> recipes) {
         southPanel.addRecipes(recipes);
     }
+
     public RecipeGUIController getRecipeGUIController() {
         return recipeGUIController;
     }
@@ -39,13 +42,14 @@ public class MainGUIController {
      * This method loops through the list of recipes to find recipes that contains the characters entered by the
      * user from {@link CenterPanel}. If the characters are inside the recipes name, the recipe gets added to a new list.
      * Lastly, a method in the center panel wth the list containing recipes matching the characters from the GUI.
+     *
      * @param wordToSearchFor A String containing the characters enetered by the user in the GUI
      * @author Anton Persson
      */
     public void searchForRecipe(String wordToSearchFor) {
         ArrayList<Recipe> searchedRecipes = new ArrayList<>();
         for (int i = 0; i < recipes.size(); i++) {
-            if(recipes.get(i).getRecipeName().contains(wordToSearchFor)) {
+            if (recipes.get(i).getRecipeName().contains(wordToSearchFor)) {
                 searchedRecipes.add(recipes.get(i));
             }
         }
@@ -58,6 +62,7 @@ public class MainGUIController {
      * empty after removing a category, a method is called to add every recipe to the list in {@link SouthPanel}.
      * If the list isn't empty, a method is called that will update the list based on the categories in the list.
      * Lastly, a method is called that formats the categories into a String.
+     *
      * @param foodCategory The category to add of the type {@link FoodCategory}
      * @author Anton Persson
      */
@@ -78,6 +83,7 @@ public class MainGUIController {
 
     /**
      * This method formats the categories to a string to easily insert it into the {@link CenterPanel}
+     *
      * @author Anton Persson
      */
     public void setFormattedCategories() {
@@ -103,6 +109,7 @@ public class MainGUIController {
      * The last loop loops through the list of categories. If the category in the recipe matches any of the categories
      * in the list of categories and a category has not matched yet, the recipe gets added to the list. If a
      * category has been found, the loop breaks.
+     *
      * @author Anton Persson
      */
     public void updateRecipeList() {
@@ -127,6 +134,7 @@ public class MainGUIController {
 
     /**
      * This method is just used to create sample data.
+     *
      * @author Anton Persson
      */
     public void insertRecipes() {
@@ -151,7 +159,7 @@ public class MainGUIController {
         salmonImage.setFitWidth(50);
         salmonImage.setFitHeight(50);
 
-        recipes.add(new Recipe(salmonInstructions, salmonImage, salmonIngredients, "Lax med ris och stekta grönsaker",salmonCategory));
+        recipes.add(new Recipe(salmonInstructions, salmonImage, salmonIngredients, "Lax med ris och stekta grönsaker", salmonCategory));
 
         ArrayList<Ingredient> oreoShakeIngredients = new ArrayList<>();
         ArrayList<FoodCategory> oreoShakeCategory = new ArrayList<>();
@@ -171,11 +179,11 @@ public class MainGUIController {
         ArrayList<FoodCategory> tacoCategory = new ArrayList<>();
         String tacoInstructions;
         tacoIngredient.add(new Ingredient("Sallad", 15, 1, Measurement.ST));
-        tacoIngredient.add(new Ingredient("Tortilla bröd", 20,8,Measurement.ST));
+        tacoIngredient.add(new Ingredient("Tortilla bröd", 20, 8, Measurement.ST));
         tacoIngredient.add(new Ingredient("Salsa", 15, 2, Measurement.DL));
-        tacoIngredient.add(new Ingredient("Lök", 3,1,Measurement.ST));
-        tacoIngredient.add(new Ingredient("Tomat",5,3,Measurement.ST));
-        tacoIngredient.add(new Ingredient("Annanas", 15,1, Measurement.Burk));
+        tacoIngredient.add(new Ingredient("Lök", 3, 1, Measurement.ST));
+        tacoIngredient.add(new Ingredient("Tomat", 5, 3, Measurement.ST));
+        tacoIngredient.add(new Ingredient("Annanas", 15, 1, Measurement.Burk));
         tacoCategory.add(FoodCategory.Cow);
         tacoInstructions = "Skär alla grönsaker. Stek sedan köttfärsen. När köttfärsen fått färg häller du i salsan. " +
                 "Gör sedan din tacos med din favoritsås";
@@ -195,5 +203,10 @@ public class MainGUIController {
 
     public void setCenterPanel(CenterPanel centerPanel) {
         this.centerPanel = centerPanel;
+    }
+
+    public void setRecipes(Recipe[] recipes) {
+        this.recipes = new ArrayList<>(Arrays.asList(recipes));
+        insertRecipes();
     }
 }

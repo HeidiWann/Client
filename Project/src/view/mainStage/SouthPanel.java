@@ -24,6 +24,7 @@ import java.util.ResourceBundle;
 
 /**
  * This class initializes the southpanel of the Stage {@link MainStage}
+ *
  * @author Anton Persson
  */
 public class SouthPanel implements Initializable {
@@ -55,6 +56,7 @@ public class SouthPanel implements Initializable {
      * allow us to store both text and images in the {@link ListView}. It uses a lambada "->" expression to
      * automatically format each item that is added to the list as the custom {@link ListCell}. You need to (I think)
      * crate a cell in order to store something in the ListVIew.
+     *
      * @param url
      * @param resourceBundle
      * @author Anton Persson
@@ -89,6 +91,7 @@ public class SouthPanel implements Initializable {
     /**
      * This method replaces the list of the recipes and since the list of recipes automatically updates the
      * {@link ListView}, nothing else needs to be done
+     *
      * @param recipes
      * @author Anton Persson
      */
@@ -106,9 +109,10 @@ public class SouthPanel implements Initializable {
 
     /**
      * This class is used to handle the logic when a user presses an item in the {@link ListView}
+     *
      * @author Anton Persson
      */
-    private class ListViewHandler extends Thread implements EventHandler<MouseEvent>  { // -Testa om den verligen behöver ärva en tråd
+    private class ListViewHandler extends Thread implements EventHandler<MouseEvent> { // -Testa om den verligen behöver ärva en tråd
         @Override
         public void handle(MouseEvent mouseEvent) {
             mainGuiController.getRecipeGUIController().showSelectedRecipe(recipeField.getSelectionModel().getSelectedItem());

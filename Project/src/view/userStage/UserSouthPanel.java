@@ -11,7 +11,8 @@ public class UserSouthPanel {
     @FXML
     private Button register;
     private UserGUIController userGUIController;
-    public UserSouthPanel(){
+
+    public UserSouthPanel() {
         this.userGUIController = GetGUIController.getUserGUIController();
     }
 

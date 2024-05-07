@@ -11,6 +11,7 @@ public class Ingredient implements Serializable {
     private double amountOfIngredient;
     private Measurement measurement;
     private Store store;
+
     public Ingredient(String nameOfIngredient, double costOfIngredient, double amountOfIngredient, Measurement measurement) {
         this.nameOfIngredient = nameOfIngredient;
         this.costOfIngredient = costOfIngredient;
@@ -49,6 +50,7 @@ public class Ingredient implements Serializable {
     public void setStore(Store store) {
         this.store = store;
     }
+
     public String toString() {
         return String.format("%s    |    %skr   |   %s%s", nameOfIngredient, costOfIngredient, amountOfIngredient, measurement);
     }

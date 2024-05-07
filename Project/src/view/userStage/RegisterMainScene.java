@@ -10,9 +10,11 @@ import java.io.IOException;
 
 public class RegisterMainScene {
     private UserGUIController userGUIController;
-    public RegisterMainScene(UserGUIController userGUIController){
+
+    public RegisterMainScene(UserGUIController userGUIController) {
         this.userGUIController = userGUIController;
     }
+
     public void createRegisterWindow() {
         Stage userStage = new Stage();
         Parent root = null;

@@ -14,7 +14,8 @@ public class RegisterWestPanel {
     @FXML
     private TextField registerUserName;
     private UserGUIController userGUIController;
-    public RegisterWestPanel(){
+
+    public RegisterWestPanel() {
         this.userGUIController = GetGUIController.getUserGUIController();
         userGUIController.setRegisterWestPanel(this);
     }

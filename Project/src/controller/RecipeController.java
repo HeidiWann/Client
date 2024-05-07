@@ -4,26 +4,29 @@ import javafx.scene.image.ImageView;
 import model.FoodCategory;
 import model.Ingredient;
 import model.Recipe;
-import view.ClientConnection;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class RecipeController {
-private ArrayList<Recipe> recipeArray;
+    private ArrayList<Recipe> recipeArray;
     private HashMap<Recipe, ConnectionController> recipeInformation;
     private HashMap<String, Recipe> recipes;
+
     public RecipeController() {
 
         recipeInformation = new HashMap<>();
         recipes = new HashMap<>();
     }
-    public void createNewRecipe (String instructions, ImageView imageOfRecipe, ArrayList<Ingredient> ingredients, String nameOfFood, ArrayList<FoodCategory> typeOfFood) {
-        Recipe recipe = new Recipe(instructions, imageOfRecipe, ingredients, nameOfFood,typeOfFood);
+
+    public void createNewRecipe(String instructions, ImageView imageOfRecipe, ArrayList<Ingredient> ingredients, String nameOfFood, ArrayList<FoodCategory> typeOfFood) {
+        Recipe recipe = new Recipe(instructions, imageOfRecipe, ingredients, nameOfFood, typeOfFood);
         recipeArray.add(recipe);
         recipes.put(nameOfFood, recipe); //bara ett exempel då det måste vara unikt och det är inte nameOfFood ville bara visa
     }
+
     public Recipe getRecipeFromObjectStream(ObjectInputStream ois) throws IOException, ClassNotFoundException {
         return (Recipe) ois.readObject();
     }

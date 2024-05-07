@@ -10,9 +10,10 @@ import model.User;
 import java.io.IOException;
 
 public class UserMainScene {
-    public UserMainScene(){
+    public UserMainScene() {
 
     }
+
     public void createUserWindow() {
         Stage userStage = new Stage();
         Parent root = null;
@@ -21,8 +22,8 @@ public class UserMainScene {
         } catch (IOException e) {
             e.printStackTrace();
         }
-       userStage.setScene(new Scene(root, 660, 345));
-       userStage.setResizable(false);
-       userStage.show();
+        userStage.setScene(new Scene(root, 660, 345));
+        userStage.setResizable(false);
+        userStage.show();
     }
 }

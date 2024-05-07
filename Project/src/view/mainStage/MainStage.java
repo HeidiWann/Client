@@ -1,21 +1,19 @@
 package view.mainStage;
 
-import controller.ClientController;
+
+import controller.ConnectionController;
+import controller.UserController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-<<<<<<< HEAD
-import java.io.IOException;
-
-=======
 /**
  * This method launches JavaFX and starts the procces of reading the FXML files
  * @author Anton Persson
  */
->>>>>>> b0e88959740b428bedcbd838a73541ef22331601
+
 public class MainStage extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -24,16 +22,27 @@ public class MainStage extends Application {
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
 
+        UserController userController = new UserController();
+        ConnectionController connectionController = new ConnectionController(userController);
+        connectionController.connectToServer();
 
-        ClientController clientController = new ClientController();
+
+        /*
+        Thread.sleep(1000); // Måste vänta så uppkopplingen hinner skapas
+        connectionController.sendIntention(30);
+        connectionController.sendObject(new User("Anton","1234"));
+
+        connectionController.sendIntention(30);
+        connectionController.sendObject(new User("Anton","1234"));
+
+         */
+
+
 
 
         primaryStage.setOnCloseRequest(event -> {
-            try {
-                clientController.closeConnection();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            System.out.println("Lambada works");
+            connectionController.serverDisconnected();
             System.exit(0);
         });
 

@@ -4,11 +4,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="244.0" prefWidth="245.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.userStage.UserEastPanel">
+<AnchorPane prefHeight="244.0" prefWidth="245.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="view.userStage.UserEastPanel">
     <children>
-        <Button fx:id="login" layoutX="8.0" layoutY="185.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#buttonClicked" prefHeight="45.0" prefWidth="165.0" text="Logga in">
+        <Button fx:id="login" layoutX="8.0" layoutY="185.0" maxHeight="-Infinity" maxWidth="-Infinity"
+                minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#buttonClicked"
+                prefHeight="45.0" prefWidth="165.0" text="Logga in">
             <font>
-                <Font size="22.0" />
+                <Font size="22.0"/>
             </font>
         </Button>
     </children>

@@ -21,6 +21,7 @@ public class RecipeNorthPanel implements Initializable {
         RecipeGUIController recipeGUIController = GetGUIController.getrecipeGUIController();
         recipeGUIController.setRecipeNorthPanel(this);
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

@@ -38,10 +38,10 @@ public class RegisterSouthPanel {
             } else if (!firstPassword.equals(secondPassword)) {
                 JOptionPane.showMessageDialog(null, "Lösenorden stämmer inte överrens");
             }
-        }catch(Exception exception){
+        } catch (Exception exception) {
             exception.printStackTrace();
-            JOptionPane.showMessageDialog(null,"Något blev fel, försök igen");
-                
-            }
+            JOptionPane.showMessageDialog(null, "Något blev fel, försök igen");
+
         }
     }
+}

@@ -16,19 +16,21 @@ public class UserEastPanel {
     @FXML
     private Button login;
     private UserGUIController userGUIController;
-    public UserEastPanel(){
+
+    public UserEastPanel() {
         this.userGUIController = GetGUIController.getUserGUIController();
 
     }
-    public void buttonClicked(ActionEvent e){
-        if(userGUIController.getLoginUserNameTextField() != null && userGUIController.getLoginPasswordField()!= null) {
+
+    public void buttonClicked(ActionEvent e) {
+        if (userGUIController.getLoginUserNameTextField() != null && userGUIController.getLoginPasswordField() != null) {
             JOptionPane.showMessageDialog(null, "Du är inloggad");
             Stage stage = (Stage) login.getScene().getWindow();
             stage.close();
-        }else if(userGUIController.getLoginUserNameTextField() == null){
-            JOptionPane.showMessageDialog(null,"Var vänligen ange ett användarnamn");
-        }else if(userGUIController.getLoginPasswordField() == null){
-            JOptionPane.showMessageDialog(null,"Var vänlig ange ett lösenord");
+        } else if (userGUIController.getLoginUserNameTextField() == null) {
+            JOptionPane.showMessageDialog(null, "Var vänligen ange ett användarnamn");
+        } else if (userGUIController.getLoginPasswordField() == null) {
+            JOptionPane.showMessageDialog(null, "Var vänlig ange ett lösenord");
         }
     }
 }

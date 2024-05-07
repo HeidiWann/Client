@@ -17,12 +17,14 @@ import java.util.ResourceBundle;
 
 /**
  * The method initializes the north panel of the stage.
+ *
  * @author Anton Persson
  */
 public class NorthPanel implements Initializable {
     @FXML
     private Button profileButton;
     private MainGUIController mainGuiController;
+
     public NorthPanel() {
         this.mainGuiController = GetGUIController.getGuiController();
     }
@@ -42,6 +44,7 @@ public class NorthPanel implements Initializable {
 
     /**
      * This method inserts an image to the panel
+     *
      * @param url
      * @param resourceBundle
      * @author Anton Persson

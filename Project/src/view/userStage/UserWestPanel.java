@@ -12,7 +12,8 @@ public class UserWestPanel {
     @FXML
     private TextField userNameTextField;
     private UserGUIController userGUIController;
-    public UserWestPanel(){
+
+    public UserWestPanel() {
         this.userGUIController = GetGUIController.getUserGUIController();
         userGUIController.setUserWestPanel(this);
     }

@@ -2,11 +2,9 @@ package controller;
 
 
 import model.User;
-import view.ClientConnection;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -28,8 +26,26 @@ public class UserController {
         return newUser;
     }
 
- 
-  
+    /**
+     * @author Anton Persson
+     * @param listOfUsers
+     */
+    public void setUsers(ArrayList<User> listOfUsers) {
+        for (User user : listOfUsers) {
+            String userName = user.getUserName();
+            users.put(userName, user);
+        }
+    }
+
+    public void updateListOfUsers(ArrayList<User> listOfUsers) {
+        users.clear();
+        for (User user : listOfUsers) {
+            String userName = user.getUserName();
+            users.put(userName,user);
+        }
+    }
+
+
     public void removeUser(String userName) {
         User user = users.get(userName);
         if (user != null) {
@@ -37,6 +53,7 @@ public class UserController {
             usersInformation.remove(user);
         }
     }
+
     public User userLoggedIn(String userName, String passWord) {
         User user = users.get(userName);
         if (user != null && user.getPassWord().equals(passWord)) {
@@ -44,9 +61,11 @@ public class UserController {
         }
         return null;
     }
+
     public void addUserConnection(User user, ConnectionController connectionController) {
         usersInformation.put(user, connectionController);
     }
+
     public void removeUserConnection(User user) {
         usersInformation.remove(user);
     }
@@ -55,6 +74,7 @@ public class UserController {
     public User getUserFromObject(ObjectInputStream ois) throws IOException, ClassNotFoundException {
         return (User) ois.readObject();
     }
+
     public HashMap<String, User> getUsers() {
         return new HashMap<>(users);
     }

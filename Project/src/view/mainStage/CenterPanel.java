@@ -19,6 +19,7 @@ import java.util.ResourceBundle;
 
 /**
  * This class initializes the CenterPanel of the {@link MainStage}
+ *
  * @author Anton Persson
  */
 public class CenterPanel implements Initializable {
@@ -29,13 +30,15 @@ public class CenterPanel implements Initializable {
     @FXML
     private Label currentCategories;
     private MainGUIController mainGuiController;
-    public CenterPanel(){
+
+    public CenterPanel() {
         this.mainGuiController = GetGUIController.getGuiController();
         mainGuiController.setCenterPanel(this);
     }
 
     /**
      * This method gives the buttons action handlers.
+     *
      * @param url
      * @param resourceBundle
      * @author Anton Persson
@@ -57,6 +60,7 @@ public class CenterPanel implements Initializable {
 
     /**
      * This class is used to handle the functionalities behind the buttons in the panel
+     *
      * @author Anton Persson
      */
     private class ButtonHandler implements EventHandler<ActionEvent> {

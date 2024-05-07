@@ -16,6 +16,7 @@ import java.util.ArrayList;
 /**
  * This class handles the communication and manipulation of data that is associated to the GUI that displays a
  * recipe
+ *
  * @author Anton Persson
  */
 public class RecipeGUIController {
@@ -23,6 +24,7 @@ public class RecipeGUIController {
     private RecipeCenterPanel recipeCenterPanel;
     private RecipeSouthPanel recipeSouthPanel;
     private RecipeMainScene recipeMainScene;
+
     public RecipeGUIController() {
         recipeMainScene = new RecipeMainScene(this);
     }
@@ -31,6 +33,7 @@ public class RecipeGUIController {
      * This method alters the data of a chosen recipe from the list in {@link view.mainStage.SouthPanel} to
      * prepare it for being displayed in a new Stage. The method gathers the different parts of the {@link Recipe}
      * before creating a new Stage and placing the info of the recipe in it.
+     *
      * @param recipe The recipe to show in a new Stage
      * @author Anton Persson
      */
@@ -56,6 +59,7 @@ public class RecipeGUIController {
 
     /**
      * This method formats the ingredients to a String to easier insert the recipes into the GUI.
+     *
      * @param ingredients The ingredients to convert to String
      * @return An {@link ArrayList} containing the formatted ingredients
      * @author Anton Persson
@@ -74,6 +78,7 @@ public class RecipeGUIController {
 
     /**
      * This method formats the categories to a String to easier insert the categories into the GUI.
+     *
      * @param categories An {@link ArrayList} containing the categories
      * @return An ArrayList containing the formatted categories as Strings
      * @author Anton Persson
@@ -90,11 +95,12 @@ public class RecipeGUIController {
 
     /**
      * This method calculates the sum of the cost of the ingredients in a {@link Recipe}
+     *
      * @param ingredients The {@link Ingredient} in the recipe
      * @return The cost of the ingreidients in the recipe
      * @author Anton Persson
      */
-    public double getTotalCostOfRecipe (ArrayList<Ingredient> ingredients) {
+    public double getTotalCostOfRecipe(ArrayList<Ingredient> ingredients) {
         double sumOfRecipe = 0;
         for (Ingredient ingredient : ingredients) {
             sumOfRecipe += ingredient.getCostOfIngredient();
