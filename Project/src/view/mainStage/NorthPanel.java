@@ -10,8 +10,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 import model.GetGUIController;
 import view.userStage.UserMainScene;
-
-import javax.swing.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 

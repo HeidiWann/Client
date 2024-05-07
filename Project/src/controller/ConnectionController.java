@@ -8,7 +8,7 @@ import view.ClientConnection;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static controller.Constans.*;
+import static controller.Constants.*;
 
 public class ConnectionController {
     private int intention;

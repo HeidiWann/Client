@@ -5,7 +5,6 @@ import javafx.scene.image.ImageView;
 import model.*;
 import view.mainStage.CenterPanel;
 import view.mainStage.SouthPanel;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 

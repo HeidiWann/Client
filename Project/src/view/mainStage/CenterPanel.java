@@ -3,7 +3,6 @@ package view.mainStage;
 import controller.MainGUIController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -11,10 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import model.FoodCategory;
 import model.GetGUIController;
-
-import javax.swing.*;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
