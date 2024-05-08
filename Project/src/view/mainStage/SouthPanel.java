@@ -11,10 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
-<<<<<<< HEAD
 import javafx.scene.image.ImageView;
-=======
->>>>>>> fe722c5f4cd086da4c6ef9e4021beffc9076a9c0
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import model.*;
