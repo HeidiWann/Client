@@ -10,13 +10,15 @@ import java.util.ArrayList;
 public class Recipe implements Serializable { // --------------------------------------------------------------------------------Klassen har ingen author
     @Serial
     private static final long serialVersionUID = 111222333L;
+    private String author;
     private String instructions;
     private ImageView imageOfRecipe;
     private Food dish;
     private String recipeName;
 
-    public Recipe(String instructions, ImageView imageOfRecipe, ArrayList<Ingredient> ingredients, String nameOfFood, ArrayList<FoodCategory> typeOfFood) {
+    public Recipe(String author, String instructions, ImageView imageOfRecipe, ArrayList<Ingredient> ingredients, String nameOfFood, ArrayList<FoodCategory> typeOfFood) {
         Food newDish = new Food(nameOfFood, typeOfFood, ingredients);
+        this.author = author;
         this.dish = newDish;
         this.instructions = instructions;
         this.imageOfRecipe = imageOfRecipe;

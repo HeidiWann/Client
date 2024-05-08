@@ -3,7 +3,6 @@ package view.mainStage;
 import controller.MainGUIController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -12,9 +11,7 @@ import javafx.scene.control.TextField;
 import model.FoodCategory;
 import model.GetGUIController;
 
-import javax.swing.*;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
@@ -69,18 +66,18 @@ public class CenterPanel implements Initializable {
             Button clickedButton = (Button) actionEvent.getSource();
 
             if (clickedButton.getText().equals("Nöt")) {
-                mainGuiController.addFilter(FoodCategory.Cow);
+                mainGuiController.addFilter(FoodCategory.Nöt);
             } else if (clickedButton.getText().equals("Gris")) {
-                mainGuiController.addFilter(FoodCategory.Pig);
+                mainGuiController.addFilter(FoodCategory.Gris);
             } else if (clickedButton.getText().equals("Fisk")) {
-                mainGuiController.addFilter(FoodCategory.Fish);
+                mainGuiController.addFilter(FoodCategory.Fisk);
             } else if (clickedButton.getText().equals("Vegan")) {
                 mainGuiController.addFilter(FoodCategory.Vegan);
             } else if (clickedButton.getText().equals("Vegetarian")) {
                 System.out.println("Knppen funkade");
                 mainGuiController.addFilter(FoodCategory.Vegetarian);
             } else if (clickedButton.getText().equals("Kyckling")) {
-                mainGuiController.addFilter(FoodCategory.Chicken);
+                mainGuiController.addFilter(FoodCategory.Kyckling);
             } else if (clickedButton.getText().equals("Sök")) {
                 mainGuiController.searchForRecipe(searchField.getText());
                 searchField.setText("");

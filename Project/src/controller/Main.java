@@ -4,8 +4,6 @@ package controller;
 import javafx.application.Application;
 import view.mainStage.MainStage;
 
-import java.io.IOException;
-
 public class Main {
     /**
      * This method starts that program. It launches the MainStage class which leads to the launch of JavaFX.

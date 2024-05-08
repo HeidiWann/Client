@@ -21,8 +21,8 @@ public class RecipeController {
         recipes = new HashMap<>();
     }
 
-    public void createNewRecipe(String instructions, ImageView imageOfRecipe, ArrayList<Ingredient> ingredients, String nameOfFood, ArrayList<FoodCategory> typeOfFood) {
-        Recipe recipe = new Recipe(instructions, imageOfRecipe, ingredients, nameOfFood, typeOfFood);
+    public void createNewRecipe(String author, String instructions, ImageView imageOfRecipe, ArrayList<Ingredient> ingredients, String nameOfFood, ArrayList<FoodCategory> typeOfFood) {
+        Recipe recipe = new Recipe(author, instructions, imageOfRecipe, ingredients, nameOfFood, typeOfFood);
         recipeArray.add(recipe);
         recipes.put(nameOfFood, recipe); //bara ett exempel då det måste vara unikt och det är inte nameOfFood ville bara visa
     }

@@ -2,6 +2,7 @@ package controller;
 
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import model.GetGUIController;
 import view.userStage.*;
 
 import javax.swing.*;
@@ -15,9 +16,11 @@ public class UserGUIController {
     private RegisterWestPanel registerWestPanel;
     private RegisterSouthPanel registerSouthPanel;
     private RegisterMainScene registerMainScene;
+    private MainGUIController mainGUIController;
 
     public UserGUIController() {
         userMainScene = new UserMainScene();
+        mainGUIController = GetGUIController.getGuiController();
     }
 
     public void createUserWindow() {
@@ -94,5 +97,9 @@ public class UserGUIController {
 
     public void loginFailed() {
         JOptionPane.showMessageDialog(null, "The entered values did not match a login");
+    }
+
+    public void setLoggedInStatus(boolean loggedIn) {
+        mainGUIController.setLoginStatus(loggedIn);
     }
 }

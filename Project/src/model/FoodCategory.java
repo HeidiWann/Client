@@ -1,16 +1,10 @@
 package model;
 
 public enum FoodCategory {
-    Fish,
+    Fisk,
     Vegan,
-    Cow,
-    Pig,
+    Nöt,
+    Gris,
     Vegetarian,
-    Chicken,
-    Lamb,
-    Bunny,
-    Sheep,
-    Cat,
-    Dog,
-    GuineaPig
+    Kyckling,
 }

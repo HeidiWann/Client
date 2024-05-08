@@ -25,6 +25,7 @@ public class UserEastPanel {
     public void buttonClicked(ActionEvent e) {
         if (userGUIController.getLoginUserNameTextField() != null && userGUIController.getLoginPasswordField() != null) {
             JOptionPane.showMessageDialog(null, "Du är inloggad");
+            userGUIController.setLoggedInStatus(true);
             Stage stage = (Stage) login.getScene().getWindow();
             stage.close();
         } else if (userGUIController.getLoginUserNameTextField() == null) {

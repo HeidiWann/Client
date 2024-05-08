@@ -4,6 +4,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.*;
 import view.mainStage.CenterPanel;
+import view.mainStage.NorthPanel;
 import view.mainStage.SouthPanel;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class MainGUIController {
     private final RecipeGUIController recipeGUIController;
     private SouthPanel southPanel;
     private CenterPanel centerPanel;
+    private NorthPanel northPanel;
     /**
      * List of categories used to filter the recipes.
      */
@@ -49,7 +51,7 @@ public class MainGUIController {
     public void searchForRecipe(String wordToSearchFor) {
         ArrayList<Recipe> searchedRecipes = new ArrayList<>();
         for (int i = 0; i < recipes.size(); i++) {
-            if (recipes.get(i).getRecipeName().contains(wordToSearchFor)) {
+            if (recipes.get(i).getRecipeName().toLowerCase().contains(wordToSearchFor.toLowerCase()) || recipes.get(i).getDish().getNameOfFood().toLowerCase().contains(wordToSearchFor.toLowerCase())) {
                 searchedRecipes.add(recipes.get(i));
             }
         }
@@ -147,7 +149,7 @@ public class MainGUIController {
         salmonIngredients.add(new Ingredient("Broccoli", 15, 100, Measurement.G));
         salmonIngredients.add(new Ingredient("Champinjoner", 5, 5, Measurement.ST));
         salmonIngredients.add(new Ingredient("Kikomans svampsoja", 30, 5, Measurement.CL));
-        salmonCategory.add(FoodCategory.Fish);
+        salmonCategory.add(FoodCategory.Fisk);
         salmonInstructions = "Börja första med att skära alla grönsakerna. \n" +
                 "Börja sedan koka riset och sätt en timer på 10 minuter. \n" +
                 "Börja steka laxen på hög värme \n " +
@@ -159,7 +161,7 @@ public class MainGUIController {
         salmonImage.setFitWidth(50);
         salmonImage.setFitHeight(50);
 
-        recipes.add(new Recipe(salmonInstructions, salmonImage, salmonIngredients, "Lax med ris och stekta grönsaker", salmonCategory));
+        recipes.add(new Recipe("Anton", salmonInstructions, salmonImage, salmonIngredients, "Lax med ris och stekta grönsaker", salmonCategory));
 
         ArrayList<Ingredient> oreoShakeIngredients = new ArrayList<>();
         ArrayList<FoodCategory> oreoShakeCategory = new ArrayList<>();
@@ -173,7 +175,7 @@ public class MainGUIController {
         ImageView oreoImage = new ImageView(oreoTemp);
         oreoImage.setFitWidth(50);
         oreoImage.setFitHeight(50);
-        recipes.add(new Recipe(oreoShakeInstructions, oreoImage, oreoShakeIngredients, "Oreo Milkshake", oreoShakeCategory));
+        recipes.add(new Recipe("Anton", oreoShakeInstructions, oreoImage, oreoShakeIngredients, "Oreo Milkshake", oreoShakeCategory));
 
         ArrayList<Ingredient> tacoIngredient = new ArrayList<>();
         ArrayList<FoodCategory> tacoCategory = new ArrayList<>();
@@ -184,14 +186,14 @@ public class MainGUIController {
         tacoIngredient.add(new Ingredient("Lök", 3, 1, Measurement.ST));
         tacoIngredient.add(new Ingredient("Tomat", 5, 3, Measurement.ST));
         tacoIngredient.add(new Ingredient("Annanas", 15, 1, Measurement.Burk));
-        tacoCategory.add(FoodCategory.Cow);
+        tacoCategory.add(FoodCategory.Nöt);
         tacoInstructions = "Skär alla grönsaker. Stek sedan köttfärsen. När köttfärsen fått färg häller du i salsan. " +
                 "Gör sedan din tacos med din favoritsås";
         Image tacoTemp = new Image("/view/Tacos.jpg");
         ImageView tacoImage = new ImageView(tacoTemp);
         tacoImage.setFitWidth(50);
         tacoImage.setFitHeight(50);
-        recipes.add(new Recipe(tacoInstructions, tacoImage, tacoIngredient, "Tacos", tacoCategory));
+        recipes.add(new Recipe("Anton", tacoInstructions, tacoImage, tacoIngredient, "Tacos", tacoCategory));
 
         southPanel.addRecipes(recipes);
     }
@@ -199,6 +201,14 @@ public class MainGUIController {
     public void setSouthPanel(SouthPanel southPanel) {
         this.southPanel = southPanel;
         insertRecipes();
+    }
+
+    public void setLoginStatus(boolean loggedIn) {
+        northPanel.setLoggedInStatus(loggedIn);
+    }
+
+    public void setNorthPanel(NorthPanel northPanel) {
+        this.northPanel = northPanel;
     }
 
     public void setCenterPanel(CenterPanel centerPanel) {

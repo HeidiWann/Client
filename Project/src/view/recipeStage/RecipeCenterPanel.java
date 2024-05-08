@@ -42,11 +42,12 @@ public class RecipeCenterPanel implements Initializable {
         ingredientsInfo.setWrapText(true);
     }
 
-    public void insertIngredientInfo(ArrayList<String> ingredientsInRecipe, String totalCostOfRecipe) {
+    public void insertIngredientInfo(ArrayList<String> ingredientsInRecipe, String totalCostOfRecipe, String storeWithBestPrice) {
         for (int i = 0; i < ingredientsInRecipe.size(); i++) {
             ingredientsInfo.insertText(0, ingredientsInRecipe.get(i));
         }
-        ingredientsInfo.insertText(0, "Total cost of recipe is: " + totalCostOfRecipe + "kr \n");
+        ingredientsInfo.insertText(0,"Butiken där ingredienserna har bäst pris: " + storeWithBestPrice + "\n");
+        ingredientsInfo.insertText(0, "Den totala kostnaden för receptet är: " + totalCostOfRecipe + "kr \n");
 
     }
 

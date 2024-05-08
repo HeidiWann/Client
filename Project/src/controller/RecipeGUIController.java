@@ -51,7 +51,7 @@ public class RecipeGUIController {
         imageInRecipe.setFitWidth(400);
 
         recipeMainScene.createRecipeWindow();
-        recipeCenterPanel.insertIngredientInfo(ingredientsInRecipe, String.valueOf(totalCostOfRecipe));
+        recipeCenterPanel.insertIngredientInfo(ingredientsInRecipe, String.valueOf(totalCostOfRecipe), "ICA");
         recipeCenterPanel.insertImage(imageInRecipe);
         recipeSouthPanel.insertInstructions(recipeInstructions);
         recipeNorthPanel.setHeaders("Anton", nameOfRecipe, recipesCategories.toString());
