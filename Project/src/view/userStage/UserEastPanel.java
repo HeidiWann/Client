@@ -4,12 +4,8 @@ import controller.UserGUIController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.GetGUIController;
-import model.User;
-import org.w3c.dom.Text;
-
 import javax.swing.*;
 
 public class UserEastPanel {

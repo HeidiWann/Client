@@ -4,13 +4,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.FoodCategory;
 import model.Ingredient;
-import model.Measurement;
 import model.Recipe;
 import view.recipeStage.RecipeCenterPanel;
 import view.recipeStage.RecipeMainScene;
 import view.recipeStage.RecipeNorthPanel;
 import view.recipeStage.RecipeSouthPanel;
-
 import java.util.ArrayList;
 
 /**

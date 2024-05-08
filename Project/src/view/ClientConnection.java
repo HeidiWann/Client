@@ -7,7 +7,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-import static controller.Constans.OK;
+import static controller.Constants.OK;
 
 
 public class ClientConnection extends Thread {

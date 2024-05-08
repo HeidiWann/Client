@@ -10,7 +10,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import model.FoodCategory;
 import model.GetGUIController;
+<<<<<<< HEAD
 
+=======
+>>>>>>> fe722c5f4cd086da4c6ef9e4021beffc9076a9c0
 import java.net.URL;
 import java.util.ResourceBundle;
 

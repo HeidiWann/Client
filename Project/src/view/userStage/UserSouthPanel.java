@@ -15,11 +15,9 @@ public class UserSouthPanel {
     public UserSouthPanel() {
         this.userGUIController = GetGUIController.getUserGUIController();
     }
-
     public UserGUIController getUserGUIController() {
         return userGUIController;
     }
-
     public void buttonClicked(ActionEvent event) {
         userGUIController.createRegisterWindow();
         Stage stage = (Stage) register.getScene().getWindow();

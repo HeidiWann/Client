@@ -6,7 +6,6 @@ import model.*;
 import view.mainStage.CenterPanel;
 import view.mainStage.NorthPanel;
 import view.mainStage.SouthPanel;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 

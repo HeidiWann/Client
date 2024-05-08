@@ -1,6 +1,6 @@
 package controller;
 
-public interface Constans {
+public interface Constants {
     public static final int OK = 0;
     public static final int S_WANTUSER = 11;
     public static final int S_User = 12;
