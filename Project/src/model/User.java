@@ -8,6 +8,7 @@ import java.io.Serializable;
 public class User implements Serializable {
     @Serial
     private static final long serialVersionUID = 222333444L;
+    private int userID;
     private String userName;
     private String passWord;
     private ImageView profilePicture;
@@ -27,7 +28,6 @@ public class User implements Serializable {
 
     public void setPassWord(String passWord) {
         this.passWord = passWord;
-
     }
 
     public void setProfilePicture(ImageView profilePicture) {

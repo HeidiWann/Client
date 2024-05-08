@@ -101,7 +101,7 @@ public class RecipeGUIController {
     public double getTotalCostOfRecipe(ArrayList<Ingredient> ingredients) {
         double sumOfRecipe = 0;
         for (Ingredient ingredient : ingredients) {
-            sumOfRecipe += ingredient.getCostOfIngredient();
+            sumOfRecipe += ingredient.getPrice();
         }
         return sumOfRecipe;
     }

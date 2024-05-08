@@ -3,55 +3,95 @@ package model;
 import java.io.Serial;
 import java.io.Serializable;
 
+/**
+ * Clas that represents ingredients
+ *
+ * @author Heidi Wännman
+ */
 public class Ingredient implements Serializable {
     @Serial
     private static final long serialVersionUID = 333444555L;
-    private String nameOfIngredient;
-    private double costOfIngredient;
-    private double amountOfIngredient;
-    private Measurement measurement;
+    private int ingredientId;
+    private String ingredientName;
+    private double price;
+    private Measurement measure;
     private Store store;
+    private double amountOfIngredient;
+
+    public Ingredient(String ingredientName, double price) {
+        this.ingredientName = ingredientName;
+        this.price = price;
+    }
 
     public Ingredient(String nameOfIngredient, double costOfIngredient, double amountOfIngredient, Measurement measurement) {
-        this.nameOfIngredient = nameOfIngredient;
-        this.costOfIngredient = costOfIngredient;
+        this.ingredientName = nameOfIngredient;
+        this.price = costOfIngredient;
         this.amountOfIngredient = amountOfIngredient;
-        this.measurement = measurement;
+        this.measure = measurement;
     }
 
-    public void setAmountOfIngredient(double amountOfIngredient) {
+    public Ingredient(int ingredientId, String ingredientName, double price, Measurement measure, Store store, double amountOfIngredient) {
+        this.ingredientId = ingredientId;
+        this.ingredientName = ingredientName;
+        this.price = price;
+        this.measure = measure;
+        this.store = store;
         this.amountOfIngredient = amountOfIngredient;
     }
 
-    public double getCostOfIngredient() {
-        return costOfIngredient;
+    public Ingredient(int measureID, String measure) {
     }
 
-    public void setCostOfIngredient(double costOfIngredient) {
-        this.costOfIngredient = costOfIngredient;
+    public int getId() {
+        return ingredientId;
     }
 
-    public double getAmountOfIngredient() {
-        return amountOfIngredient;
+    public void setId(int ingredientId) {
+        this.ingredientId = ingredientId;
     }
 
-    public String getNameOfIngredient() {
-        return nameOfIngredient;
+    public String getIngredientName() {
+        return ingredientName;
     }
 
-    public void setNameOfIngredient(String nameOfIngredient) {
-        this.nameOfIngredient = nameOfIngredient;
+    public void setIngredientName(String ingredientName) {
+        this.ingredientName = ingredientName;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public Measurement getMeasure() {
+        return measure;
+    }
+
+    public void setMeasure(Measurement measure) {
+        this.measure = measure;
     }
 
     public Store getStore() {
         return store;
     }
 
-    public void setStore(Store store) {
-        this.store = store;
+    public double getIngredientCost() {
+        return price;
+    }
+
+    public int getIngredientID() {
+        return ingredientId;
+    }
+
+    public int getMeasureID() {
+        int measureID = 0;
+        return measureID;
     }
 
     public String toString() {
-        return String.format("%s    |    %skr   |   %s%s", nameOfIngredient, costOfIngredient, amountOfIngredient, measurement);
+        return String.format("%s    |    %skr   |   %s%s", ingredientName, price, amountOfIngredient, measure);
     }
 }

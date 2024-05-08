@@ -17,7 +17,7 @@ public class Food {
         double totalCost = 0;
         if (ingredients != null) {
             for (Ingredient ingredient : ingredients) {
-                totalCost += ingredient.getCostOfIngredient();
+                totalCost += ingredient.getPrice();
             }
         }
         this.costOfFood = totalCost;
