@@ -24,4 +24,9 @@
             <fx:include source="SouthPanel.fxml" />
         </Pane>
     </bottom>
+    <left>
+        <Pane id="WestPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <fx:include source="WestPanel.fxml" />
+        </Pane>
+    </left>
 </BorderPane>

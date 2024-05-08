@@ -1,11 +1,18 @@
 package controller;
 
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import model.*;
+import view.RecipeCreationController;
 import view.mainStage.CenterPanel;
 import view.mainStage.NorthPanel;
 import view.mainStage.SouthPanel;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -217,5 +224,20 @@ public class MainGUIController {
     public void setRecipes(Recipe[] recipes) {
         this.recipes = new ArrayList<>(Arrays.asList(recipes));
         insertRecipes();
+    }
+
+    @FXML
+    public void openRecipeCreationScene() throws IOException {
+        Stage recipeCreationStage = new Stage();
+        recipeCreationStage.setTitle("Create new Recipe");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/recipeStage/RecipeCreation.fxml"));
+        recipeCreationStage.setScene(new Scene(loader.load()));
+        recipeCreationStage.show();
+        //Pane recipeCreationPane = loader.load();
+
+        RecipeCreationController recipeCreationController = loader.getController();
+        recipeCreationController.setMainGUIController(this);
+
+        //borderPane.setCenter(recipeCreationPane);
     }
 }
