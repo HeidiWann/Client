@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Food {
     private String nameOfFood;
     private int foodID;
-
     private ArrayList<FoodCategory> typeOfFood;
     private double costOfFood;
     private ArrayList<Ingredient> ingredients;

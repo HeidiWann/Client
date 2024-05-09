@@ -27,9 +27,7 @@ public class RecipeController {
         recipes.put(nameOfFood, recipe); //bara ett exempel då det måste vara unikt och det är inte nameOfFood ville bara visa
     }
 
-    public Recipe getRecipeFromObjectStream(ObjectInputStream ois) throws IOException, ClassNotFoundException {
-        return (Recipe) ois.readObject();
-    }
+
 
     public ArrayList<Recipe> getRecipes() {
         return recipeArray;

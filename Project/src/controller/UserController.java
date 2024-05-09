@@ -1,6 +1,7 @@
 package controller;
 
 
+import model.GetGUIController;
 import model.User;
 
 import java.io.IOException;
@@ -10,20 +11,38 @@ import java.util.HashMap;
 
 public class UserController {
     private HashMap<String, User> users; // <username, user>
-    private HashMap<User, ConnectionController> usersInformation;
+    private User loggedInUser;
 
     public UserController() {
         users = new HashMap<>();
-        usersInformation = new HashMap<>();
+        createTestData();
+        GetGUIController.getUserGUIController().setUserController(this);
+        GetGUIController.getGuiController().setUserController(this);
     }
 
-    public User createNewUser(String userName, String passWord) {
-        if (users.containsKey(userName)) {
-            return null;
-        }
+    public void createNewUser(String userName, String passWord) {
         User newUser = new User(userName, passWord);
+        loggedInUser = newUser;
         users.put(userName, newUser);
-        return newUser;
+    }
+
+    public boolean checkIfUserExists(String userName) {
+        if (users.containsKey(userName)) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean tryToLogIn(String userName, String enteredPassword) {
+        String usersPassword = users.get(userName).getPassword();
+        System.out.println("Det angivna lösenordet: " + enteredPassword);
+        System.out.println("Det faktiska lösenordet: " + usersPassword);
+        if (usersPassword.equals(enteredPassword)) {
+            loggedInUser = users.get(userName);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -45,53 +64,16 @@ public class UserController {
         }
     }
 
-
-    public void removeUser(String userName) {
-        User user = users.get(userName);
-        if (user != null) {
-            users.remove(userName);
-            usersInformation.remove(user);
-        }
+    public void createTestData() {
+        users.put("Anton", new User("Anton", "Persson"));
+        users.put("Heidi", new User("Heidi", "Wännman"));
     }
 
-    public User userLoggedIn(String userName, String passWord) {
-        User user = users.get(userName);
-        if (user != null && user.getPassWord().equals(passWord)) {
-            return user;
-        }
-        return null;
+    public void logOut() {
+        loggedInUser = null;
     }
 
-    public void addUserConnection(User user, ConnectionController connectionController) {
-        usersInformation.put(user, connectionController);
-    }
-
-    public void removeUserConnection(User user) {
-        usersInformation.remove(user);
-    }
-
-
-    public User getUserFromObject(ObjectInputStream ois) throws IOException, ClassNotFoundException {
-        return (User) ois.readObject();
-    }
-
-    public HashMap<String, User> getUsers() {
-        return new HashMap<>(users);
-    }
-
-    public HashMap<User, ConnectionController> getNewUserInfo() {
-        // Return a copy of the userConnections map to avoid outside modification
-        return new HashMap<>(usersInformation);
-    }
-
-    public void handleTheUsers(User userupdate) {
-        if (userupdate == null || !users.containsKey(userupdate.getUserName())) {
-            System.out.println("Can´t find the user");
-            return;
-        }
-        User currentUser = users.get(userupdate.getUserName());
-        currentUser.setPassWord(userupdate.getPassWord());
-        currentUser.setProfilePicture(userupdate.getProfilePicture());
-        System.out.println("Check to see if it works: " + currentUser.getProfilePicture());
+    public User getLoggedInUser() {
+        return loggedInUser;
     }
 }

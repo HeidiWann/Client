@@ -41,7 +41,7 @@ public class WestPanel implements Initializable {
                     throw new RuntimeException(e);
                 }
             } else if (clickedButton.getText().equals("Logga ut")) {
-                System.out.println("LOGGA UTTTTTTTTTTTTTT");
+                mainGUIController.logOut();
             }
         }
     }

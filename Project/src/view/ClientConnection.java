@@ -20,6 +20,7 @@ public class ClientConnection extends Thread {
     private ConnectionController connectionController;
     private boolean listenForIntention;
     private boolean listenForObject;
+    private int intention;
 
 
     /**
@@ -101,11 +102,12 @@ public class ClientConnection extends Thread {
                 if (ois.available() > OK) {
                     if (listenForIntention) {
                         int intention = ois.readInt();
+                        this.intention = intention;
                         connectionController.revealClientIntention(intention);
                     }
                     if (listenForObject){
                         Object objectFromServer = ois.readObject();
-                        connectionController.packUpObject(objectFromServer);
+                        connectionController.packUpObject(objectFromServer, intention);
                     }
                 }
                 else {

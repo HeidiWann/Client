@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import static controller.Constants.*;
 
 public class ConnectionController {
-    private int intention;
     private final MainGUIController mainGUIController;
     private ClientConnection clientConnection;
     private final UserController userController;
@@ -59,7 +58,7 @@ public class ConnectionController {
      * @author Anton Persson
      * @author Heidi Wänmann
      */
-    public void packUpObject(Object object) {
+    public void packUpObject(Object object, int intention) {
         switch (intention) {
             case S_SEND_ALL_RECIPES:
                 ArrayList<Recipe> recipes = (ArrayList<Recipe>) object;
@@ -88,7 +87,6 @@ public class ConnectionController {
      * @param intention An int  that decides what happens
      */
     public void revealClientIntention(int intention)  {
-        this.intention = intention;
         switch (intention) {
             default:
                 clientConnection.setListenForIntention(false);

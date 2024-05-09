@@ -8,24 +8,18 @@ import view.userStage.*;
 import javax.swing.*;
 
 public class UserGUIController {
-    private UserEastPanel userEastPanel;
     private UserWestPanel userWestPanel;
-    private UserSouthPanel userSouthPanel;
     private UserMainScene userMainScene;
-    private RegisterNorthPanel registerNorthPanel;
     private RegisterWestPanel registerWestPanel;
-    private RegisterSouthPanel registerSouthPanel;
     private RegisterMainScene registerMainScene;
     private MainGUIController mainGUIController;
+    private UserController userController;
 
     public UserGUIController() {
         userMainScene = new UserMainScene();
         mainGUIController = GetGUIController.getGuiController();
     }
 
-    public void createUserWindow() {
-        userMainScene.createUserWindow();
-    }
 
     public void createRegisterWindow() {
         registerMainScene = new RegisterMainScene(this);
@@ -41,6 +35,22 @@ public class UserGUIController {
             }
         }
         return null;
+    }
+
+    public TextField getTextLogInUserNameTextField() {
+        return userWestPanel.getUserNameTextField();
+    }
+
+    public TextField getPasswordField() {
+        return userWestPanel.getPasswordTextField();
+    }
+
+    public UserWestPanel getWestPanel() {
+        return userWestPanel;
+    }
+
+    public RegisterWestPanel getRegisterWestPanel() {
+        return registerWestPanel;
     }
 
     public PasswordField getLoginPasswordField() {
@@ -95,11 +105,33 @@ public class UserGUIController {
         this.registerWestPanel = registerWestPanel;
     }
 
-    public void loginFailed() {
-        JOptionPane.showMessageDialog(null, "The entered values did not match a login");
-    }
-
     public void setLoggedInStatus(boolean loggedIn) {
         mainGUIController.setLoginStatus(loggedIn);
+    }
+
+    public boolean tryToLogIn(String userName, String password) {
+        boolean userExists = userController.checkIfUserExists(userName);
+        System.out.println("Användaren fans: " + userExists);
+        if (userExists) {
+            boolean successfulLogIn = userController.tryToLogIn(userName, password);
+            if (successfulLogIn) {
+                setLoggedInStatus(true);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean tryToRegister(String userName, String password) {
+        boolean userAlreadyExists = userController.checkIfUserExists(userName);
+        if (userAlreadyExists) {
+            return false;
+        }
+        userController.createNewUser(userName, password);
+        return true;
+    }
+
+    public void setUserController(UserController userController) {
+        this.userController = userController;
     }
 }

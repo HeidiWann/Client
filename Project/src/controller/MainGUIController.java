@@ -3,6 +3,7 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -11,6 +12,7 @@ import view.RecipeCreationController;
 import view.mainStage.CenterPanel;
 import view.mainStage.NorthPanel;
 import view.mainStage.SouthPanel;
+import view.userStage.UserMainScene;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,6 +26,7 @@ import java.util.Arrays;
  */
 public class MainGUIController {
     private final RecipeGUIController recipeGUIController;
+    private UserController userController;
     private SouthPanel southPanel;
     private CenterPanel centerPanel;
     private NorthPanel northPanel;
@@ -226,6 +229,11 @@ public class MainGUIController {
         insertRecipes();
     }
 
+    public void logOut() {
+        userController.logOut();
+        setLoginStatus(false);
+    }
+
     @FXML
     public void openRecipeCreationScene() throws IOException {
         Stage recipeCreationStage = new Stage();
@@ -239,5 +247,23 @@ public class MainGUIController {
         recipeCreationController.setMainGUIController(this);
 
         //borderPane.setCenter(recipeCreationPane);
+    }
+
+    public void startLogInWindow() {
+        if (userController.getLoggedInUser() == null) {
+            UserMainScene userMainScene = new UserMainScene();
+            userMainScene.createUserWindow();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Redan inloggad");
+            alert.setHeaderText(null);
+            alert.setContentText("Du är redan inloggad");
+            alert.showAndWait();
+        }
+
+    }
+
+    public void setUserController(UserController userController) {
+        this.userController = userController;
     }
 }

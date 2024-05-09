@@ -42,8 +42,7 @@ public class NorthPanel implements Initializable {
     }
 
     public void showProfileWindow(ActionEvent e) {
-        UserMainScene userMainScene = new UserMainScene();
-        userMainScene.createUserWindow();
+        mainGuiController.startLogInWindow();
     }
 
     public void setLoggedInStatus(boolean loggedIn) {
