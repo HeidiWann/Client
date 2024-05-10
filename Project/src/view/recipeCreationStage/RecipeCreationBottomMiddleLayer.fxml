@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<?import javafx.collections.FXCollections?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="view.recipeCreationStage.RecipeCreationBottomMiddleLayer"
+            prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <ListView fx:id="listOfaddedIngredients" layoutX="8.0" layoutY="84.0" prefHeight="149.0" prefWidth="581.0" />
+        <Button fx:id="addIngredient" layoutX="233.0" layoutY="240.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" style="-fx-background-color: #ADD8E6;" text="Lägg till ingrediens" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Button>
+        <HBox layoutX="6.0" layoutY="47.0" spacing="10">
+            <TextField fx:id="ingredientNameField1" promptText="Ingredient Name" />
+            <TextField fx:id="ingredientCostField1" promptText="Cost" />
+            <TextField fx:id="ingredientAmountField1" promptText="Amount" />
+            <ComboBox fx:id="ingredientMeasurementComboBox1" style="-fx-background-color: #ADD8E6;">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="GRAMS" />
+                        <String fx:value="MILLILITERS" />
+                        <!-- Add more measurement options if needed -->
+                    </FXCollections>
+                </items>
+            </ComboBox>
+        </HBox>
+        <Button layoutX="224.0" layoutY="2.0" mnemonicParsing="false" style="-fx-background-color: #ADD8E6;" text="Ingredients information" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Button>
+    </children>
+
+</AnchorPane>

@@ -2,6 +2,7 @@ package view.mainStage;
 
 
 import controller.ConnectionController;
+import controller.RecipeController;
 import controller.UserController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +24,7 @@ public class MainStage extends Application {
         primaryStage.setResizable(false);
 
         UserController userController = new UserController();
+        RecipeController recipeController = new RecipeController();
         ConnectionController connectionController = new ConnectionController(userController);
         connectionController.connectToServer();
 

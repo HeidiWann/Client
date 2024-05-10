@@ -99,9 +99,6 @@ public class SouthPanel implements Initializable {
     public void addRecipes(ArrayList<Recipe> recipes) {
         this.recipes.clear();
         this.recipes.addAll(recipes);
-        for (Recipe recipe : this.recipes) {
-            System.out.println(recipe);
-        }
     }
 
     public void addARecipe(Recipe recipe) {

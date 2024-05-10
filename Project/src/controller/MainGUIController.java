@@ -4,11 +4,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.*;
-import view.RecipeCreationController;
+import view.recipeCreationStage.RecipeCreationStage;
 import view.mainStage.CenterPanel;
 import view.mainStage.NorthPanel;
 import view.mainStage.SouthPanel;
@@ -26,15 +24,11 @@ import java.util.Arrays;
  */
 public class MainGUIController {
     private final RecipeGUIController recipeGUIController;
+    private RecipeController recipeController;
     private UserController userController;
     private SouthPanel southPanel;
     private CenterPanel centerPanel;
     private NorthPanel northPanel;
-    /**
-     * List of categories used to filter the recipes.
-     */
-    private ArrayList<FoodCategory> filters = new ArrayList<>();
-    private ArrayList<Recipe> recipes = new ArrayList<>();
 
     public MainGUIController() {
         this.recipeGUIController = GetGUIController.getrecipeGUIController();
@@ -59,12 +53,18 @@ public class MainGUIController {
      */
     public void searchForRecipe(String wordToSearchFor) {
         ArrayList<Recipe> searchedRecipes = new ArrayList<>();
+        ArrayList<Recipe> recipes = collectRecipes();
+
         for (int i = 0; i < recipes.size(); i++) {
             if (recipes.get(i).getRecipeName().toLowerCase().contains(wordToSearchFor.toLowerCase()) || recipes.get(i).getDish().getNameOfFood().toLowerCase().contains(wordToSearchFor.toLowerCase())) {
                 searchedRecipes.add(recipes.get(i));
             }
         }
         southPanel.addRecipes(searchedRecipes);
+    }
+
+    public ArrayList<Recipe> collectRecipes() {
+        return recipeController.getRecipes();
     }
 
     /**
@@ -78,14 +78,15 @@ public class MainGUIController {
      * @author Anton Persson
      */
     public void addFilter(FoodCategory foodCategory) {
+        ArrayList<FoodCategory> filters = recipeController.getRecipeFilters();
         if (filters.contains(foodCategory)) {
-            filters.remove(foodCategory);
+            recipeController.removeFilter(foodCategory);
         } else {
-            filters.add(foodCategory);
+            recipeController.addFilter(foodCategory);
         }
 
         if (filters.isEmpty()) {
-            southPanel.addRecipes(recipes);
+            southPanel.addRecipes(collectRecipes());
         } else {
             updateRecipeList();
         }
@@ -99,6 +100,7 @@ public class MainGUIController {
      */
     public void setFormattedCategories() {
         StringBuilder formattedCategories = new StringBuilder();
+        ArrayList<FoodCategory> filters = recipeController.getRecipeFilters();
         if (filters != null) {
             for (FoodCategory category : filters) {
                 formattedCategories.append(category.toString()).append(" | ");
@@ -125,6 +127,8 @@ public class MainGUIController {
      */
     public void updateRecipeList() {
         ArrayList<Recipe> filteredRecipeList = new ArrayList<>();
+        ArrayList<Recipe> recipes = collectRecipes();
+        ArrayList<FoodCategory> filters = recipeController.getRecipeFilters();
 
         for (int i = 0; i < recipes.size(); i++) {
             boolean recipeContainedCategory = true;
@@ -143,90 +147,13 @@ public class MainGUIController {
         southPanel.addRecipes(filteredRecipeList);
     }
 
-    /**
-     * This method is just used to create sample data.
-     *
-     * @author Anton Persson
-     */
-    public void insertRecipes() {
-        ArrayList<Ingredient> salmonIngredients = new ArrayList<>();
-        ArrayList<FoodCategory> salmonCategory = new ArrayList<>();
-        String salmonInstructions;
-
-        salmonIngredients.add(new Ingredient("Lax", 30, 100, Measurement.G));
-        salmonIngredients.add(new Ingredient("Ris", 25, 1, Measurement.DL));
-        salmonIngredients.add(new Ingredient("Broccoli", 15, 100, Measurement.G));
-        salmonIngredients.add(new Ingredient("Champinjoner", 5, 5, Measurement.ST));
-        salmonIngredients.add(new Ingredient("Kikomans svampsoja", 30, 5, Measurement.CL));
-        salmonCategory.add(FoodCategory.Fisk);
-        salmonInstructions = "Börja första med att skära alla grönsakerna. \n" +
-                "Börja sedan koka riset och sätt en timer på 10 minuter. \n" +
-                "Börja steka laxen på hög värme \n " +
-                "Börja steka grönsakerna direkt efter laxen lagts på stekpannen. Använda rikligt med olja. \n" +
-                "Häll i soja i grönsakerna och sänk värmen på laxen till låg när det är tre minuter kvar på klockan tills riset är klart.";
-
-        Image salmonTemp = new Image("/view/SalmonImage.jpg");
-        ImageView salmonImage = new ImageView(salmonTemp);
-        salmonImage.setFitWidth(50);
-        salmonImage.setFitHeight(50);
-
-        recipes.add(new Recipe("Anton", salmonInstructions, salmonImage, salmonIngredients, "Lax med ris och stekta grönsaker", salmonCategory));
-
-        ArrayList<Ingredient> oreoShakeIngredients = new ArrayList<>();
-        ArrayList<FoodCategory> oreoShakeCategory = new ArrayList<>();
-        String oreoShakeInstructions;
-        oreoShakeIngredients.add(new Ingredient("Oreo", 30, 8, Measurement.ST));
-        oreoShakeIngredients.add(new Ingredient("Mjölk", 15, 2, Measurement.DL));
-        oreoShakeIngredients.add(new Ingredient("Vanlij glass", 25, 3, Measurement.DL));
-        oreoShakeCategory.add(FoodCategory.Vegetarian);
-        oreoShakeInstructions = "Häll i alla ingredienser i en mixer och mixa tills allt krossats. Skulle den bli för tjock så häll bara i mer mjölk";
-        Image oreoTemp = new Image("/view/oreoMilkShake.jpg");
-        ImageView oreoImage = new ImageView(oreoTemp);
-        oreoImage.setFitWidth(50);
-        oreoImage.setFitHeight(50);
-        recipes.add(new Recipe("Anton", oreoShakeInstructions, oreoImage, oreoShakeIngredients, "Oreo Milkshake", oreoShakeCategory));
-
-        ArrayList<Ingredient> tacoIngredient = new ArrayList<>();
-        ArrayList<FoodCategory> tacoCategory = new ArrayList<>();
-        String tacoInstructions;
-        tacoIngredient.add(new Ingredient("Sallad", 15, 1, Measurement.ST));
-        tacoIngredient.add(new Ingredient("Tortilla bröd", 20, 8, Measurement.ST));
-        tacoIngredient.add(new Ingredient("Salsa", 15, 2, Measurement.DL));
-        tacoIngredient.add(new Ingredient("Lök", 3, 1, Measurement.ST));
-        tacoIngredient.add(new Ingredient("Tomat", 5, 3, Measurement.ST));
-        tacoIngredient.add(new Ingredient("Annanas", 15, 1, Measurement.Burk));
-        tacoCategory.add(FoodCategory.Nöt);
-        tacoInstructions = "Skär alla grönsaker. Stek sedan köttfärsen. När köttfärsen fått färg häller du i salsan. " +
-                "Gör sedan din tacos med din favoritsås";
-        Image tacoTemp = new Image("/view/Tacos.jpg");
-        ImageView tacoImage = new ImageView(tacoTemp);
-        tacoImage.setFitWidth(50);
-        tacoImage.setFitHeight(50);
-        recipes.add(new Recipe("Anton", tacoInstructions, tacoImage, tacoIngredient, "Tacos", tacoCategory));
-
-        southPanel.addRecipes(recipes);
-    }
-
-    public void setSouthPanel(SouthPanel southPanel) {
-        this.southPanel = southPanel;
-        insertRecipes();
-    }
-
     public void setLoginStatus(boolean loggedIn) {
         northPanel.setLoggedInStatus(loggedIn);
     }
 
-    public void setNorthPanel(NorthPanel northPanel) {
-        this.northPanel = northPanel;
-    }
-
-    public void setCenterPanel(CenterPanel centerPanel) {
-        this.centerPanel = centerPanel;
-    }
-
     public void setRecipes(Recipe[] recipes) {
-        this.recipes = new ArrayList<>(Arrays.asList(recipes));
-        insertRecipes();
+        ArrayList<Recipe> recipesToAdd = new ArrayList<>(Arrays.asList(recipes));
+        southPanel.addRecipes(recipesToAdd);
     }
 
     public void logOut() {
@@ -238,13 +165,12 @@ public class MainGUIController {
     public void openRecipeCreationScene() throws IOException {
         Stage recipeCreationStage = new Stage();
         recipeCreationStage.setTitle("Create new Recipe");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/recipeStage/RecipeCreation.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/recipeCreationStage/RecipeCreation.fxml"));
         recipeCreationStage.setScene(new Scene(loader.load()));
         recipeCreationStage.show();
         //Pane recipeCreationPane = loader.load();
 
-        RecipeCreationController recipeCreationController = loader.getController();
-        recipeCreationController.setMainGUIController(this);
+        RecipeCreationStage recipeCreationController = loader.getController();
 
         //borderPane.setCenter(recipeCreationPane);
     }
@@ -265,5 +191,25 @@ public class MainGUIController {
 
     public void setUserController(UserController userController) {
         this.userController = userController;
+    }
+
+    public void setRecipeController(RecipeController recipeController) {
+        this.recipeController = recipeController;
+    }
+
+    public SouthPanel getSouthPanel() {
+        return southPanel;
+    }
+
+    public void setNorthPanel(NorthPanel northPanel) {
+        this.northPanel = northPanel;
+    }
+
+    public void setCenterPanel(CenterPanel centerPanel) {
+        this.centerPanel = centerPanel;
+    }
+
+    public void setSouthPanel(SouthPanel southPanel) {
+        this.southPanel = southPanel;
     }
 }
