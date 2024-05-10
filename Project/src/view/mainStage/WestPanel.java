@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import model.GetGUIController;
 
@@ -36,7 +37,13 @@ public class WestPanel implements Initializable {
 
             if (clickedButton.getText().equals("Skapa eget recept")) {
                 try {
-                    mainGUIController.openRecipeCreationScene();
+                    if(!mainGUIController.openRecipeCreationScene()) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Not logged in");
+                        alert.setHeaderText(null);
+                        alert.setContentText("You need to be signed in to create a recipe. Please sign in and try again");
+                        alert.showAndWait();
+                    }
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }

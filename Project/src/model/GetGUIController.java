@@ -1,6 +1,7 @@
 package model;
 
 import controller.MainGUIController;
+import controller.RecipeCreationController;
 import controller.RecipeGUIController;
 import controller.UserGUIController;
 
@@ -8,6 +9,7 @@ public class GetGUIController {
     private static MainGUIController mainGuiController;
     private static UserGUIController userGUIController;
     private static RecipeGUIController recipeGUIController;
+    private static RecipeCreationController recipeCreationController;
 
     public static MainGUIController getGuiController() {
         if (mainGuiController == null) {
@@ -28,5 +30,12 @@ public class GetGUIController {
             recipeGUIController = new RecipeGUIController();
         }
         return recipeGUIController;
+    }
+
+    public static RecipeCreationController getRecipeCreationController() {
+        if (recipeCreationController == null) {
+            recipeCreationController = new RecipeCreationController();
+        }
+        return recipeCreationController;
     }
 }

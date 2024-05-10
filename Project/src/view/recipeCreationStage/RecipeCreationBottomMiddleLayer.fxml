@@ -1,43 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.collections.FXCollections?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="view.recipeCreationStage.RecipeCreationBottomMiddleLayer"
-            prefHeight="400.0" prefWidth="600.0">
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.recipeCreationStage.RecipeCreationBottomMiddleLayer">
     <children>
         <ListView fx:id="listOfaddedIngredients" layoutX="8.0" layoutY="84.0" prefHeight="149.0" prefWidth="581.0" />
-        <Button fx:id="addIngredient" layoutX="233.0" layoutY="240.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" style="-fx-background-color: #ADD8E6;" text="Lägg till ingrediens" textFill="WHITE">
+        <Button fx:id="addIngredient" layoutX="149.0" layoutY="240.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" style="-fx-background-color: #ADD8E6;" text="Lägg till ingrediens" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font>
         </Button>
         <HBox layoutX="6.0" layoutY="47.0" spacing="10">
-            <TextField fx:id="ingredientNameField1" promptText="Ingredient Name" />
-            <TextField fx:id="ingredientCostField1" promptText="Cost" />
-            <TextField fx:id="ingredientAmountField1" promptText="Amount" />
-            <ComboBox fx:id="ingredientMeasurementComboBox1" style="-fx-background-color: #ADD8E6;">
-                <items>
-                    <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="GRAMS" />
-                        <String fx:value="MILLILITERS" />
-                        <!-- Add more measurement options if needed -->
-                    </FXCollections>
-                </items>
-            </ComboBox>
+            <TextField fx:id="ingredientNameField" promptText="Ingrediensens namn" />
+            <TextField fx:id="ingredientCostField" promptText="Ingrediensens kostnad" />
+            <TextField fx:id="ingredientAmountField" promptText="Mängd av ingrediens" />
+            <ComboBox fx:id="ingredientMeasurementComboBox" prefHeight="25.0" prefWidth="103.0" style="-fx-background-color: #ADD8E6;"> </ComboBox>
         </HBox>
         <Button layoutX="224.0" layoutY="2.0" mnemonicParsing="false" style="-fx-background-color: #ADD8E6;" text="Ingredients information" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font>
         </Button>
+      <Button fx:id="removeIngredients" layoutX="311.0" layoutY="240.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="158.0" style="-fx-background-color: #ADD8E6;" text="Ta bort alla ingredienser" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
     </children>
 
 </AnchorPane>

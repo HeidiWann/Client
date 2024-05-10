@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import model.*;
+import view.mainStage.WestPanel;
 import view.recipeCreationStage.RecipeCreationStage;
 import view.mainStage.CenterPanel;
 import view.mainStage.NorthPanel;
@@ -29,6 +30,7 @@ public class MainGUIController {
     private SouthPanel southPanel;
     private CenterPanel centerPanel;
     private NorthPanel northPanel;
+
 
     public MainGUIController() {
         this.recipeGUIController = GetGUIController.getrecipeGUIController();
@@ -161,8 +163,19 @@ public class MainGUIController {
         setLoginStatus(false);
     }
 
+    public UserController getUserController() {
+        return userController;
+    }
+
+    public RecipeController getRecipeController() {
+        return recipeController;
+    }
+
     @FXML
-    public void openRecipeCreationScene() throws IOException {
+    public boolean openRecipeCreationScene() throws IOException {
+        if (userController.getLoggedInUser() == null) {
+            return false;
+        }
         Stage recipeCreationStage = new Stage();
         recipeCreationStage.setTitle("Create new Recipe");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/recipeCreationStage/RecipeCreation.fxml"));
@@ -170,9 +183,10 @@ public class MainGUIController {
         recipeCreationStage.show();
         //Pane recipeCreationPane = loader.load();
 
-        RecipeCreationStage recipeCreationController = loader.getController();
+//        RecipeCreationStage recipeCreationController = loader.getController();
 
         //borderPane.setCenter(recipeCreationPane);
+        return true;
     }
 
     public void startLogInWindow() {

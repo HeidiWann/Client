@@ -5,6 +5,7 @@ import javafx.scene.image.ImageView;
 import model.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class RecipeController {
     private MainGUIController mainGUIController;
@@ -17,16 +18,26 @@ public class RecipeController {
         recipes = new ArrayList<>();
         recipeFilters = new ArrayList<>();
         insertRecipes();
+        GetGUIController.getRecipeCreationController().setRecipeController(this);
     }
 
     public void createNewRecipe(String author, String instructions, ImageView imageOfRecipe, ArrayList<Ingredient> ingredients, String nameOfFood, ArrayList<FoodCategory> typeOfFood) {
-        Recipe recipe = new Recipe(author, instructions, imageOfRecipe, ingredients, nameOfFood, typeOfFood);
+        recipes.add(new Recipe(author, instructions, imageOfRecipe, ingredients, nameOfFood, typeOfFood));
+        mainGUIController.updateListOfRecipes(recipes);
     }
-
-
 
     public ArrayList<Recipe> getRecipes() {
         return recipes;
+    }
+
+    public ArrayList<String> gatherFoodCategories() {
+        ArrayList<FoodCategory> foodCategories = new ArrayList<>(Arrays.asList(FoodCategory.values()));
+        ArrayList<String> categoriesToReturn = new ArrayList<>();
+
+        for (FoodCategory category : foodCategories) {
+            categoriesToReturn.add(category.name());
+        }
+        return categoriesToReturn;
     }
 
     /**
@@ -103,5 +114,15 @@ public class RecipeController {
 
     public void removeFilter(FoodCategory foodCategory) {
         recipeFilters.remove(foodCategory);
+    }
+
+    public ArrayList<String> gatherMeasurements() {
+        ArrayList<Measurement> measurements = new ArrayList<>(Arrays.asList(Measurement.values()));
+        ArrayList<String> measurementsToReturn = new ArrayList<>();
+
+        for (Measurement measurment : measurements) {
+            measurementsToReturn.add(measurment.name());
+        }
+        return measurementsToReturn;
     }
 }

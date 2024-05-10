@@ -1,8 +1,108 @@
 package controller;
 
+import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+
+import model.*;
+import view.recipeCreationStage.RecipeCreationBottomLayer;
+import view.recipeCreationStage.RecipeCreationBottomMiddleLayer;
+import view.recipeCreationStage.RecipeCreationTopMiddleLayer;
+
+import java.util.ArrayList;
+
 public class RecipeCreationController {
+    private RecipeCreationBottomLayer recipeCreationBottomLayer;
+    private RecipeCreationBottomMiddleLayer recipeCreationBottomMiddleLayer;
+    private RecipeCreationTopMiddleLayer recipeCreationTopMiddleLayer;
+    private RecipeController recipeController;
+    private User currentUser;
 
     public RecipeCreationController() {}
+
+    public void closeWindow(Button button) {
+        Stage stage = (Stage) button.getScene().getWindow();
+        stage.close();
+    }
+
+
+
+    public boolean createRecipe() {
+        String author = GetGUIController.getGuiController().getUserController().getLoggedInUser().getUserName();
+        String recipeName = recipeCreationTopMiddleLayer.getRecipeName();
+        String recipeInstruction = recipeCreationTopMiddleLayer.getInstruction();
+        ArrayList<Ingredient> ingredients = convertToIngredientArray(recipeCreationBottomMiddleLayer.getIngredients());
+        ImageView imageOfRecipe = recipeCreationBottomLayer.getImageOfRecipe();
+        ArrayList<FoodCategory> categories = convertToFoodCategory(recipeCreationBottomLayer.getListOfCategories());
+
+        if (recipeName.isEmpty() || recipeInstruction.isEmpty() || ingredients.isEmpty() || imageOfRecipe == null || categories.isEmpty()) {
+            return false;
+        } else {
+            GetGUIController.getGuiController().getRecipeController().createNewRecipe(author, recipeInstruction, imageOfRecipe, ingredients, recipeName, categories);
+        }
+        return true;
+    }
+
+    public ArrayList<FoodCategory> convertToFoodCategory (ArrayList<String> listToConvert) {
+        ArrayList<FoodCategory> listOfCategories = new ArrayList<>();
+        if (listToConvert != null) {
+            for (int i = 0; i < listToConvert.size(); i++) {
+                listOfCategories.add(FoodCategory.valueOf(listToConvert.get(i)));
+            }
+        }
+        return listOfCategories;
+    }
+
+    public ArrayList<Ingredient> convertToIngredientArray (ArrayList<String> listToConvert) {
+        ArrayList<Ingredient> listOfCategories = new ArrayList<>();
+        String ingredientName = "";
+        String ingredientCost = "";
+        String amountOfIngredient = "";
+        String measurement = "";
+
+        for (int i = 0; i < listToConvert.size(); i++) {
+            String[] splitList = listToConvert.get(i).split("\\|");
+            for (int j = 0; j < 4; j++) {
+                String currentWord = splitList[j].trim();
+                if (j == 0) {
+                    ingredientName = currentWord;
+                } else if (j == 1) {
+                    ingredientCost = currentWord;
+                } else if (j ==2) {
+                    amountOfIngredient = currentWord;
+                } else {
+                    measurement = currentWord;
+                    listOfCategories.add(new Ingredient(ingredientName, Double.parseDouble(ingredientCost), Double.parseDouble(amountOfIngredient), Measurement.valueOf(measurement)));
+                }
+            }
+        }
+        return listOfCategories;
+    }
+
+    public ArrayList<String> getEveryCategory() {
+        return recipeController.gatherFoodCategories();
+    }
+
+    public ArrayList<String> getEveryMeasurement() {
+        return recipeController.gatherMeasurements();
+    }
+
+    public void setRecipeCreationBottomLayer(RecipeCreationBottomLayer recipeCreationBottomLayer) {
+        this.recipeCreationBottomLayer = recipeCreationBottomLayer;
+    }
+
+    public void setRecipeCreationBottomMiddleLayer(RecipeCreationBottomMiddleLayer recipeCreationBottomMiddleLayer) {
+        this.recipeCreationBottomMiddleLayer = recipeCreationBottomMiddleLayer;
+    }
+
+    public void setRecipeCreationTopMiddleLayer(RecipeCreationTopMiddleLayer recipeCreationTopMiddleLayer) {
+        this.recipeCreationTopMiddleLayer = recipeCreationTopMiddleLayer;
+    }
+
+    public void setRecipeController(RecipeController recipeController) {
+        this.recipeController = recipeController;
+    }
+
 
     /*
     @FXML
