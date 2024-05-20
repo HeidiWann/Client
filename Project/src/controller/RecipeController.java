@@ -21,8 +21,10 @@ public class RecipeController {
         GetGUIController.getRecipeCreationController().setRecipeController(this);
     }
 
-    public void createNewRecipe(String author, String instructions, ImageView imageOfRecipe, ArrayList<Ingredient> ingredients, String nameOfFood, ArrayList<FoodCategory> typeOfFood) {
-        recipes.add(new Recipe(author, instructions, imageOfRecipe, ingredients, nameOfFood, typeOfFood));
+    public void addRecipeToArray(Recipe recipe){
+        recipes.add(recipe);
+    }
+    public void updateListOfRecipes(){
         mainGUIController.updateListOfRecipes(recipes);
     }
 

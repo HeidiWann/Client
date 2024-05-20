@@ -25,7 +25,7 @@ public class MainStage extends Application {
 
         UserController userController = new UserController();
         RecipeController recipeController = new RecipeController();
-        ConnectionController connectionController = new ConnectionController(userController);
+        ConnectionController connectionController = new ConnectionController(userController, recipeController);
         connectionController.connectToServer();
 
 

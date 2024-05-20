@@ -1,6 +1,8 @@
 package controller;
 
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -9,6 +11,11 @@ import view.recipeCreationStage.RecipeCreationBottomLayer;
 import view.recipeCreationStage.RecipeCreationBottomMiddleLayer;
 import view.recipeCreationStage.RecipeCreationTopMiddleLayer;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class RecipeCreationController {
@@ -17,8 +24,11 @@ public class RecipeCreationController {
     private RecipeCreationTopMiddleLayer recipeCreationTopMiddleLayer;
     private RecipeController recipeController;
     private User currentUser;
+    private ConnectionController connectionController;
 
-    public RecipeCreationController() {}
+    public RecipeCreationController() {
+
+    }
 
     public void closeWindow(Button button) {
         Stage stage = (Stage) button.getScene().getWindow();
@@ -38,9 +48,26 @@ public class RecipeCreationController {
         if (recipeName.isEmpty() || recipeInstruction.isEmpty() || ingredients.isEmpty() || imageOfRecipe == null || categories.isEmpty()) {
             return false;
         } else {
-            GetGUIController.getGuiController().getRecipeController().createNewRecipe(author, recipeInstruction, imageOfRecipe, ingredients, recipeName, categories);
+            createNewRecipe(author, recipeInstruction, imageOfRecipe, ingredients, recipeName, categories);
         }
         return true;
+    }
+    public void createNewRecipe(String author, String instructions, ImageView imageOfRecipe, ArrayList<Ingredient> ingredients, String nameOfFood, ArrayList<FoodCategory> typeOfFood) {
+        Recipe recipe = new Recipe(author, instructions, imageOfRecipe, ingredients, nameOfFood, typeOfFood);
+        recipeController.addRecipeToArray(recipe);
+        recipeController.updateListOfRecipes();
+        connectionController.createNewRecipe(recipe);
+
+    }
+    public Recipe convertRecipe(Recipe recipe) {
+        ImageView imageview = byteArrayToImageView(recipe.getImageOfRecipe());
+        Recipe convertedRecipe = new Recipe(recipe.getAuthor(), recipe.getInstructions(), imageview, recipe.getDish().getIngredients(), recipe.getRecipeName(), recipe.getDish().getTypeOfFood());
+        if(recipe.getImageOfRecipe() == null){
+            System.out.println("Fungerar inte ens här");
+        }
+        return convertedRecipe;
+
+
     }
 
     public ArrayList<FoodCategory> convertToFoodCategory (ArrayList<String> listToConvert) {
@@ -101,6 +128,16 @@ public class RecipeCreationController {
 
     public void setRecipeController(RecipeController recipeController) {
         this.recipeController = recipeController;
+    }
+    public void setConnectionController(ConnectionController connectionController){
+        this.connectionController = connectionController;
+
+    }
+    public static ImageView byteArrayToImageView(byte[] byteArray) {
+    ByteArrayInputStream inputStream = new ByteArrayInputStream(byteArray);
+    Image image = new Image(inputStream);
+    ImageView imageView = new ImageView(image);
+    return imageView;
     }
 
 

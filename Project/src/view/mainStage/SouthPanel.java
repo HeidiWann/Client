@@ -75,7 +75,7 @@ public class SouthPanel implements Initializable {
                     HBox hBox = new HBox(15);
                     hBox.setAlignment(Pos.CENTER);
 
-                    ImageView imageView = recipe.getImageOfRecipe();
+                    ImageView imageView = recipe.getImageViewOfRecipe();
                     imageView.setFitWidth(150);
                     imageView.setFitHeight(100);
 

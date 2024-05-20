@@ -1,6 +1,7 @@
 package view;
 
 import controller.ConnectionController;
+import model.Recipe;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -65,12 +66,14 @@ public class ClientConnection extends Thread {
         try {
             oos.writeObject(object);
             oos.flush();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    /**
+
+        /**
      * This method sends an intention to the server by using {@link ObjectOutputStream}
      * @param intention An int that tells the server what to do
      * @author Anton Persson

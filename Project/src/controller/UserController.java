@@ -12,6 +12,7 @@ import java.util.HashMap;
 public class UserController {
     private HashMap<String, User> users; // <username, user>
     private User loggedInUser;
+    private ConnectionController connectionController;
 
     public UserController() {
         users = new HashMap<>();
@@ -24,6 +25,7 @@ public class UserController {
         User newUser = new User(userName, passWord);
         loggedInUser = newUser;
         users.put(userName, newUser);
+        connectionController.registerNewUser(newUser);
     }
 
     public boolean checkIfUserExists(String userName) {
@@ -75,5 +77,9 @@ public class UserController {
 
     public User getLoggedInUser() {
         return loggedInUser;
+    }
+
+    public void setConnectionController(ConnectionController connectionController) {
+        this.connectionController = connectionController;
     }
 }

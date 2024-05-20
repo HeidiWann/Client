@@ -13,11 +13,16 @@ public class Recipe implements Serializable { // -------------------------------
     private int recipeID;
     private String author;
     private String instructions;
-    private ImageView imageOfRecipe;
+    private transient ImageView imageViewOfRecipe;
+    private byte[] imageOfRecipe;
     private Food dish;
     private String recipeName;
 
     public Recipe(String author, String instructions, ImageView imageOfRecipe, ArrayList<Ingredient> ingredients, String nameOfFood, ArrayList<FoodCategory> typeOfFood) {
+        this(author, instructions, (byte[]) null, ingredients, nameOfFood, typeOfFood);
+        this.imageViewOfRecipe = imageOfRecipe;
+    }
+    public Recipe(String author, String instructions, byte[] imageOfRecipe, ArrayList<Ingredient> ingredients, String nameOfFood, ArrayList<FoodCategory> typeOfFood) {
         Food newDish = new Food(nameOfFood, typeOfFood, ingredients);
         this.author = author;
         this.dish = newDish;
@@ -32,7 +37,7 @@ public class Recipe implements Serializable { // -------------------------------
         this.author = author;
         this.dish = newDish;
         this.instructions = instructions;
-        this.imageOfRecipe = imageOfRecipe;
+        this.imageViewOfRecipe = imageOfRecipe;
         this.recipeName = nameOfFood;
     }
 
@@ -45,12 +50,12 @@ public class Recipe implements Serializable { // -------------------------------
         this.instructions = instructions;
     }
 
-    public ImageView getImageOfRecipe() {
-        return imageOfRecipe;
+    public ImageView getImageViewOfRecipe() {
+        return imageViewOfRecipe;
     }
 
-    public void setImageOfRecipe(ImageView imageOfRecipe) {
-        this.imageOfRecipe = imageOfRecipe;
+    public void setImageViewOfRecipe(ImageView imageOfRecipe) {
+        this.imageViewOfRecipe = imageOfRecipe;
     }
 
     public Food getDish() {
@@ -64,4 +69,21 @@ public class Recipe implements Serializable { // -------------------------------
     public void setRecipeName(String recipeName) {
         this.recipeName = recipeName;
     }
+
+    public byte[] getImageOfRecipe() {
+        return imageOfRecipe;
+    }
+
+    public void setImageOfRecipe(byte[] imageOfRecipeByte) {
+        this.imageOfRecipe = imageOfRecipeByte;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
 }

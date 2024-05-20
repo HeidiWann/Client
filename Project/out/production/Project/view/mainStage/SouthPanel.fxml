@@ -8,9 +8,10 @@
 
     <children>
         <ScrollPane fx:id="scrollPane" layoutX="21.0" layoutY="10.0" prefHeight="312.0" prefWidth="803.0">
-         <content>
+            <content>
                 <ListView fx:id="recipeField" prefHeight="314.0" prefWidth="801.0" />
-         </content></ScrollPane>
+            </content>
+        </ScrollPane>
     </children>
 
 </AnchorPane>

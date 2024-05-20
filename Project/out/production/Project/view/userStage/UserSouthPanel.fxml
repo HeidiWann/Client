@@ -5,13 +5,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.userStage.UserSouthPanel">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="view.userStage.UserSouthPanel">
     <children>
-        <Button fx:id="register" layoutX="473.0" layoutY="1.0" mnemonicParsing="false" onAction="#buttonClicked" prefHeight="45.0" prefWidth="165.0" text="Registrera">
+        <Button fx:id="register" layoutX="473.0" layoutY="1.0" mnemonicParsing="false" onAction="#buttonClicked"
+                prefHeight="45.0" prefWidth="165.0" text="Registrera">
             <font>
-                <Font size="22.0" />
+                <Font size="22.0"/>
             </font>
         </Button>
-        <Label layoutX="321.0" layoutY="16.0" text="Om du inte har ett konto:" />
+        <Label layoutX="321.0" layoutY="16.0" text="Om du inte har ett konto:"/>
     </children>
 </AnchorPane>
