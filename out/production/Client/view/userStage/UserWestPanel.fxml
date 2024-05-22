@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="316.0" prefWidth="514.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="view.userStage.UserWestPanel">
+    <children>
+        <Label layoutX="24.0" layoutY="137.0" prefHeight="41.0" prefWidth="159.0" text="Användarnamn:">
+            <font>
+                <Font size="22.0"/>
+            </font>
+        </Label>
+        <Label layoutX="80.0" layoutY="193.0" prefHeight="32.0" prefWidth="102.0" text="Lösenord:">
+            <font>
+                <Font size="22.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="userNameTextField" layoutX="184.0" layoutY="138.0" prefHeight="39.0" prefWidth="271.0">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </TextField>
+        <PasswordField fx:id="passwordTextField" layoutX="183.0" layoutY="189.0" prefHeight="39.0" prefWidth="272.0">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </PasswordField>
+        <Label layoutX="225.0" layoutY="44.0" text="Välkommen!">
+            <font>
+                <Font size="22.0"/>
+            </font>
+        </Label>
+    </children>
+</AnchorPane>
