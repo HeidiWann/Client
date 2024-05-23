@@ -86,6 +86,10 @@ public class Ingredient implements Serializable {
         return ingredientId;
     }
 
+    public double getAmountOfIngredient() {
+        return amountOfIngredient;
+    }
+
     public int getMeasureID() {
         int measureID = 0;
         return measureID;

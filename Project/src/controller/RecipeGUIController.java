@@ -43,7 +43,7 @@ public class RecipeGUIController {
         ArrayList<String> recipesCategories = getFormattedCategories(recipeToShow.getDish().getTypeOfFood());
         double totalCostOfRecipe = getTotalCostOfRecipe(recipeToShow.getDish().getIngredients());
 
-        Image tempImageInRecipe = recipeToShow.getImageOfRecipe().getImage();
+        Image tempImageInRecipe = recipeToShow.getImageViewOfRecipe().getImage();
         ImageView imageInRecipe = new ImageView(tempImageInRecipe);
         imageInRecipe.setFitHeight(209);
         imageInRecipe.setFitWidth(400);
