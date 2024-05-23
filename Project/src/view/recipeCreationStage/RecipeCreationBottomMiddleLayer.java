@@ -61,20 +61,23 @@ public class RecipeCreationBottomMiddleLayer implements Initializable {
         return listToReturn;
     }
 
-    public void addIngredientToList() {
-        String recipeName = ingredientNameField.getText();
+    public void addIngredientToList(String ingredientName,String ingredientCost,String amountOfIngredient,String measurement) {
+       /*TODO kod som fanns innan men är nu omskrivet @jansson
+        String ingredientName = ingredientNameField.getText();
         String ingredientCost = ingredientCostField.getText();
         String amountOfIngredient = ingredientAmountField.getText();
         String measurement = ingredientMeasurementComboBox.getSelectionModel().getSelectedItem();
 
-        if (recipeName.equals("") || ingredientCost.equals("") || amountOfIngredient.equals("") || measurement.equals("")) {
+        */
+
+        if (ingredientName.equals("") || ingredientCost.equals("") || amountOfIngredient.equals("") || measurement.equals("")) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Fyll i alla rutor");
             alert.setHeaderText(null);
             alert.setContentText("Alla rutor är inte fyllda. Vänligen skriv något i alla rutor och försök igen");
             alert.showAndWait();
         } else {
-            String ingredientToAdd = recipeName + " | " + ingredientCost + " | " + amountOfIngredient + " | " + measurement + " | ";
+            String ingredientToAdd = ingredientName + " | " + ingredientCost + " | " + amountOfIngredient + " | " + measurement + " | ";
             listOfIngredients.add(ingredientToAdd);
             resetTextFields();
         }
@@ -91,7 +94,10 @@ public class RecipeCreationBottomMiddleLayer implements Initializable {
         public void handle(ActionEvent actionEvent) {
             Button clickedButton = (Button) actionEvent.getSource();
             if (clickedButton.getText().equals("Lägg till ingrediens")) {
-                addIngredientToList();
+                // addIngredientToList();//TODO denna funakr men bortkopplad @jansson
+                //TODo här ska @jansson fönster starta
+
+                //TODO test för att öppna fönstret (kan/ska tas bort när fönstret funkar och bör föras in här ovan) @jansson
             } else if(clickedButton.getText().equals("Ta bort alla ingredienser")) {
                 listOfIngredients.clear();
             }

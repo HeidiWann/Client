@@ -1,15 +1,14 @@
 package model;
 
-import controller.MainGUIController;
-import controller.RecipeCreationController;
-import controller.RecipeGUIController;
-import controller.UserGUIController;
+import controller.*;
 
 public class GetGUIController {
     private static MainGUIController mainGuiController;
     private static UserGUIController userGUIController;
     private static RecipeGUIController recipeGUIController;
     private static RecipeCreationController recipeCreationController;
+    private static AddIngredientGUIController addIngredientGUIController;
+    private static IngredientController ingredientController;
 
     public static MainGUIController getGuiController() {
         if (mainGuiController == null) {
@@ -37,5 +36,18 @@ public class GetGUIController {
             recipeCreationController = new RecipeCreationController();
         }
         return recipeCreationController;
+    }
+    public static AddIngredientGUIController getAddIngredientGUIController() {
+        if (addIngredientGUIController == null) {
+            addIngredientGUIController = new AddIngredientGUIController();
+        }
+        return addIngredientGUIController;
+    }
+
+    public static IngredientController getIngredientController() {
+        if (ingredientController==null){
+            ingredientController = new IngredientController();
+        }
+        return ingredientController;
     }
 }

@@ -139,6 +139,9 @@ public class RecipeCreationController {
     ImageView imageView = new ImageView(image);
     return imageView;
     }
+    public RecipeCreationBottomMiddleLayer getRecipeCreationBottomMiddleLayer() {
+        return recipeCreationBottomMiddleLayer;
+    }
 
 
     /*

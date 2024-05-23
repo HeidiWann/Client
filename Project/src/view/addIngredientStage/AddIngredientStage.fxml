@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.AddIngredientGUIController">
+   <top>
+      <Pane id="NorthPane" prefHeight="85.0" prefWidth="594.0" style="-fx-background-color: #81E86D;"
+            BorderPane.alignment="CENTER">
+       <fx:include source="AddIngredientNorthPanel.fxml" />
+      </Pane>
+
+   </top>
+   <center>
+      <Pane prefHeight="116.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+              <fx:include source="AddIngredientCenterPanel.fxml" />
+      </Pane>
+   </center>
+   <bottom>
+      <AnchorPane prefHeight="101.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+       <fx:include source="AddIngredientSouthPanel.fxml" />
+      </AnchorPane>
+   </bottom>
+</BorderPane>
