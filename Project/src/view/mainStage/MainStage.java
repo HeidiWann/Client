@@ -21,13 +21,12 @@ public class MainStage extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("../mainStage/MainScene.fxml"));
         Scene scene = new Scene(root, 850, 550);
         primaryStage.setScene(scene);
-        primaryStage.setResizable(false);
+        primaryStage.setResizable(true);
 
         UserController userController = new UserController();
         RecipeController recipeController = new RecipeController();
         ConnectionController connectionController = new ConnectionController(userController);
         connectionController.connectToServer();
-
 
         /*
         Thread.sleep(1000); // Måste vänta så uppkopplingen hinner skapas
@@ -38,10 +37,7 @@ public class MainStage extends Application {
         connectionController.sendObject(new User("Anton","1234"));
 
          */
-
-
-
-
+        
         primaryStage.setOnCloseRequest(event -> {
             System.out.println("Lambada works");
             connectionController.serverDisconnected();
