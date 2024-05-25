@@ -9,42 +9,42 @@
 <AnchorPane prefHeight="126.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.mainStage.CenterPanel">
     <children>
         <TextField fx:id="searchField" layoutX="29.0" layoutY="35.0" prefHeight="25.0" prefWidth="342.0" promptText="Sök efter recept, maträtter, etc..." />
-        <Button fx:id="searchButton" layoutX="371.0" layoutY="35.0" mnemonicParsing="false" style="-fx-background-color: #ADD8E6;" text="Sök" textFill="WHITE">
+        <Button fx:id="searchButton" layoutX="371.0" layoutY="35.0" mnemonicParsing="false" style="-fx-background-color: #81E86D;" text="Sök" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font>
         </Button>
-        <Button fx:id="cowButton" layoutX="29.0" layoutY="68.0" mnemonicParsing="false" style="-fx-background-color: #ADD8E6 #ADD8E6;" text="Nöt" textFill="WHITE">
+        <Button fx:id="cowButton" layoutX="29.0" layoutY="68.0" mnemonicParsing="false" style="-fx-background-color: #81E86D #81E86D;" text="Nöt" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font>
         </Button>
-        <Button fx:id="fishButton" layoutX="124.0" layoutY="68.0" mnemonicParsing="false" style="-fx-background-color: #ADD8E6;" text="Fisk" textFill="WHITE">
+        <Button fx:id="fishButton" layoutX="124.0" layoutY="68.0" mnemonicParsing="false" style="-fx-background-color: #81E86D;" text="Fisk" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font>
         </Button>
-        <Button fx:id="veganButton" layoutX="168.0" layoutY="68.0" mnemonicParsing="false" style="-fx-background-color: #ADD8E6;" text="Vegan" textFill="WHITE">
+        <Button fx:id="veganButton" layoutX="168.0" layoutY="68.0" mnemonicParsing="false" style="-fx-background-color: #81E86D;" text="Vegan" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font>
         </Button>
-        <Button fx:id="vegetarianButton" layoutX="227.0" layoutY="68.0" mnemonicParsing="false" style="-fx-background-color: #ADD8E6;" text="Vegetarian" textFill="WHITE">
+        <Button fx:id="vegetarianButton" layoutX="227.0" layoutY="68.0" mnemonicParsing="false" style="-fx-background-color: #81E86D;" text="Vegetarian" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font>
         </Button>
-        <Button fx:id="chickenButton" layoutX="311.0" layoutY="68.0" mnemonicParsing="false" style="-fx-background-color: #ADD8E6;" text="Kyckling" textFill="WHITE">
+        <Button fx:id="chickenButton" layoutX="311.0" layoutY="68.0" mnemonicParsing="false" style="-fx-background-color: #81E86D;" text="Kyckling" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font>
         </Button>
-        <Button fx:id="pigButton" layoutX="75.0" layoutY="68.0" mnemonicParsing="false" style="-fx-background-color: #ADD8E6;" text="Gris" textFill="WHITE">
+        <Button fx:id="pigButton" layoutX="75.0" layoutY="68.0" mnemonicParsing="false" style="-fx-background-color: #81E86D;" text="Gris" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font>
         </Button>
-        <Label fx:id="currentCategories" layoutX="29.0" layoutY="99.0" prefHeight="25.0" prefWidth="375.0" style="-fx-background-color: #ADD8E6;" text="Valda kategorier |" textFill="WHITE">
+        <Label fx:id="currentCategories" layoutX="29.0" layoutY="99.0" prefHeight="25.0" prefWidth="375.0" style="-fx-background-color: #81E86D;" text="Valda kategorier |" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font>

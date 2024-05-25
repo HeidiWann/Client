@@ -9,7 +9,7 @@
             fx:controller="view.userStage.UserSouthPanel">
     <children>
         <Button fx:id="register" layoutX="473.0" layoutY="1.0" mnemonicParsing="false" onAction="#buttonClicked"
-                prefHeight="45.0" prefWidth="165.0" text="Registrera">
+                prefHeight="45.0" prefWidth="165.0" style="-fx-background-color: #81E86D" text="Registrera" textFill="WHITE">
             <font>
                 <Font size="22.0"/>
             </font>
