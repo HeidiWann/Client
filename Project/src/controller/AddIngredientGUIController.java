@@ -10,6 +10,7 @@ import view.addIngredientStage.AddIngredientSouthPanel;
 import view.addIngredientStage.AddIngredientStage;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * This class handels most of the logic behind the "add a new ingredient"-window.

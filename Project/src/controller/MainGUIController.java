@@ -8,6 +8,8 @@ import javafx.stage.Stage;
 import model.*;
 import view.mainStage.WestPanel;
 import view.recipeCreationStage.RecipeCreationStage;
+import view.addIngredientStage.AddIngredientStage;
+
 import view.mainStage.CenterPanel;
 import view.mainStage.NorthPanel;
 import view.mainStage.SouthPanel;

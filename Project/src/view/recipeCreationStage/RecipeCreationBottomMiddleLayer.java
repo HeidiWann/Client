@@ -1,5 +1,7 @@
 package view.recipeCreationStage;
 
+import controller.AddIngredientGUIController;
+import controller.MainGUIController;
 import controller.RecipeCreationController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -98,6 +100,12 @@ public class RecipeCreationBottomMiddleLayer implements Initializable {
                 //TODo här ska @jansson fönster starta
 
                 //TODO test för att öppna fönstret (kan/ska tas bort när fönstret funkar och bör föras in här ovan) @jansson
+                AddIngredientGUIController test=new AddIngredientGUIController();
+                test.openAddIngredientWindow();
+
+
+
+
             } else if(clickedButton.getText().equals("Ta bort alla ingredienser")) {
                 listOfIngredients.clear();
             }

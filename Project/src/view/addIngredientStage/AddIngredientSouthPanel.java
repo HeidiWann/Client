@@ -1,5 +1,6 @@
 package view.addIngredientStage;
 
+import controller.AddIngredientGUIController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,6 +12,7 @@ import model.GetGUIController;
 import model.Measurement;
 
 import java.net.URL;
+import java.text.ParseException;
 import java.util.ResourceBundle;
 
 
