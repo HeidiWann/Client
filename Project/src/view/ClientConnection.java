@@ -73,7 +73,7 @@ public class ClientConnection extends Thread {
     }
 
 
-        /**
+    /**
      * This method sends an intention to the server by using {@link ObjectOutputStream}
      * @param intention An int that tells the server what to do
      * @author Anton Persson

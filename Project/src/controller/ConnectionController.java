@@ -153,5 +153,4 @@ public class ConnectionController {
         clientConnection.sendIntention(C_WANT_TO_LOGIN);
         clientConnection.sendObject(user);
     }
-
 }
