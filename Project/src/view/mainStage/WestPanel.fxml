@@ -16,10 +16,5 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="34.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #81E86D;" text="Hantera mitt konto" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
    </children>
 </AnchorPane>
