@@ -17,7 +17,7 @@ public class RecipeController {
         mainGUIController.setRecipeController(this);
         recipes = new ArrayList<>();
         recipeFilters = new ArrayList<>();
-        insertRecipes();
+        //insertRecipes();
         GetGUIController.getRecipeCreationController().setRecipeController(this);
     }
 
@@ -207,7 +207,7 @@ public class RecipeController {
         recipes.add(new Recipe("Vegansk chili", veganskChiliInstructions, veganskChiliImage, veganskChiliIngredients, "Vegansk chili", new ArrayList<>(Arrays.asList(FoodCategory.Vegetarian, FoodCategory.Vegan))));
         ArrayList<Ingredient> chiliFläskIngredients = new ArrayList<>();
         ArrayList<FoodCategory> chiliFläskCategory = new ArrayList<>();
-        chiliFläskCategory.add(FoodCategory.Gris);
+        chiliFläskCategory.add(FoodCategory.Fläsk);
         String chiliFläskInstructions;
         chiliFläskIngredients.add(new Ingredient("Chili", 0.5, 500, Measurement.G));
         chiliFläskIngredients.add(new Ingredient("Fläsk färs", 0.5, 2.0, Measurement.ST));
@@ -249,7 +249,7 @@ public class RecipeController {
         Image chiliFläsk = new Image("/view/veganskChili.jpg");
         ImageView chiliFläskImage = new ImageView(chiliFläsk);
 
-        recipes.add(new Recipe("Heidi", chiliFläskInstructions, chiliFläskImage, chiliFläskIngredients, "Chili Con Carne", new ArrayList<>(Arrays.asList(FoodCategory.Gris))));
+        recipes.add(new Recipe("Heidi", chiliFläskInstructions, chiliFläskImage, chiliFläskIngredients, "Chili Con Carne", new ArrayList<>(Arrays.asList(FoodCategory.Fläsk))));
         ArrayList<Ingredient> chiliNötIngredients = new ArrayList<>();
         ArrayList<FoodCategory> chiliNötCategory = new ArrayList<>();
         veganskChiliCategory.add(FoodCategory.Nöt);
@@ -324,5 +324,6 @@ public class RecipeController {
 
     public void setRecipes(ArrayList<Recipe> recipes) {
         this.recipes = recipes;
+        mainGUIController.updateListOfRecipes(this.recipes);
     }
 }

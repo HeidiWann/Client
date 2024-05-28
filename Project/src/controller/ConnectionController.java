@@ -84,7 +84,7 @@ public class ConnectionController {
                     Recipe recipe1 = recipeCreationController.convertRecipe(recipe);
                     convertedRecipe.add(recipe1);
                 }
-                mainGUIController.setRecipes(convertedRecipe.toArray(new Recipe[0]));
+                recipeController.setRecipes(convertedRecipe);
                 clientConnection.setListenForIntention(true);
                 clientConnection.setListenForObject(false);
                 break;

@@ -8,6 +8,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import model.FoodCategory;
 import model.GetGUIController;
 
@@ -49,10 +51,11 @@ public class CenterPanel implements Initializable {
         vegetarianButton.setOnAction(new ButtonHandler());
         chickenButton.setOnAction(new ButtonHandler());
         searchButton.setOnAction(new ButtonHandler());
+        searchField.setOnKeyPressed(new SearchHandler());
     }
 
     public void setCurrentCategories(String categories) {
-        currentCategories.setText(categories);
+        currentCategories.setText("Valda kategorier | " + categories);
     }
 
     /**
@@ -67,8 +70,8 @@ public class CenterPanel implements Initializable {
 
             if (clickedButton.getText().equals("Nöt")) {
                 mainGuiController.addFilter(FoodCategory.Nöt);
-            } else if (clickedButton.getText().equals("Gris")) {
-                mainGuiController.addFilter(FoodCategory.Gris);
+            } else if (clickedButton.getText().equals("Fläsk")) {
+                mainGuiController.addFilter(FoodCategory.Fläsk);
             } else if (clickedButton.getText().equals("Fisk")) {
                 mainGuiController.addFilter(FoodCategory.Fisk);
             } else if (clickedButton.getText().equals("Vegan")) {
@@ -79,6 +82,17 @@ public class CenterPanel implements Initializable {
             } else if (clickedButton.getText().equals("Kyckling")) {
                 mainGuiController.addFilter(FoodCategory.Kyckling);
             } else if (clickedButton.getText().equals("Sök")) {
+                mainGuiController.searchForRecipe(searchField.getText());
+                searchField.setText("");
+                searchField.setPromptText("Sök efter recept, maträtter, etc...");
+            }
+        }
+    }
+
+    private class SearchHandler implements EventHandler<KeyEvent> {
+        @Override
+        public void handle(KeyEvent keyEvent) {
+            if (keyEvent.getCode() == KeyCode.ENTER) {
                 mainGuiController.searchForRecipe(searchField.getText());
                 searchField.setText("");
                 searchField.setPromptText("Sök efter recept, maträtter, etc...");

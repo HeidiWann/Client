@@ -37,6 +37,7 @@ public class RecipeGUIController {
      */
     public void showSelectedRecipe(Object recipe) {
         Recipe recipeToShow = (Recipe) recipe;
+        String nameOfAuthor = recipeToShow.getAuthor();
         String recipeInstructions = recipeToShow.getInstructions();
         ArrayList<String> ingredientsInRecipe = getFormattedIngredients((recipeToShow.getDish().getIngredients()));
         String nameOfRecipe = recipeToShow.getRecipeName();
@@ -52,7 +53,7 @@ public class RecipeGUIController {
         recipeCenterPanel.insertIngredientInfo(ingredientsInRecipe, String.valueOf(totalCostOfRecipe), "ICA");
         recipeCenterPanel.insertImage(imageInRecipe);
         recipeSouthPanel.insertInstructions(recipeInstructions);
-        recipeNorthPanel.setHeaders("Anton", nameOfRecipe, recipesCategories.toString());
+        recipeNorthPanel.setHeaders(nameOfAuthor, nameOfRecipe, recipesCategories.toString());
     }
 
     /**
