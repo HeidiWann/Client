@@ -13,7 +13,8 @@
             prefHeight="400.0" prefWidth="600.0">
 
     <children>
-        <TextArea fx:id="instructionsArea" layoutX="11.0" layoutY="107.0" prefHeight="147.0" prefWidth="581.0" promptText="Enter recipe instructions" />
+        <TextArea fx:id="instructionsArea" layoutX="11.0" layoutY="107.0" prefHeight="147.0" prefWidth="581.0"
+                  promptText="Enter recipe instructions" />
         <Button layoutX="254.0" layoutY="72.0" mnemonicParsing="false" style="-fx-background-color: #81E86D;" text="Instruktioner" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="12.0" />

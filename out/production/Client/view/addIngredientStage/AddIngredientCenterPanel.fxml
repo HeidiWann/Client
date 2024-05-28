@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="186.0" prefWidth="677.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.addIngredientStage.AddIngredientCenterPanel">
+   <children>
+      <TextField fx:id="searchField" layoutX="168.0" layoutY="14.0" prefHeight="25.0" prefWidth="342.0" promptText="Sök efter recept, maträtter, etc..." />
+      <Button fx:id="searchButton" layoutX="510.0" layoutY="14.0" mnemonicParsing="false" onAction="#search" style="-fx-background-color: #81E86D;" text="Sök" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <ScrollPane fx:id="scrollPane" layoutX="14.0" layoutY="47.0" prefHeight="139.0" prefWidth="555.0">
+         <content>
+            <ListView fx:id="ingredientField" prefHeight="140.0" prefWidth="550.0" />
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
