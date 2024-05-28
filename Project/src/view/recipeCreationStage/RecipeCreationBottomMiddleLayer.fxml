@@ -8,10 +8,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.recipeCreationStage.RecipeCreationBottomMiddleLayer">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.recipeCreationStage.RecipeCreationBottomMiddleLayer">
     <children>
         <ListView fx:id="listOfaddedIngredients" layoutX="8.0" layoutY="84.0" prefHeight="149.0" prefWidth="581.0" />
-        <Button fx:id="addIngredient" layoutX="149.0" layoutY="240.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" style="-fx-background-color: #81E86D;" text="Lägg till ingrediens" textFill="WHITE">
+        <Button fx:id="addIngredient" layoutX="149.0" layoutY="240.0" mnemonicParsing="false"
+                prefHeight="25.0" prefWidth="134.0" style="-fx-background-color: #81E86D;"
+                text="Lägg till ingrediens" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font>
@@ -20,14 +23,18 @@
             <TextField fx:id="ingredientNameField" promptText="Ingrediensens namn" />
             <TextField fx:id="ingredientCostField" promptText="Ingrediensens kostnad" />
             <TextField fx:id="ingredientAmountField" promptText="Mängd av ingrediens" />
-            <ComboBox fx:id="ingredientMeasurementComboBox" prefHeight="25.0" prefWidth="103.0" style="-fx-background-color: #81E86D;"> </ComboBox>
+            <ComboBox fx:id="ingredientMeasurementComboBox" prefHeight="25.0" prefWidth="103.0"
+                      style="-fx-background-color: #81E86D;"> </ComboBox>
         </HBox>
-        <Button layoutX="224.0" layoutY="2.0" mnemonicParsing="false" style="-fx-background-color: #81E86D;" text="Ingredients information" textFill="WHITE">
+        <Button layoutX="224.0" layoutY="2.0" mnemonicParsing="false"
+                style="-fx-background-color: #81E86D;" text="Ingredients information" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font>
         </Button>
-        <Button fx:id="removeIngredients" layoutX="311.0" layoutY="240.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="158.0" style="-fx-background-color: #81E86D;" text="Ta bort alla ingredienser" textFill="WHITE">
+        <Button fx:id="removeIngredients" layoutX="311.0" layoutY="240.0" mnemonicParsing="false"
+                prefHeight="25.0" prefWidth="158.0" style="-fx-background-color: #81E86D;"
+                text="Ta bort alla ingredienser" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font>

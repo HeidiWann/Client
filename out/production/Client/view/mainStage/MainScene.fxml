@@ -8,7 +8,7 @@
         <Pane id="WestPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
     </left>
     <top>
-        <Pane id="NorthPane" prefHeight="78.0" prefWidth="853.0" style="-fx-background-color: #ADD8E6;" BorderPane.alignment="CENTER">
+        <Pane id="NorthPane" prefHeight="78.0" prefWidth="853.0" style="-fx-background-color: #81E86D;" BorderPane.alignment="CENTER">
             <fx:include source="NorthPanel.fxml" />
         </Pane>
     </top>

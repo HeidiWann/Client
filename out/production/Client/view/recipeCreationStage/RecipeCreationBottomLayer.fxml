@@ -8,24 +8,25 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.recipeCreationStage.RecipeCreationBottomLayer">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.recipeCreationStage.RecipeCreationBottomLayer">
 
     <children>
 
         <!-- Buttons for creating or canceling recipe creation -->
         <HBox layoutX="14.0" layoutY="189.0" spacing="10">
-            <Button fx:id="createnewRecipeButton" mnemonicParsing="false" style="-fx-background-color: #ADD8E6;" text="Skapa recept" textFill="WHITE">
+            <Button fx:id="createnewRecipeButton" mnemonicParsing="false" style="-fx-background-color: #81E86D;" text="Skapa recept" textFill="WHITE">
                 <font>
                     <Font name="System Bold" size="12.0" />
                 </font>
             </Button>
-            <Button fx:id="cancel" mnemonicParsing="false" style="-fx-background-color: #ADD8E6;" text="Avbryt" textFill="WHITE">
+            <Button fx:id="cancel" mnemonicParsing="false" style="-fx-background-color: #81E86D;" text="Avbryt" textFill="WHITE">
                 <font>
                     <Font name="System Bold" size="12.0" />
                 </font>
             </Button>
         </HBox>
-        <Button fx:id="choosePicture" layoutX="104.0" layoutY="13.0" mnemonicParsing="false" style="-fx-background-color: #ADD8E6;" text="Välj bild" textFill="WHITE">
+        <Button fx:id="choosePicture" layoutX="104.0" layoutY="13.0" mnemonicParsing="false" style="-fx-background-color: #81E86D;" text="Välj bild" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font>
@@ -33,23 +34,23 @@
 
         <!-- ImageView for displaying selected image -->
         <ImageView fx:id="recipeImageView" fitHeight="138.0" fitWidth="243.0" layoutX="14.0" layoutY="48.0" preserveRatio="true" />
-        <ChoiceBox fx:id="categoryDropList" layoutX="286.0" layoutY="13.0" prefWidth="150.0" style="-fx-background-color: #ADD8E6;" />
+        <ChoiceBox fx:id="categoryDropList" layoutX="286.0" layoutY="13.0" prefWidth="150.0" style="-fx-background-color: #81E86D;" />
         <ListView fx:id="chosenCategories" layoutX="443.0" layoutY="48.0" prefHeight="138.0" prefWidth="134.0" />
-      <Button fx:id="addCategoryButton" layoutX="286.0" layoutY="48.0" mnemonicParsing="false" style="-fx-background-color: #ADD8E6;" text="Lägg till" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Button fx:id="removeCategoriesButton" layoutX="355.0" layoutY="48.0" mnemonicParsing="false" style="-fx-background-color: #ADD8E6;" text="Ta bort alla" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Button layoutX="443.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" style="-fx-background-color: #ADD8E6;" text="Receptets kategorier" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
+        <Button fx:id="addCategoryButton" layoutX="286.0" layoutY="48.0" mnemonicParsing="false" style="-fx-background-color: #81E86D;" text="Lägg till" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Button>
+        <Button fx:id="removeCategoriesButton" layoutX="355.0" layoutY="48.0" mnemonicParsing="false" style="-fx-background-color: #81E86D;" text="Ta bort alla" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Button>
+        <Button layoutX="443.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" style="-fx-background-color: #81E86D;" text="Receptets kategorier" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Button>
     </children>
 
 </AnchorPane>
