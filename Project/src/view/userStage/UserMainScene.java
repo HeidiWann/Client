@@ -19,7 +19,7 @@ public class UserMainScene {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        userStage.setScene(new Scene(root, 660, 345));
+        userStage.setScene(new Scene(root, 660, 391));
         userStage.setResizable(false);
         userStage.show();
     }
