@@ -1,6 +1,7 @@
 package view.mainStage;
 
 import controller.MainGUIController;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -97,8 +98,10 @@ public class SouthPanel implements Initializable {
      * @author Anton Persson
      */
     public void addRecipes(ArrayList<Recipe> recipes) {
-        this.recipes.clear();
-        this.recipes.addAll(recipes);
+        Platform.runLater(() -> {
+            this.recipes.clear();
+            this.recipes.addAll(recipes);
+        });
     }
 
     public void addARecipe(Recipe recipe) {

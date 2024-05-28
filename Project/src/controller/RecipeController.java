@@ -321,4 +321,8 @@ public class RecipeController {
         }
         return measurementsToReturn;
     }
+
+    public void setRecipes(ArrayList<Recipe> recipes) {
+        this.recipes = recipes;
+    }
 }

@@ -2,6 +2,7 @@ package controller;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import model.GetGUIController;
 import model.Ingredient;
 import model.Recipe;
@@ -23,6 +24,7 @@ public class ConnectionController {
     private final UserGUIController userGUIController;
     private RecipeController recipeController;
     private RecipeCreationController recipeCreationController;
+    private IngredientController ingredientController;
 
     public ConnectionController(UserController userController, RecipeController recipeController) throws IOException {
         this.recipeCreationController = GetGUIController.getRecipeCreationController();
@@ -30,6 +32,7 @@ public class ConnectionController {
         this.userGUIController = GetGUIController.getUserGUIController();
         this.userController = userController;
         this.recipeController = recipeController;
+        this.ingredientController = GetGUIController.getIngredientController();
         recipeCreationController.setConnectionController(this);
         userController.setConnectionController(this);
     }
@@ -101,7 +104,7 @@ public class ConnectionController {
                 break;
             case S_SEND_ALL_INGREDIENTS:
                 ArrayList<Ingredient> ingredients = (ArrayList<Ingredient>) object;
-                System.out.println(ingredients.toString());
+                ingredientController.setIngredients(ingredients);
                 clientConnection.setListenForIntention(true);
                 clientConnection.setListenForObject(false);
 
@@ -132,15 +135,39 @@ public class ConnectionController {
         clientConnection.sendIntention(C_WANT_TO_REGISTER);
         clientConnection.sendObject(user);
     }
+    public static BufferedImage convert(ImageView imageView) {
+
+        Image image = imageView.getImage();
+        BufferedImage bufferedImage = new BufferedImage((int) image.getWidth(), (int) image.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        java.awt.Graphics graphics = bufferedImage.createGraphics();
+        graphics.drawImage(SwingFXUtils.fromFXImage(image, null), 0, 0, null);
+        graphics.dispose();
+
+        return bufferedImage;
+    }
+
+    public static byte[] compressImage(BufferedImage originalImage, String formatName, float quality) throws IOException {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        ImageIO.write(compress(originalImage, quality), formatName, outputStream);
+
+        return outputStream.toByteArray();
+    }
+
+    private static BufferedImage compress(BufferedImage originalImage, float quality) {
+        BufferedImage compressedImage = new BufferedImage(originalImage.getWidth(), originalImage.getHeight(), originalImage.getType());
+        compressedImage.createGraphics().drawImage(originalImage, 0, 0, null);
+
+        return compressedImage;
+    }
+
+
 
     public void createNewRecipe(Recipe recipe) {
         if (recipe.getImageViewOfRecipe() != null && recipe.getImageOfRecipe() == null) {
             try {
-                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                Image image = recipe.getImageViewOfRecipe().getImage();
-                BufferedImage bufferedImage = SwingFXUtils.fromFXImage(image, null);
-                ImageIO.write(bufferedImage, "png", byteArrayOutputStream);
-                recipe.setImageOfRecipe(byteArrayOutputStream.toByteArray());
+                BufferedImage bufferedImage = convert(recipe.getImageViewOfRecipe());
+                byte[] compressedImage = compressImage(bufferedImage,"png",0.5f);
+                recipe.setImageOfRecipe(compressedImage);
             } catch (IOException e) {
                 e.printStackTrace();
             }

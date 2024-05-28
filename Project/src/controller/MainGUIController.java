@@ -157,6 +157,7 @@ public class MainGUIController {
 
     public void setRecipes(Recipe[] recipes) {
         ArrayList<Recipe> recipesToAdd = new ArrayList<>(Arrays.asList(recipes));
+
         southPanel.addRecipes(recipesToAdd);
     }
 
