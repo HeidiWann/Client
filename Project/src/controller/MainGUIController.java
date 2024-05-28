@@ -136,13 +136,15 @@ public class MainGUIController {
 
         for (int i = 0; i < recipes.size(); i++) {
             boolean recipeContainedCategory = true;
-            for (int j = 0; j < recipes.get(i).getDish().getTypeOfFood().size(); j++) {
-                for (int k = 0; k < filters.size(); k++) {
-                    if (recipes.get(i).getDish().getTypeOfFood().get(j).equals(filters.get(k)) && recipeContainedCategory) {
-                        filteredRecipeList.add(recipes.get((i)));
-                        recipeContainedCategory = false;
-                    } else if (!recipeContainedCategory) {
-                        break;
+            if (recipes.get(i).getDish().getTypeOfFood() != null) {
+                for (int j = 0; j < recipes.get(i).getDish().getTypeOfFood().size(); j++) {
+                    for (int k = 0; k < filters.size(); k++) {
+                        if (recipes.get(i).getDish().getTypeOfFood().get(j).equals(filters.get(k)) && recipeContainedCategory) {
+                            filteredRecipeList.add(recipes.get((i)));
+                            recipeContainedCategory = false;
+                        } else if (!recipeContainedCategory) {
+                            break;
+                        }
                     }
                 }
             }

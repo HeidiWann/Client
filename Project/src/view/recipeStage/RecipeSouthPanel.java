@@ -3,6 +3,7 @@ package view.recipeStage;
 import controller.RecipeGUIController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import model.GetGUIController;
 import java.net.URL;
@@ -16,6 +17,8 @@ import java.util.ResourceBundle;
 public class RecipeSouthPanel implements Initializable {
     @FXML
     private TextArea textArea;
+    @FXML
+    private ScrollPane scrollPane;
 
     public RecipeSouthPanel() {
         RecipeGUIController recipeGUIController = GetGUIController.getrecipeGUIController();

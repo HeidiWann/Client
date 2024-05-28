@@ -21,7 +21,7 @@ public class MainStage extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("../mainStage/MainScene.fxml"));
         Scene scene = new Scene(root, 850, 550);
         primaryStage.setScene(scene);
-        primaryStage.setResizable(true);
+        primaryStage.setResizable(false);
 
         UserController userController = new UserController();
         RecipeController recipeController = new RecipeController();
