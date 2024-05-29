@@ -185,6 +185,7 @@ public class MainGUIController {
         recipeCreationStage.setTitle("Create new Recipe");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/recipeCreationStage/RecipeCreation.fxml"));
         recipeCreationStage.setScene(new Scene(loader.load()));
+        recipeCreationStage.setResizable(false);
         recipeCreationStage.show();
         //Pane recipeCreationPane = loader.load();
 

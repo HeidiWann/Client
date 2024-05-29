@@ -22,9 +22,8 @@ public class AddIngredientStage extends Application {
         }
         addIngredientStage.setScene(new Scene(root));
         addIngredientStage.setResizable(false);
+        addIngredientStage.setX(550);
+        addIngredientStage.setY(30);
         addIngredientStage.show();
     }
-
-
-
 }

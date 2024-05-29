@@ -63,6 +63,7 @@ public class AddIngredientCenterPanel implements Initializable {
                     GetGUIController.getAddIngredientGUIController().setSelectedIngredient(selectedIngredient);
             }
         });
+        this.ingredients.addAll(GetGUIController.getAddIngredientGUIController().fetchAllIngredients());
     }
 
     public void addIngredientsToTextField(ArrayList<Ingredient> ingredients) {
@@ -70,7 +71,8 @@ public class AddIngredientCenterPanel implements Initializable {
         //TODO ändra så listView är strings o inte object
         ArrayList<String> showList = new ArrayList<>();
         for (Ingredient ingredient : ingredients) {
-            showList.add(ingredient.getIngredientName());
+            System.out.println(ingredient);
+            showList.add(ingredient.toString());
         }
         this.ingredients.addAll(ingredients);
     }

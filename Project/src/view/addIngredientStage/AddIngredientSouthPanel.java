@@ -30,7 +30,7 @@ public class AddIngredientSouthPanel implements Initializable {
     public Button add;
     @FXML
     public TextField amount;
-    private Measurement[] measurments = {Measurement.DL, Measurement.KG, Measurement.G, Measurement.L, Measurement.CL, Measurement.Burk, Measurement.ML, Measurement.ST};
+    private Measurement[] measurments = {Measurement.DL, Measurement.KG, Measurement.G, Measurement.L, Measurement.CL, Measurement.Burk, Measurement.ML, Measurement.ST, Measurement.KRM, Measurement.TSK, Measurement.MSK};
 
     public void addIngredient(ActionEvent actionEvent) {
         System.out.println("Test lägg till knapp");

@@ -22,14 +22,6 @@ public class RecipeCreationBottomMiddleLayer implements Initializable {
     @FXML
     private Button removeIngredients;
     @FXML
-    private TextField ingredientNameField;
-    @FXML
-    private TextField ingredientCostField;
-    @FXML
-    private TextField ingredientAmountField;
-    @FXML
-    private ComboBox<String> ingredientMeasurementComboBox;
-    @FXML
     private ListView<String> listOfaddedIngredients;
 
     private RecipeCreationController recipeCreationController;
@@ -49,14 +41,14 @@ public class RecipeCreationBottomMiddleLayer implements Initializable {
         listOfIngredients = FXCollections.observableArrayList();
         listOfaddedIngredients.setItems(listOfIngredients);
 
-        listOfMeasurments = FXCollections.observableArrayList();
-        setListOfMeasurments();
-        ingredientMeasurementComboBox.setItems(listOfMeasurments);
+//        listOfMeasurments = FXCollections.observableArrayList();
+//        setListOfMeasurments();
+//        ingredientMeasurementComboBox.setItems(listOfMeasurments);
     }
 
-    public void setListOfMeasurments() {
-        listOfMeasurments.addAll(recipeCreationController.getEveryMeasurement());
-    }
+//    public void setListOfMeasurments() {
+//        listOfMeasurments.addAll(recipeCreationController.getEveryMeasurement());
+//    }
 
     public ArrayList<String> getIngredients() {
         ArrayList<String> listToReturn = new ArrayList<>(listOfIngredients);
@@ -81,15 +73,15 @@ public class RecipeCreationBottomMiddleLayer implements Initializable {
         } else {
             String ingredientToAdd = ingredientName + " | " + ingredientCost + " | " + amountOfIngredient + " | " + measurement + " | ";
             listOfIngredients.add(ingredientToAdd);
-            resetTextFields();
+//            resetTextFields();
         }
     }
 
-    private void resetTextFields() {
-        ingredientAmountField.clear();
-        ingredientNameField.clear();
-        ingredientCostField.clear();
-    }
+//    private void resetTextFields() {
+//        ingredientAmountField.clear();
+//        ingredientNameField.clear();
+//        ingredientCostField.clear();
+//    }
 
     private class ButtonHandler implements EventHandler<ActionEvent> {
         @Override
@@ -102,9 +94,6 @@ public class RecipeCreationBottomMiddleLayer implements Initializable {
                 //TODO test för att öppna fönstret (kan/ska tas bort när fönstret funkar och bör föras in här ovan) @jansson
                 AddIngredientGUIController test=new AddIngredientGUIController();
                 test.openAddIngredientWindow();
-
-
-
 
             } else if(clickedButton.getText().equals("Ta bort alla ingredienser")) {
                 listOfIngredients.clear();

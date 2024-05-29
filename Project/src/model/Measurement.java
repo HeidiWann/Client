@@ -8,5 +8,8 @@ public enum Measurement {
     CL,
     Burk,
     ML,
-    ST, KRM, TSK, MSK;
+    ST,
+    KRM,
+    TSK,
+    MSK;
 }
