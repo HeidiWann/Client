@@ -30,5 +30,8 @@ public class IngredientController {
         this.ingredients = ingredients;
     }
 
+    public Ingredient getIngredient(int index) {
+        return ingredients.get(index);
+    }
 
 }

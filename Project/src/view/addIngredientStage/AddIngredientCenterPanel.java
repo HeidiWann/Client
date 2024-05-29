@@ -26,13 +26,13 @@ public class AddIngredientCenterPanel implements Initializable {
     @FXML
     public Button searchButton;
     @FXML
-    public ListView<Ingredient> ingredientField;
+    public ListView<String> ingredientField;
     @FXML
     public ScrollPane scrollPane;
     @FXML
     public TextField searchField;
-    private Ingredient selectedIngredient;
-    private ObservableList<Ingredient> ingredients = FXCollections.observableArrayList();
+    private int selectedIngredient;
+    private ObservableList<String> ingredients = FXCollections.observableArrayList();
     private Parent root;
 
 
@@ -40,13 +40,10 @@ public class AddIngredientCenterPanel implements Initializable {
         System.out.println("Test av search knappen, sökord: " + searchField.getText());
         String searchedText = searchField.getText();
         this.ingredients.clear();
-
-        if (!(Objects.equals(searchedText, ""))) {
             System.out.println(searchedText);
             System.out.println(searchedText + " test searchText!=null");
             ArrayList<Ingredient> matchedIngredients = GetGUIController.getAddIngredientGUIController().search(searchedText);
             addIngredientsToTextField(matchedIngredients);
-        }
     }
 
 
@@ -54,16 +51,14 @@ public class AddIngredientCenterPanel implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ingredientField.setItems(ingredients);
 
-        ingredientField.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Ingredient>() {
+        ingredientField.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
-            public void changed(ObservableValue<? extends Ingredient> observableValue, Ingredient ingredient, Ingredient t1) {
-                selectedIngredient = ingredientField.getSelectionModel().getSelectedItem();
-
-                if (selectedIngredient != null)
-                    GetGUIController.getAddIngredientGUIController().setSelectedIngredient(selectedIngredient);
+            public void changed(ObservableValue<? extends String> observableValue, String ingredient, String t1) {
+                selectedIngredient = ingredientField.getSelectionModel().getSelectedIndex();
+                GetGUIController.getAddIngredientGUIController().setSelectedIngredient(selectedIngredient);
             }
         });
-        this.ingredients.addAll(GetGUIController.getAddIngredientGUIController().fetchAllIngredients());
+        this.ingredients.addAll(GetGUIController.getAddIngredientGUIController().fetchAllIngredientsAsStrings());
     }
 
     public void addIngredientsToTextField(ArrayList<Ingredient> ingredients) {
@@ -72,12 +67,8 @@ public class AddIngredientCenterPanel implements Initializable {
         ArrayList<String> showList = new ArrayList<>();
         for (Ingredient ingredient : ingredients) {
             System.out.println(ingredient);
-            showList.add(ingredient.toString());
+            showList.add(ingredient.toString2());
         }
-        this.ingredients.addAll(ingredients);
-    }
-
-    public Ingredient getSelectedIngredient() {
-        return selectedIngredient;
+        this.ingredients.addAll(showList);
     }
 }

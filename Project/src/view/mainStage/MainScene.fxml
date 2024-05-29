@@ -20,7 +20,7 @@
         </Pane>
     </right>
     <bottom>
-        <Pane id="SouthPane" prefHeight="346.0" prefWidth="853.0" style="-fx-background-color: #EAEAE0;" BorderPane.alignment="CENTER">
+        <Pane id="SouthPane" fx:id="southScene" prefHeight="346.0" prefWidth="853.0" style="-fx-background-color: #EAEAE0;" BorderPane.alignment="CENTER">
             <fx:include source="SouthPanel.fxml" />
         </Pane>
     </bottom>

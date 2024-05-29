@@ -123,15 +123,23 @@ public class RecipeCreationBottomLayer implements Initializable {
                     stage.close();
                 } else {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Creation of recipe failed");
+                    alert.setTitle("Något gick fel");
                     alert.setHeaderText(null);
-                    alert.setContentText("Some information is missing. Make sure to fill everything and try again");
+                    alert.setContentText("All information är inte ifylld. Vänligen fyll i alla rutor");
                     alert.showAndWait();
                 }
             } else if(clickedButton.getText().equals("Avbryt")) {
                 recipeCreationController.closeWindow(cancel);
             } else if (clickedButton.getText().equals("Lägg till")) {
-                insertCategoryToList(categoryDropList.getSelectionModel().getSelectedItem());
+                if (categoryDropList.getSelectionModel().getSelectedItem() != null) {
+                    insertCategoryToList(categoryDropList.getSelectionModel().getSelectedItem());
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Ingen kategori vald");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Vänligen välj en kategori först.");
+                    alert.showAndWait();
+                }
             } else if (clickedButton.getText().equals("Ta bort alla")) {
                 listOfChosenCategories.clear();
             }

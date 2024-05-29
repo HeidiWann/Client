@@ -24,6 +24,7 @@ public class RecipeController {
     public void addRecipeToArray(Recipe recipe){
         recipes.add(recipe);
     }
+
     public void updateListOfRecipes(){
         mainGUIController.updateListOfRecipes(recipes);
     }
@@ -325,5 +326,10 @@ public class RecipeController {
     public void setRecipes(ArrayList<Recipe> recipes) {
         this.recipes = recipes;
         mainGUIController.updateListOfRecipes(this.recipes);
+    }
+
+    public void resetSearchAndFilters() {
+        recipeFilters.clear();
+        mainGUIController.updateListOfRecipes(recipes);
     }
 }

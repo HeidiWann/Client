@@ -57,6 +57,16 @@ public class AddIngredientGUIController {
         return ingredients;
     }
 
+    public ArrayList<String> fetchAllIngredientsAsStrings() {
+        ArrayList<Ingredient> ingredients = GetGUIController.getIngredientController().getIngredients();
+        ArrayList<String> newListOfIngredients = new ArrayList<>();
+
+        for (Ingredient ingredient : ingredients) {
+            newListOfIngredients.add(ingredient.toString2());
+        }
+        return newListOfIngredients;
+    }
+
     /**
      * Method that adds the chosen ingredient to the create new recipe logic
      * @param amount The amount of how much of an ingredient is needed.
@@ -99,8 +109,7 @@ public class AddIngredientGUIController {
         return addIngredientCenterPanel;
     }
 
-    public void setSelectedIngredient(Ingredient ingredient) {
-        this.selectedIngredient = ingredient;
+    public void setSelectedIngredient(int indexForIngredient) {
+        this.selectedIngredient = GetGUIController.getIngredientController().getIngredient(indexForIngredient);
     }
-
 }

@@ -98,4 +98,8 @@ public class Ingredient implements Serializable {
     public String toString() {
         return String.format("%s    |    %skr   |   %s%s", ingredientName, price, amountOfIngredient, measure);
     }
+
+    public String toString2() {
+        return String.format("%s    |    %skr", ingredientName, price);
+    }
 }

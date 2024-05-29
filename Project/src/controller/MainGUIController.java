@@ -232,4 +232,9 @@ public class MainGUIController {
     public void setSouthPanel(SouthPanel southPanel) {
         this.southPanel = southPanel;
     }
+
+    public void resetSearchAndCategory () {
+        recipeController.resetSearchAndFilters();
+        centerPanel.setCurrentCategories("");
+    }
 }
