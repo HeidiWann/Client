@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 
 
 /**
- *Class that represents the bottom panel of the "Add new ingredient"-window.
+ * Class that represents the bottom panel of the "Add new ingredient"-window.
  * It contains a TextField for the amount, a ChoiceBox the measurments and the add Button
  * @author Anton Jansson
  */
