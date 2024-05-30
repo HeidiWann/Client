@@ -198,7 +198,6 @@ public class MainGUIController {
             alert.setContentText("Du är redan inloggad");
             alert.showAndWait();
         }
-
     }
 
     public void setUserController(UserController userController) {
@@ -225,6 +224,17 @@ public class MainGUIController {
         this.southPanel = southPanel;
     }
 
+
+    /**
+     * Opens the Handle Account scene if a user is logged in.
+     * This method checks if there is a logged-in user and, if so, initializes
+     * and displays the Handle Account stage. If no user is logged in, the method
+     * returns false and does not open the scene.
+     *
+     * @return {@code true} if the Handle Account scene was successfully opened,
+     *         {@code false} if no user is logged in and the scene was not opened.
+     * @Author: Salma Omar
+     */
     public boolean openHandleAccountScene(){
 
         if (userController.getLoggedInUser() == null) {

@@ -10,7 +10,15 @@ import model.GetGUIController;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class RecipeCreationTopMiddleLayer implements Initializable {
+/**
+ * Controller class for the top middle layer of the recipe creation stage.
+ * Manages the input fields for the recipe name and instructions.
+ * Implements Initializable for JavaFX initialization.
+ *
+ * @Author: Salma Omar
+ * @Author: Anton Persson
+ */
+ public class RecipeCreationTopMiddleLayer implements Initializable {
     @FXML
     private TextField recipeNameField;
     @FXML

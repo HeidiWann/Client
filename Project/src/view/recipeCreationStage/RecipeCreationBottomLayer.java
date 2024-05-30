@@ -22,6 +22,14 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * Controller class for the bottom layer of the recipe creation stage.
+ * Manages the actions for buttons related to recipe creation, image selection, and category management.
+ * Implements Initializable for JavaFX initialization.
+ *
+ * @Author: Anton Persson
+ * @Author: Salma Omar
+ */
 public class RecipeCreationBottomLayer implements Initializable {
     @FXML
     private Button createnewRecipeButton;
@@ -45,13 +53,21 @@ public class RecipeCreationBottomLayer implements Initializable {
     private ObservableList<String> listOfCategories;
     private ObservableList<String> listOfChosenCategories;
 
+    /**
+     * Default constructor initializes the recipe creation controller and sets this layer.
+     *
+     * @Author: Anton Persson
+     */
     public RecipeCreationBottomLayer() {
         recipeCreationController = GetGUIController.getRecipeCreationController();
         recipeCreationController.setRecipeCreationBottomLayer(this);
     }
 
     /**
-     * @author Salma Omar
+     * Handles the image selection process. Opens a file chooser to select an image file.
+     * Sets the selected image to the ImageView if a file is chosen.
+     *
+     * @Author: Salma Omar
      */
     private void chooseImage() {
         FileChooser fileChooser = new FileChooser();
@@ -65,6 +81,15 @@ public class RecipeCreationBottomLayer implements Initializable {
         }
     }
 
+    /**
+     * Initializes the controller class. This method is automatically called after the FXML file has been loaded.
+     *
+     * @param url The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resourceBundle The resources used to localize the root object, or null if the root object was not localized.
+     *
+     * @Author: Salma Omar
+     * @Author: Anton Persson
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         choosePicture.setOnAction(new ButtonHandler());
@@ -82,6 +107,13 @@ public class RecipeCreationBottomLayer implements Initializable {
 
     }
 
+    /**
+     * Inserts a selected category into the list of chosen categories.
+     * Checks if the category is already added to avoid duplicates.
+     *
+     * @param chosenCategory The category to be added to the list of chosen categories.
+     * @Author: Anton Persson
+     */
     public void insertCategoryToList(String chosenCategory) {
         boolean categoryAlreadyAdded = false;
         for (String category : listOfChosenCategories) {
@@ -110,7 +142,18 @@ public class RecipeCreationBottomLayer implements Initializable {
         return listToReturn;
     }
 
+    /**
+     * Inner class for handling button actions.
+     *
+     * @Author: Salma Omar
+     * @Author: Anton Persson
+     */
     private class ButtonHandler implements EventHandler<ActionEvent> {
+        /**
+         * Handles button click events and performs actions based on which button was clicked.
+         *
+         * @param actionEvent The event that occurred.
+         */
         @Override
         public void handle(ActionEvent actionEvent) {
             Button clickedButton = (Button) actionEvent.getSource();
