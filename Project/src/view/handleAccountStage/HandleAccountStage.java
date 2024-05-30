@@ -34,10 +34,6 @@ public class HandleAccountStage implements Initializable {
     private Button changeUserName;
     @FXML
     private Button changePassword;
-    @FXML
-    private Button saveButton;
-    @FXML
-    private Button cancelButton;
 
     public HandleAccountStage() {
         handleAccountController = GetGUIController.getHandleAccountController();
@@ -45,10 +41,6 @@ public class HandleAccountStage implements Initializable {
 
     public void setUser(User user) {
         handleAccountController.setCurrentUser(user);
-    }
-
-    public void setConnectionController(Object connectionController) {
-
     }
 
     public void start(Stage handleAccountStage) {
@@ -72,19 +64,6 @@ public class HandleAccountStage implements Initializable {
         removeRecipeButton.setOnAction(new ButtonHandler());
         changeUserName.setOnAction(new ButtonHandler());
         changePassword.setOnAction(new ButtonHandler());
-        saveButton.setOnAction(new ButtonHandler());
-        cancelButton.setOnAction(new ButtonHandler());
-    }
-
-    private void handleSaveButton() {
-        String newUserName = usernameField.getText();
-        String newPassword = passwordField.getText();
-
-        if (!newUserName.isEmpty() && !newPassword.isEmpty()) {
-            handleAccountController.saveAccountSettings();
-        } else {
-            showAlert("Error", "Both username and password fields must be filled.");
-        }
     }
 
     private void handleViewRecipeButton() {
@@ -123,11 +102,6 @@ public class HandleAccountStage implements Initializable {
         }
     }
 
-    public void closeWindow() {
-        Stage stage = (Stage) cancelButton.getScene().getWindow();
-        stage.close();
-    }
-
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -141,11 +115,7 @@ public class HandleAccountStage implements Initializable {
         public void handle(ActionEvent event) {
             Button clickedButton = (Button) event.getSource();
 
-            if (clickedButton == saveButton) {
-                handleSaveButton();
-            } else if (clickedButton == cancelButton) {
-                closeWindow();
-            } else if (clickedButton == viewRecipeButton) {
+            if (clickedButton == viewRecipeButton) {
                 handleViewRecipeButton();
             } else if (clickedButton == removeRecipeButton) {
                 handleRemoveRecipeButton();
