@@ -100,6 +100,6 @@ public class Ingredient implements Serializable {
     }
 
     public String toString2() {
-        return String.format("%s    |    %skr", ingredientName, price);
+        return String.format("%s    |    %skr    |    %s", ingredientName, price, store);
     }
 }

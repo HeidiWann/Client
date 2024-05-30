@@ -5,6 +5,7 @@ import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import model.GetGUIController;
 import model.Ingredient;
+import model.Measurement;
 import view.addIngredientStage.AddIngredientCenterPanel;
 import view.addIngredientStage.AddIngredientSouthPanel;
 import view.addIngredientStage.AddIngredientStage;
@@ -83,12 +84,33 @@ public class AddIngredientGUIController {
         } else {
             String ingredientName = dataFromChosenIngredient[0];
             String ingredientCost = dataFromChosenIngredient[1];
+            ingredientCost = getCorrectPirce(ingredientCost, amount, measurment);
             GetGUIController.getRecipeCreationController().getRecipeCreationBottomMiddleLayer().addIngredientToList(ingredientName, ingredientCost, amount, measurment);
             selectedIngredient=null;
 
             ArrayList<Ingredient> clearList=new ArrayList<>();
             getAddIngredientCenterPanel().addIngredientsToTextField(clearList);
         }
+    }
+
+    public String getCorrectPirce (String oldCostOfIngredient, String amountOfIngredient, String measurement) {
+        double newCostOfIngredient = Double.parseDouble(oldCostOfIngredient);
+        double ingredientAmount = Double.parseDouble(amountOfIngredient);
+
+        if (measurement.equals(String.valueOf(Measurement.G)) || measurement.equals(String.valueOf(Measurement.ML)) || measurement.equals(String.valueOf(Measurement.KRM))) {
+            newCostOfIngredient = (newCostOfIngredient / 1000) * ingredientAmount;
+        } else if (measurement.equals(String.valueOf(Measurement.KG)) || measurement.equals(String.valueOf(Measurement.L))) {
+            newCostOfIngredient = newCostOfIngredient * ingredientAmount;
+        } else if (measurement.equals(String.valueOf(Measurement.DL))) {
+            newCostOfIngredient = (newCostOfIngredient / 10) * ingredientAmount;
+        } else if (measurement.equals(String.valueOf(Measurement.CL))) {
+            newCostOfIngredient = (newCostOfIngredient / 100) * ingredientAmount;
+        } else if (measurement.equals(String.valueOf(Measurement.TSK))) {
+            newCostOfIngredient = (newCostOfIngredient * 0.005) * ingredientAmount;
+        } else if (measurement.equals(String.valueOf(Measurement.MSK))) {
+            newCostOfIngredient = (newCostOfIngredient * 0.015) * ingredientAmount;
+        }
+        return String.valueOf(newCostOfIngredient);
     }
 
     private String[] fetchDataFromChosenIngredient() {
@@ -109,7 +131,7 @@ public class AddIngredientGUIController {
         return addIngredientCenterPanel;
     }
 
-    public void setSelectedIngredient(int indexForIngredient) {
-        this.selectedIngredient = GetGUIController.getIngredientController().getIngredient(indexForIngredient);
+    public void setSelectedIngredient(String key) {
+        this.selectedIngredient = GetGUIController.getIngredientController().getIngredient(key);
     }
 }

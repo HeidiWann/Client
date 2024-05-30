@@ -1,25 +1,22 @@
 package view.addIngredientStage;
 
 
-import controller.AddIngredientGUIController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import model.GetGUIController;
 import model.Ingredient;
 
-
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class AddIngredientCenterPanel implements Initializable {
@@ -31,30 +28,28 @@ public class AddIngredientCenterPanel implements Initializable {
     public ScrollPane scrollPane;
     @FXML
     public TextField searchField;
-    private int selectedIngredient;
+    private String selectedIngredient;
     private ObservableList<String> ingredients = FXCollections.observableArrayList();
     private Parent root;
 
 
-    public void search(ActionEvent actionEvent) throws IOException {
-        System.out.println("Test av search knappen, sökord: " + searchField.getText());
+    public void search()  {
         String searchedText = searchField.getText();
         this.ingredients.clear();
-            System.out.println(searchedText);
-            System.out.println(searchedText + " test searchText!=null");
-            ArrayList<Ingredient> matchedIngredients = GetGUIController.getAddIngredientGUIController().search(searchedText);
-            addIngredientsToTextField(matchedIngredients);
+        ArrayList<Ingredient> matchedIngredients = GetGUIController.getAddIngredientGUIController().search(searchedText);
+        addIngredientsToTextField(matchedIngredients);
     }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ingredientField.setItems(ingredients);
+        searchField.setOnKeyPressed(new SearchHandler());
 
         ingredientField.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String ingredient, String t1) {
-                selectedIngredient = ingredientField.getSelectionModel().getSelectedIndex();
+                selectedIngredient = ingredientField.getSelectionModel().getSelectedItem();
                 GetGUIController.getAddIngredientGUIController().setSelectedIngredient(selectedIngredient);
             }
         });
@@ -70,5 +65,14 @@ public class AddIngredientCenterPanel implements Initializable {
             showList.add(ingredient.toString2());
         }
         this.ingredients.addAll(showList);
+    }
+
+    private class SearchHandler implements EventHandler<KeyEvent> {
+        @Override
+        public void handle(KeyEvent keyEvent) {
+            if (keyEvent.getCode() == KeyCode.ENTER) {
+                search();
+            }
+        }
     }
 }

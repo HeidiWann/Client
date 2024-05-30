@@ -3,35 +3,28 @@ package controller;
 import model.Ingredient;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class IngredientController {
-    private ArrayList<Ingredient> ingredients;
+    HashMap<String, Ingredient> ingredientHashMap;
 
     public IngredientController(){
-        ingredients=new ArrayList<>();
-
-        testMethod();
-    }
-
-    private void testMethod() {
-        for (int i=0; i<4;i++){
-            ingredients.add(new Ingredient("TestData"+i+1,3));
-        }
-
-        ingredients.add(new Ingredient("RÅ fågel", 3));
-        ingredients.add(new Ingredient("mjölk", 3));
+        ingredientHashMap = new HashMap<>();
     }
 
     public ArrayList<Ingredient> getIngredients() {
-        return ingredients;
+        return new ArrayList<>(ingredientHashMap.values());
     }
 
     public void setIngredients(ArrayList<Ingredient> ingredients) {
-        this.ingredients = ingredients;
+        for (Ingredient ingredient : ingredients) {
+            String key = ingredient.toString2();
+            ingredientHashMap.put(key, ingredient);
+        }
     }
 
-    public Ingredient getIngredient(int index) {
-        return ingredients.get(index);
+    public Ingredient getIngredient(String key) {
+        return ingredientHashMap.get(key);
     }
 
 }

@@ -30,7 +30,7 @@ public class AddIngredientSouthPanel implements Initializable {
     public Button add;
     @FXML
     public TextField amount;
-    private Measurement[] measurments = {Measurement.DL, Measurement.KG, Measurement.G, Measurement.L, Measurement.CL, Measurement.Burk, Measurement.ML, Measurement.ST, Measurement.KRM, Measurement.TSK, Measurement.MSK};
+    private Measurement[] measurments = {Measurement.DL, Measurement.KG, Measurement.G, Measurement.L, Measurement.CL, Measurement.ML, Measurement.KRM, Measurement.TSK, Measurement.MSK};
 
     public void addIngredient(ActionEvent actionEvent) {
         System.out.println("Test lägg till knapp");
@@ -71,7 +71,6 @@ public class AddIngredientSouthPanel implements Initializable {
         }
         if (goodInput && amountGivenDouble > 0 && mesurment != null) {
             String mesurmentString = mesurment.toString();
-            System.out.println("output:" + amountGivenDouble + mesurmentString);
             //Todo koppla in redan skriven kod
             GetGUIController.getAddIngredientGUIController().addIngredient(amountGiven, mesurmentString);
         }
