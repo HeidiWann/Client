@@ -9,6 +9,7 @@ public class GetGUIController {
     private static RecipeCreationController recipeCreationController;
     private static AddIngredientGUIController addIngredientGUIController;
     private static IngredientController ingredientController;
+    private static HandleAccountController handleAccountController;
 
     public static MainGUIController getGuiController() {
         if (mainGuiController == null) {
@@ -49,5 +50,12 @@ public class GetGUIController {
             ingredientController = new IngredientController();
         }
         return ingredientController;
+    }
+
+    public static HandleAccountController getHandleAccountController() {
+        if (handleAccountController == null) {
+            handleAccountController = new HandleAccountController();
+        }
+        return handleAccountController;
     }
 }

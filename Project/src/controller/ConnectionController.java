@@ -135,6 +135,7 @@ public class ConnectionController {
         clientConnection.sendIntention(C_WANT_TO_REGISTER);
         clientConnection.sendObject(user);
     }
+
     public static BufferedImage convert(ImageView imageView) {
 
         Image image = imageView.getImage();
@@ -161,12 +162,11 @@ public class ConnectionController {
     }
 
 
-
     public void createNewRecipe(Recipe recipe) {
         if (recipe.getImageViewOfRecipe() != null && recipe.getImageOfRecipe() == null) {
             try {
                 BufferedImage bufferedImage = convert(recipe.getImageViewOfRecipe());
-                byte[] compressedImage = compressImage(bufferedImage,"png",0.5f);
+                byte[] compressedImage = compressImage(bufferedImage, "png", 0.5f);
                 recipe.setImageOfRecipe(compressedImage);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -178,6 +178,11 @@ public class ConnectionController {
 
     public void userLogIn(User user) {
         clientConnection.sendIntention(C_WANT_TO_LOGIN);
+        clientConnection.sendObject(user);
+    }
+
+    public void updateUserDetails(User user) {
+        clientConnection.sendIntention(C_UPDATE_USER_DETAILS);
         clientConnection.sendObject(user);
     }
 }
