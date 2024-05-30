@@ -19,6 +19,8 @@ public class WestPanel implements Initializable {
     private Button createRecipeButton;
     @FXML
     private Button logOutButton;
+    @FXML
+    private Button handleAccountButton;
 
     public WestPanel() {
         this.mainGUIController = GetGUIController.getGuiController();
@@ -26,6 +28,7 @@ public class WestPanel implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        handleAccountButton.setOnAction(new ButtonHandler());
         createRecipeButton.setOnAction(new ButtonHandler());
         logOutButton.setOnAction(new ButtonHandler());
     }
@@ -49,6 +52,15 @@ public class WestPanel implements Initializable {
                 }
             } else if (clickedButton.getText().equals("Logga ut")) {
                 mainGUIController.logOut();
+            } else if (clickedButton.getText().equals("Hantera mitt konto")) {
+                if (!mainGUIController.openHandleAccountScene()) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Not logged in");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Please login or register an account in order to handle your account!");
+                    alert.showAndWait();
+                }
+
             }
         }
     }

@@ -6,17 +6,17 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.mainStage.WestPanel">
    <children>
+      <Button fx:id="handleAccountButton" layoutX="34.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #81E86D;" text="Hantera mitt konto" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
       <Button fx:id="createRecipeButton" layoutX="34.0" layoutY="43.0" mnemonicParsing="false" style="-fx-background-color: #81E86D;" text="Skapa eget recept" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
       <Button fx:id="logOutButton" layoutX="57.0" layoutY="73.0" mnemonicParsing="false" style="-fx-background-color: #81E86D;" text="Logga ut" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Button layoutX="34.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #81E86D;" text="Hantera mitt konto" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

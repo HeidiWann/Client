@@ -39,16 +39,21 @@
                 <Font name="System Bold" size="12.0" />
             </font>
         </Button>
-        <Button fx:id="pigButton" layoutX="75.0" layoutY="68.0" mnemonicParsing="false" style="-fx-background-color: #81E86D;" text="Gris" textFill="WHITE">
+        <Button fx:id="pigButton" layoutX="75.0" layoutY="68.0" mnemonicParsing="false" style="-fx-background-color: #81E86D;" text="Fläsk" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font>
         </Button>
-        <Label fx:id="currentCategories" layoutX="29.0" layoutY="99.0" prefHeight="25.0" prefWidth="375.0" style="-fx-background-color: #81E86D;" text="Valda kategorier |" textFill="WHITE">
+        <Label fx:id="currentCategories" layoutX="29.0" layoutY="99.0" prefHeight="25.0" prefWidth="417.0" style="-fx-background-color: #81E86D;" text="Valda kategorier |" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font>
         </Label>
+      <Button fx:id="resetButton" layoutX="382.0" layoutY="68.0" mnemonicParsing="false" style="-fx-background-color: #81E86D;" text="Återställ" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
     </children>
 
 </AnchorPane>

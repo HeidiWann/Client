@@ -35,8 +35,6 @@ public class RecipeCreationController {
         stage.close();
     }
 
-
-
     public boolean createRecipe() {
         String author = GetGUIController.getGuiController().getUserController().getLoggedInUser().getUserName();
         String recipeName = recipeCreationTopMiddleLayer.getRecipeName();
@@ -52,6 +50,7 @@ public class RecipeCreationController {
         }
         return true;
     }
+
     public void createNewRecipe(String author, String instructions, ImageView imageOfRecipe, ArrayList<Ingredient> ingredients, String nameOfFood, ArrayList<FoodCategory> typeOfFood) {
         Recipe recipe = new Recipe(author, instructions, imageOfRecipe, ingredients, nameOfFood, typeOfFood);
         recipeController.addRecipeToArray(recipe);
@@ -59,6 +58,7 @@ public class RecipeCreationController {
         connectionController.createNewRecipe(recipe);
 
     }
+
     public Recipe convertRecipe(Recipe recipe) {
         ImageView imageview = byteArrayToImageView(recipe.getImageOfRecipe());
         Recipe convertedRecipe = new Recipe(recipe.getAuthor(), recipe.getInstructions(), imageview, recipe.getDish().getIngredients(), recipe.getRecipeName(), recipe.getDish().getTypeOfFood());
@@ -66,8 +66,6 @@ public class RecipeCreationController {
             System.out.println("Fungerar inte ens här");
         }
         return convertedRecipe;
-
-
     }
 
     public ArrayList<FoodCategory> convertToFoodCategory (ArrayList<String> listToConvert) {
@@ -142,53 +140,4 @@ public class RecipeCreationController {
     public RecipeCreationBottomMiddleLayer getRecipeCreationBottomMiddleLayer() {
         return recipeCreationBottomMiddleLayer;
     }
-
-
-
-    /*
-    @FXML
-    public void createOwnRecipe() {
-        String recipeName = recipeNameField.getText();
-        String instructions = instructionsArea.getText();
-
-        String ingredientName1 = ingredientNameField1.getText();
-        double ingredientCost = Double.parseDouble(ingredientCostField1.getText());
-        double ingredientAmount = Double.parseDouble(ingredientAmountField1.getText());
-        String measurement = (String) ingredientMeasurementComboBox1.getValue();
-        Measurement ingredientMeasurement = Measurement.valueOf(measurement);
-
-        Ingredient ingredient1 = new Ingredient(ingredientName1, ingredientCost, ingredientAmount, ingredientMeasurement);
-
-        ArrayList<Ingredient> ingredients = new ArrayList<>();
-        ingredients.add(ingredient1);
-
-//        handleClicks();
-        chooseImage();
-        clearFields();
-    }
-
-     */
-
-    /*
-    private void clearFields() {
-        recipeNameField.clear();
-        instructionsArea.clear();
-        ingredientAmountField1.clear();
-        ingredientCostField1.clear();
-        ingredientAmountField1.clear();
-        ingredientMeasurementComboBox1.getSelectionModel().clearSelection();
-    }
-
-     */
-
-//    public void handleClicks() {
-//        EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
-//            @Override
-//            public void handle(ActionEvent event) {
-//                createnewRecipeButton.setText("Create new recipe selected");
-//            }
-//        };
-//
-//        createnewRecipeButton.setOnAction(event);
-//    }
 }

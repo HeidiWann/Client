@@ -2,10 +2,12 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import model.*;
+import view.handleAccountStage.HandleAccountStage;
 import view.mainStage.WestPanel;
 import view.recipeCreationStage.RecipeCreationStage;
 import view.addIngredientStage.AddIngredientStage;
@@ -45,8 +47,7 @@ public class MainGUIController {
     public RecipeGUIController getRecipeGUIController() {
         return recipeGUIController;
     }
-
-
+    
     /**
      * This method loops through the list of recipes to find recipes that contains the characters entered by the
      * user from {@link CenterPanel}. If the characters are inside the recipes name, the recipe gets added to a new list.
@@ -136,15 +137,13 @@ public class MainGUIController {
 
         for (int i = 0; i < recipes.size(); i++) {
             boolean recipeContainedCategory = true;
-            if (recipes.get(i).getDish().getTypeOfFood() != null) {
-                for (int j = 0; j < recipes.get(i).getDish().getTypeOfFood().size(); j++) {
-                    for (int k = 0; k < filters.size(); k++) {
-                        if (recipes.get(i).getDish().getTypeOfFood().get(j).equals(filters.get(k)) && recipeContainedCategory) {
-                            filteredRecipeList.add(recipes.get((i)));
-                            recipeContainedCategory = false;
-                        } else if (!recipeContainedCategory) {
-                            break;
-                        }
+            for (int j = 0; j < recipes.get(i).getDish().getTypeOfFood().size(); j++) {
+                for (int k = 0; k < filters.size(); k++) {
+                    if (recipes.get(i).getDish().getTypeOfFood().get(j).equals(filters.get(k)) && recipeContainedCategory) {
+                        filteredRecipeList.add(recipes.get((i)));
+                        recipeContainedCategory = false;
+                    } else if (!recipeContainedCategory) {
+                        break;
                     }
                 }
             }
@@ -159,7 +158,6 @@ public class MainGUIController {
 
     public void setRecipes(Recipe[] recipes) {
         ArrayList<Recipe> recipesToAdd = new ArrayList<>(Arrays.asList(recipes));
-
         southPanel.addRecipes(recipesToAdd);
     }
 
@@ -185,13 +183,7 @@ public class MainGUIController {
         recipeCreationStage.setTitle("Create new Recipe");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/recipeCreationStage/RecipeCreation.fxml"));
         recipeCreationStage.setScene(new Scene(loader.load()));
-        recipeCreationStage.setResizable(false);
         recipeCreationStage.show();
-        //Pane recipeCreationPane = loader.load();
-
-//        RecipeCreationStage recipeCreationController = loader.getController();
-
-        //borderPane.setCenter(recipeCreationPane);
         return true;
     }
 
@@ -233,8 +225,19 @@ public class MainGUIController {
         this.southPanel = southPanel;
     }
 
-    public void resetSearchAndCategory () {
-        recipeController.resetSearchAndFilters();
-        centerPanel.setCurrentCategories("");
+    public boolean openHandleAccountScene(){
+
+        if (userController.getLoggedInUser() == null) {
+            return false;
+        }
+        
+        HandleAccountStage handleAccountStage = new HandleAccountStage();
+        Stage newStage = new Stage();
+        newStage.setTitle("Hantera mitt konto");
+        handleAccountStage.start(newStage);
+        return true;
+    }
+
+    public void resetSearchAndCategory() {
     }
 }

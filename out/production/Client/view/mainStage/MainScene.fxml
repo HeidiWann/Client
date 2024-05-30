@@ -13,19 +13,19 @@
         </Pane>
     </top>
     <right>
-        <Pane id="EastPane" prefHeight="126.0" prefWidth="645.0" BorderPane.alignment="CENTER">
+        <Pane id="EastPane" prefHeight="126.0" prefWidth="645.0" style="-fx-background-color: #EAEAE0;" BorderPane.alignment="CENTER">
             <children>
                 <fx:include source="CenterPanel.fxml" />
             </children>
         </Pane>
     </right>
     <bottom>
-        <Pane id="SouthPane" prefHeight="346.0" prefWidth="853.0" BorderPane.alignment="CENTER">
+        <Pane id="SouthPane" fx:id="southScene" prefHeight="346.0" prefWidth="853.0" style="-fx-background-color: #EAEAE0;" BorderPane.alignment="CENTER">
             <fx:include source="SouthPanel.fxml" />
         </Pane>
     </bottom>
     <left>
-        <Pane id="WestPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <Pane id="WestPane" prefHeight="126.0" prefWidth="208.0" style="-fx-background-color: #EAEAE0;" BorderPane.alignment="CENTER">
             <fx:include source="WestPanel.fxml" />
         </Pane>
     </left>

@@ -16,4 +16,6 @@ public interface Constants {
     public static final int C_HAVE_A_OBJECT = 22;
     public static final int C_WANT_TO_REGISTER = 23;
     public static final int C_CREATE_RECIPE = 24;
+
+    public static final int C_UPDATE_USER_DETAILS = 25;
 }
