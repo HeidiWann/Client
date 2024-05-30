@@ -18,6 +18,14 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Controller class for handling the creation of recipes in the application.
+ * It manages the user input from the GUI and interacts with the model to create and store new recipes.
+ *
+ * @Author: Salma Omar
+ * @Author: Anton Persson
+ * @Author: Christoffer Salomonsson
+ */
 public class RecipeCreationController {
     private RecipeCreationBottomLayer recipeCreationBottomLayer;
     private RecipeCreationBottomMiddleLayer recipeCreationBottomMiddleLayer;
@@ -30,11 +38,23 @@ public class RecipeCreationController {
 
     }
 
+    /**
+     * Closes the window associated with the given button.
+     *
+     * @param button the button whose window should be closed.
+     */
     public void closeWindow(Button button) {
         Stage stage = (Stage) button.getScene().getWindow();
         stage.close();
     }
 
+    /**
+     * Creates a recipe using the data provided by the GUI layers.
+     *
+     * @return true if the recipe is successfully created, false otherwise
+     * @Author: Anton Persson
+     * @Author: Salma Omar
+     */
     public boolean createRecipe() {
         String author = GetGUIController.getGuiController().getUserController().getLoggedInUser().getUserName();
         String recipeName = recipeCreationTopMiddleLayer.getRecipeName();
@@ -51,6 +71,18 @@ public class RecipeCreationController {
         return true;
     }
 
+    /**
+     * Creates a new Recipe object and adds it to the recipe controller and connection controller.
+     *
+     * @param author         the author of the recipe
+     * @param instructions   the instructions for the recipe
+     * @param imageOfRecipe  the image of the recipe
+     * @param ingredients    the ingredients for the recipe
+     * @param nameOfFood     the name of the recipe
+     * @param typeOfFood     the categories of the recipe
+     *
+     * @Author: Christoffer Salomonsson
+     */
     public void createNewRecipe(String author, String instructions, ImageView imageOfRecipe, ArrayList<Ingredient> ingredients, String nameOfFood, ArrayList<FoodCategory> typeOfFood) {
         Recipe recipe = new Recipe(author, instructions, imageOfRecipe, ingredients, nameOfFood, typeOfFood);
         recipeController.addRecipeToArray(recipe);
@@ -59,6 +91,13 @@ public class RecipeCreationController {
 
     }
 
+    /**
+     * Converts a given Recipe object to a new Recipe object with an ImageView created from a byte array.
+     *
+     * @param recipe the recipe to convert
+     * @return the converted recipe
+     * @Author: Christoffer Salomonsson
+     */
     public Recipe convertRecipe(Recipe recipe) {
         ImageView imageview = byteArrayToImageView(recipe.getImageOfRecipe());
         Recipe convertedRecipe = new Recipe(recipe.getAuthor(), recipe.getInstructions(), imageview, recipe.getDish().getIngredients(), recipe.getRecipeName(), recipe.getDish().getTypeOfFood());
@@ -68,6 +107,13 @@ public class RecipeCreationController {
         return convertedRecipe;
     }
 
+    /**
+     * Converts a list of category names to a list of FoodCategory enums.
+     *
+     * @param listToConvert the list of category names to convert
+     * @return the list of FoodCategory enums
+     * @Author: Anton Persson
+     */
     public ArrayList<FoodCategory> convertToFoodCategory (ArrayList<String> listToConvert) {
         ArrayList<FoodCategory> listOfCategories = new ArrayList<>();
         if (listToConvert != null) {
@@ -78,6 +124,13 @@ public class RecipeCreationController {
         return listOfCategories;
     }
 
+    /**
+     * Converts a list of ingredient strings to a list of Ingredient objects.
+     *
+     * @param listToConvert the list of ingredient strings to convert
+     * @return the list of Ingredient objects
+     * @Author: Anton Persson
+     */
     public ArrayList<Ingredient> convertToIngredientArray (ArrayList<String> listToConvert) {
         ArrayList<Ingredient> listOfCategories = new ArrayList<>();
         String ingredientName = "";
@@ -131,6 +184,14 @@ public class RecipeCreationController {
         this.connectionController = connectionController;
 
     }
+
+    /**
+     * Converts a byte array to an ImageView.
+     *
+     * @param byteArray the byte array to convert
+     * @return the ImageView created from the byte array
+     * @Author: Christoffer Salomonsson
+     */
     public static ImageView byteArrayToImageView(byte[] byteArray) {
     ByteArrayInputStream inputStream = new ByteArrayInputStream(byteArray);
     Image image = new Image(inputStream);
