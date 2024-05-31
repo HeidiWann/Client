@@ -5,6 +5,7 @@ import model.Recipe;
 import java.util.ArrayList;
 
 public class UserRecipeController {
+    private HandleAccountController handleAccountController;
     private ArrayList<Recipe> favoriteRecipes;
     private ArrayList<Recipe> usersOwnRecipes;
     private ConnectionController connectionController;
@@ -14,6 +15,10 @@ public class UserRecipeController {
         usersOwnRecipes = new ArrayList<>();
         GetGUIController.getRecipeCreationController().setUserRecipeController(this);
         this.connectionController = GetGUIController.getRecipeCreationController().getConnectionController();
+    }
+
+    public void setHandleAccountController(HandleAccountController handleAccountController) {
+        this.handleAccountController = handleAccountController;
     }
 
     public ArrayList<Recipe> getFavoriteRecipes() {

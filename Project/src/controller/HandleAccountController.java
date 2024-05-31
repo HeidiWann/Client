@@ -1,6 +1,6 @@
 package controller;
 
-import model.GetGUIController;
+import javafx.fxml.FXML;
 import model.Recipe;
 import model.User;
 
@@ -17,11 +17,11 @@ import java.util.ArrayList;
  * @Author: Salma Omar
  */
 public class HandleAccountController {
+    private UserRecipeController userRecipeController;
     private User currentUser;
     private ListView<Recipe> favoriteRecipesList;
+    private ListView<Recipe> createdRecipesList;
     private ConnectionController connectionController;
-    private TextField usernameField;
-    private PasswordField passwordField;
 
     /**
      * Default constructor for HandleAccountController.
@@ -29,6 +29,8 @@ public class HandleAccountController {
      * @Author: Salma Omar
      */
     public HandleAccountController() {
+        this.userRecipeController = new UserRecipeController();
+        this.userRecipeController.setHandleAccountController(this);
     }
 
     /**
@@ -39,7 +41,8 @@ public class HandleAccountController {
      */
     public void setCurrentUser(User user) {
         this.currentUser = user;
-        updateUIWithUserData();
+        updateUIWithFavoriteRecipes();
+        updateUIWithCreatedRecipes();
     }
 
     /**
@@ -47,43 +50,22 @@ public class HandleAccountController {
      *
      * @Author: Salma Omar
      */
-    public void updateUIWithUserData() {
-        System.out.println("Reached the method");
-        //usernameField.setText(currentUser.getUserName());
-        //passwordField.setText(currentUser.getPassword());
+    public void updateUIWithFavoriteRecipes() {
         favoriteRecipesList.getItems().clear();
-        ArrayList<Recipe> recipes = GetGUIController.getGuiController().getRecipeController().getRecipes();
-        for (Recipe recipe : recipes) {
+        ArrayList<Recipe> favoriteRecipes = userRecipeController.getFavoriteRecipes();
+        for (Recipe recipe : favoriteRecipes) {
             System.out.println(recipe.toString());
         }
-        favoriteRecipesList.getItems().addAll(recipes); //TODO koppla till userRecipeCOntroller istället
-
+        favoriteRecipesList.getItems().addAll(favoriteRecipes);
     }
 
-    /**
-     * Removes a recipe from the user's list of favorite recipes.
-     *
-     * @param recipe The recipe to remove from the favorites lists.
-     * @Author: Salma Omar
-     */
-    /*
-    public void removeFavoriteRecipe(Recipe recipe) {
-        currentUser.getFavoriteRecipes().remove(recipe);
-        favoriteRecipesList.getItems().remove(recipe);
-    }
-
-     */
-
-    /**
-     * Changes the current user's username.
-     *
-     * @param newUserName The new username to set.
-     * @Author: Salma Omar
-     */
-    public void changeUsername(String newUserName) {
-        currentUser.setUserName(newUserName);
-        connectionController.updateUserDetails(currentUser);
-        System.out.println("Username changed to: " + newUserName);
+    public void updateUIWithCreatedRecipes() {
+        createdRecipesList.getItems().clear();
+        ArrayList<Recipe> createdRecipes = userRecipeController.getUsersOwnRecipes();
+        for (Recipe recipe: createdRecipes) {
+            System.out.println(recipe.toString());
+        }
+        createdRecipesList.getItems().addAll(createdRecipes);
     }
 
     /**
@@ -110,5 +92,15 @@ public class HandleAccountController {
 
     public void setFavoriteRecipesList(ListView<Recipe> favoriteRecipesList) {
         this.favoriteRecipesList = favoriteRecipesList;
+    }
+
+    public void removeFavoriteRecipe(Recipe selectedRecipe) {
+        userRecipeController.getFavoriteRecipes().remove(selectedRecipe);
+        favoriteRecipesList.getItems().remove(selectedRecipe);
+    }
+
+    public void removeCreatedRecipe(Recipe selectedRecipe) {
+        userRecipeController.getUsersOwnRecipes().remove(selectedRecipe);
+        createdRecipesList.getItems().remove(selectedRecipe);
     }
 }

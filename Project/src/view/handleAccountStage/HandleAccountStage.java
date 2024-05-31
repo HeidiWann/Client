@@ -26,13 +26,13 @@ import java.util.ResourceBundle;
  * @Author: Salma Omar
  */
 public class HandleAccountStage implements Initializable {
+    @FXML
+    public ListView<Recipe> recipesListView;
     private final HandleAccountController handleAccountController;
     @FXML
     private Label usernameLabel;
     @FXML
     private PasswordField passwordField;
-    @FXML
-    private ListView<Recipe> recipeListView;
     @FXML
     private Label categoryLabel;
     @FXML
@@ -62,6 +62,7 @@ public class HandleAccountStage implements Initializable {
      */
     public void setUser(User user) {
         handleAccountController.setCurrentUser(user);
+        usernameLabel.setText(user.getUserName());
     }
 
     /**
@@ -70,6 +71,7 @@ public class HandleAccountStage implements Initializable {
      * @param handleAccountStage The stage to set up.
      * @Author: Salma Omar
      */
+    @FXML
     public void start(Stage handleAccountStage) {
         Parent root = null;
         try {
@@ -99,11 +101,42 @@ public class HandleAccountStage implements Initializable {
         changePassword.setOnAction(new ButtonHandler());
         toggleCategoryButton.setOnAction(new ButtonHandler());
         loadFavoriteRecipes();
+        loadCreatedRecipes();
     }
 
+    @FXML
     private void loadFavoriteRecipes() {
-        
+        try {
+            handleAccountController.updateUIWithFavoriteRecipes();
+            categoryLabel.setText("Favorite Recipes");
+            showingFavoriteRecipes = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
+    private void loadCreatedRecipes() {
+        try {
+            handleAccountController.updateUIWithCreatedRecipes();
+            categoryLabel.setText("Created Recipes");
+            showingFavoriteRecipes = false;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void handleToggleCategoryButton() {
+        try {
+            if (showingFavoriteRecipes) {
+                loadCreatedRecipes();
+            } else {
+                loadFavoriteRecipes();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      * Handles the action of viewing a selected recipe.
@@ -111,7 +144,7 @@ public class HandleAccountStage implements Initializable {
      * @Author: Salma Omar
      */
     private void handleViewRecipeButton() {
-        Recipe selectedRecipe = recipeListView.getSelectionModel().getSelectedItem();
+        Recipe selectedRecipe = recipesListView.getSelectionModel().getSelectedItem();
         if (selectedRecipe != null) {
             handleAccountController.viewRecipe(selectedRecipe);
         } else {
@@ -125,9 +158,15 @@ public class HandleAccountStage implements Initializable {
      * @Author: Salma Omar
      */
     private void handleRemoveRecipeButton() {
-        Recipe selectedRecipe = recipeListView.getSelectionModel().getSelectedItem();
+        Recipe selectedRecipe = recipesListView.getSelectionModel().getSelectedItem();
         if (selectedRecipe != null) {
-            //handleAccountController.removeFavoriteRecipe(selectedRecipe);
+            if (showingFavoriteRecipes) {
+                handleAccountController.removeFavoriteRecipe(selectedRecipe);
+                loadFavoriteRecipes();
+            } else {
+                handleAccountController.removeCreatedRecipe(selectedRecipe);
+                loadCreatedRecipes();
+            }
         } else {
             showAlert("Error", "No recipe selected.");
         }
@@ -155,6 +194,7 @@ public class HandleAccountStage implements Initializable {
      * @param content The content of the alert.
      * @Author: Salma Omar
      */
+    @FXML
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -178,13 +218,10 @@ public class HandleAccountStage implements Initializable {
             } else if (clickedButton == removeRecipeButton) {
                 handleRemoveRecipeButton();
             } else if (clickedButton == toggleCategoryButton) {
-                handleToggleCategory();
+                handleToggleCategoryButton();
             } else if (clickedButton == changePassword) {
                 handleChangePasswordButton();
             }
         }
-    }
-
-    private void handleToggleCategory() {
     }
 }

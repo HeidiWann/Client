@@ -42,7 +42,7 @@
         </rowConstraints>
     </GridPane>
 
-    <Label fx:id="categoryLabel" layoutX="50.0" layoutY="169.0" text="Favorite Recipes">
+    <Label fx:id="categoryLabel" layoutX="50.0" layoutY="169.0" text="Recipes">
         <font>
             <Font name="Apple Chancery" size="15.0" />
         </font>
