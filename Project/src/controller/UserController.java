@@ -82,4 +82,10 @@ public class UserController {
     public void setConnectionController(ConnectionController connectionController) {
         this.connectionController = connectionController;
     }
+    public void aquireOwnRecipes(){
+        connectionController.getOwnRecipes(loggedInUser);
+    }
+    public void aquireFavoriteRecipes(){
+        connectionController.getFavoriteRecipes(loggedInUser);
+    }
 }

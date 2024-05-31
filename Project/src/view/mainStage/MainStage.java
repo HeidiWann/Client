@@ -4,6 +4,7 @@ package view.mainStage;
 import controller.ConnectionController;
 import controller.RecipeController;
 import controller.UserController;
+import controller.UserRecipeController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,7 +26,8 @@ public class MainStage extends Application {
 
         UserController userController = new UserController();
         RecipeController recipeController = new RecipeController();
-        ConnectionController connectionController = new ConnectionController(userController, recipeController);
+        UserRecipeController userRecipeController = new UserRecipeController();
+        ConnectionController connectionController = new ConnectionController(userController, recipeController,userRecipeController);
         connectionController.connectToServer();
 
         /*

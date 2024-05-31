@@ -95,6 +95,8 @@ public class HandleAccountStage implements Initializable {
         removeRecipeButton.setOnAction(new ButtonHandler());
         changeUserName.setOnAction(new ButtonHandler());
         changePassword.setOnAction(new ButtonHandler());
+        handleAccountController.setFavoriteRecipesList(favoriteRecipesList);
+        handleAccountController.updateUIWithUserData();
     }
 
     /**
@@ -119,7 +121,7 @@ public class HandleAccountStage implements Initializable {
     private void handleRemoveRecipeButton() {
         Recipe selectedRecipe = favoriteRecipesList.getSelectionModel().getSelectedItem();
         if (selectedRecipe != null) {
-            handleAccountController.removeFavoriteRecipe(selectedRecipe);
+            //handleAccountController.removeFavoriteRecipe(selectedRecipe);
         } else {
             showAlert("Error", "No recipe selected.");
         }

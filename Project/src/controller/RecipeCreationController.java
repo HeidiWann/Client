@@ -31,11 +31,11 @@ public class RecipeCreationController {
     private RecipeCreationBottomMiddleLayer recipeCreationBottomMiddleLayer;
     private RecipeCreationTopMiddleLayer recipeCreationTopMiddleLayer;
     private RecipeController recipeController;
+    private UserRecipeController userRecipeController;
     private User currentUser;
     private ConnectionController connectionController;
 
     public RecipeCreationController() {
-
     }
 
     /**
@@ -68,6 +68,8 @@ public class RecipeCreationController {
         } else {
             createNewRecipe(author, recipeInstruction, imageOfRecipe, ingredients, recipeName, categories);
         }
+
+
         return true;
     }
 
@@ -85,8 +87,11 @@ public class RecipeCreationController {
      */
     public void createNewRecipe(String author, String instructions, ImageView imageOfRecipe, ArrayList<Ingredient> ingredients, String nameOfFood, ArrayList<FoodCategory> typeOfFood) {
         Recipe recipe = new Recipe(author, instructions, imageOfRecipe, ingredients, nameOfFood, typeOfFood);
+
         recipeController.addRecipeToArray(recipe);
         recipeController.updateListOfRecipes();
+        userRecipeController.addUsersOwnRecipe(recipe);
+
         connectionController.createNewRecipe(recipe);
 
     }
@@ -200,5 +205,13 @@ public class RecipeCreationController {
     }
     public RecipeCreationBottomMiddleLayer getRecipeCreationBottomMiddleLayer() {
         return recipeCreationBottomMiddleLayer;
+    }
+
+    public void setUserRecipeController(UserRecipeController userRecipeController) {
+        this.userRecipeController = userRecipeController;
+    }
+
+    public ConnectionController getConnectionController() {
+        return connectionController;
     }
 }

@@ -13,12 +13,10 @@ public class User implements Serializable {
     private String userName;
     private String passWord;
     private ImageView profilePicture;
-    private ArrayList<Recipe> favoriteRecipes;
 
     public User(String userName, String passWord) {
         this.userName = userName;
         this.passWord = passWord;
-        this.favoriteRecipes = new ArrayList<>();
     }
 
     public String getUserName() {
@@ -43,9 +41,6 @@ public class User implements Serializable {
 
     public ImageView getProfilePicture() {
         return profilePicture;
-    }
-    public ArrayList<Recipe> getFavoriteRecipes() {
-        return favoriteRecipes;
     }
 
     public void setUserName(String userName) {

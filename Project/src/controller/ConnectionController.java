@@ -14,6 +14,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import static controller.Constants.*;
 
@@ -25,16 +26,19 @@ public class ConnectionController {
     private RecipeController recipeController;
     private RecipeCreationController recipeCreationController;
     private IngredientController ingredientController;
+    private UserRecipeController userRecipeController;
 
-    public ConnectionController(UserController userController, RecipeController recipeController) throws IOException {
+    public ConnectionController(UserController userController, RecipeController recipeController, UserRecipeController userRecipeController) throws IOException {
         this.recipeCreationController = GetGUIController.getRecipeCreationController();
         this.mainGUIController = GetGUIController.getGuiController();
         this.userGUIController = GetGUIController.getUserGUIController();
         this.userController = userController;
         this.recipeController = recipeController;
         this.ingredientController = GetGUIController.getIngredientController();
+        this.userRecipeController = userRecipeController;
         recipeCreationController.setConnectionController(this);
         userController.setConnectionController(this);
+
     }
 
     public void connectToServer() throws IOException {
@@ -107,7 +111,18 @@ public class ConnectionController {
                 ingredientController.setIngredients(ingredients);
                 clientConnection.setListenForIntention(true);
                 clientConnection.setListenForObject(false);
-
+                break;
+            case C_USER_WANT_OWN_RECIPES:
+                ArrayList<Recipe> ownRecipes = (ArrayList<Recipe>) object;
+                userRecipeController.setUsersOwnRecipes(ownRecipes);
+                clientConnection.setListenForIntention(true);
+                clientConnection.setListenForObject(false);
+                break;
+            case C_USER_WANT_FAVORITES:
+                ArrayList<Recipe> favoriteRecipes = (ArrayList<Recipe>) object;
+                userRecipeController.setFavoriteRecipes(favoriteRecipes);
+                clientConnection.setListenForIntention(true);
+                clientConnection.setListenForObject(false);
         }
     }
 
@@ -184,5 +199,23 @@ public class ConnectionController {
     public void updateUserDetails(User user) {
         clientConnection.sendIntention(C_UPDATE_USER_DETAILS);
         clientConnection.sendObject(user);
+    }
+    public void getOwnRecipes(User user) {
+        clientConnection.sendIntention(C_USER_WANT_OWN_RECIPES);
+        clientConnection.sendObject(user);
+    }
+    public void getFavoriteRecipes(User user) {
+        System.out.println("Favorit get");
+        clientConnection.sendIntention(C_USER_WANT_FAVORITES);
+        clientConnection.sendObject(user);
+        System.out.println("End favorite get");
+    }
+    public void addFavoriteRecipe(Recipe recipe) {
+        User user = userController.getLoggedInUser();
+        HashMap<String, Object> addFavoriteRecipe = new HashMap<>();
+        addFavoriteRecipe.put("user", user);
+        addFavoriteRecipe.put("recipe", recipe);
+        revealClientIntention(C_WANTS_TO_ADD_FAVORITE);
+        clientConnection.sendObject(addFavoriteRecipe);
     }
 }

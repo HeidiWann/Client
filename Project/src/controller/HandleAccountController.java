@@ -1,11 +1,14 @@
 package controller;
 
+import model.GetGUIController;
 import model.Recipe;
 import model.User;
 
 import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+
+import java.util.ArrayList;
 
 /**
  * Controller class for handling account-related operations.
@@ -45,12 +48,16 @@ public class HandleAccountController {
      * @Author: Salma Omar
      */
     public void updateUIWithUserData() {
-        if (currentUser != null) {
-            usernameField.setText(currentUser.getUserName());
-            passwordField.setText(currentUser.getPassword());
-            favoriteRecipesList.getItems().clear();
-            favoriteRecipesList.getItems().addAll(currentUser.getFavoriteRecipes());
+        System.out.println("Reached the method");
+        //usernameField.setText(currentUser.getUserName());
+        //passwordField.setText(currentUser.getPassword());
+        favoriteRecipesList.getItems().clear();
+        ArrayList<Recipe> recipes = GetGUIController.getGuiController().getRecipeController().getRecipes();
+        for (Recipe recipe : recipes) {
+            System.out.println(recipe.toString());
         }
+        favoriteRecipesList.getItems().addAll(recipes); //TODO koppla till userRecipeCOntroller istället
+
     }
 
     /**
@@ -59,10 +66,13 @@ public class HandleAccountController {
      * @param recipe The recipe to remove from the favorites lists.
      * @Author: Salma Omar
      */
+    /*
     public void removeFavoriteRecipe(Recipe recipe) {
         currentUser.getFavoriteRecipes().remove(recipe);
         favoriteRecipesList.getItems().remove(recipe);
     }
+
+     */
 
     /**
      * Changes the current user's username.
@@ -96,5 +106,9 @@ public class HandleAccountController {
      */
     public void viewRecipe(Recipe selectedRecipe) {
         // Implementation for viewing the selected recipe.
+    }
+
+    public void setFavoriteRecipesList(ListView<Recipe> favoriteRecipesList) {
+        this.favoriteRecipesList = favoriteRecipesList;
     }
 }

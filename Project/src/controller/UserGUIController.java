@@ -116,6 +116,8 @@ public class UserGUIController {
             boolean successfulLogIn = userController.tryToLogIn(userName, password);
             if (successfulLogIn) {
                 setLoggedInStatus(true);
+                userController.aquireFavoriteRecipes();
+                userController.aquireOwnRecipes();
                 return true;
             }
         }
