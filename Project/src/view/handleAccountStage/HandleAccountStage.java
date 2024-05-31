@@ -28,19 +28,22 @@ import java.util.ResourceBundle;
 public class HandleAccountStage implements Initializable {
     private final HandleAccountController handleAccountController;
     @FXML
-    private TextField usernameField;
+    private Label usernameLabel;
     @FXML
     private PasswordField passwordField;
     @FXML
-    private ListView<Recipe> favoriteRecipesList;
+    private ListView<Recipe> recipeListView;
+    @FXML
+    private Label categoryLabel;
     @FXML
     private Button viewRecipeButton;
     @FXML
     private Button removeRecipeButton;
     @FXML
-    private Button changeUserName;
-    @FXML
     private Button changePassword;
+    @FXML
+    private Button toggleCategoryButton;
+    private boolean showingFavoriteRecipes = true;
 
     /**
      * Default constructor initializes the handle account controller.
@@ -93,10 +96,13 @@ public class HandleAccountStage implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         viewRecipeButton.setOnAction(new ButtonHandler());
         removeRecipeButton.setOnAction(new ButtonHandler());
-        changeUserName.setOnAction(new ButtonHandler());
         changePassword.setOnAction(new ButtonHandler());
-        handleAccountController.setFavoriteRecipesList(favoriteRecipesList);
-        handleAccountController.updateUIWithUserData();
+        toggleCategoryButton.setOnAction(new ButtonHandler());
+        loadFavoriteRecipes();
+    }
+
+    private void loadFavoriteRecipes() {
+        
     }
 
     /**
@@ -105,7 +111,7 @@ public class HandleAccountStage implements Initializable {
      * @Author: Salma Omar
      */
     private void handleViewRecipeButton() {
-        Recipe selectedRecipe = favoriteRecipesList.getSelectionModel().getSelectedItem();
+        Recipe selectedRecipe = recipeListView.getSelectionModel().getSelectedItem();
         if (selectedRecipe != null) {
             handleAccountController.viewRecipe(selectedRecipe);
         } else {
@@ -119,27 +125,14 @@ public class HandleAccountStage implements Initializable {
      * @Author: Salma Omar
      */
     private void handleRemoveRecipeButton() {
-        Recipe selectedRecipe = favoriteRecipesList.getSelectionModel().getSelectedItem();
+        Recipe selectedRecipe = recipeListView.getSelectionModel().getSelectedItem();
         if (selectedRecipe != null) {
             //handleAccountController.removeFavoriteRecipe(selectedRecipe);
         } else {
             showAlert("Error", "No recipe selected.");
         }
     }
-
-    /**
-     * Handles the action of changing the username.
-     *
-     * @Author: Salma Omar
-     */
-    private void handleChangeUsernameButton() {
-        String newUserName = usernameField.getText();
-        if (!newUserName.isEmpty()) {
-            handleAccountController.changeUsername(newUserName);
-        } else {
-            showAlert("Error", "Username cannot be empty.");
-        }
-    }
+    
 
     /**
      * Handles the action of changing the password.
@@ -184,11 +177,14 @@ public class HandleAccountStage implements Initializable {
                 handleViewRecipeButton();
             } else if (clickedButton == removeRecipeButton) {
                 handleRemoveRecipeButton();
-            } else if (clickedButton == changeUserName) {
-                handleChangeUsernameButton();
+            } else if (clickedButton == toggleCategoryButton) {
+                handleToggleCategory();
             } else if (clickedButton == changePassword) {
                 handleChangePasswordButton();
             }
         }
+    }
+
+    private void handleToggleCategory() {
     }
 }
