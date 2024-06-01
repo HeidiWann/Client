@@ -100,11 +100,14 @@ public class HandleAccountStage implements Initializable {
         removeRecipeButton.setOnAction(new ButtonHandler());
         changePassword.setOnAction(new ButtonHandler());
         toggleCategoryButton.setOnAction(new ButtonHandler());
-//        loadFavoriteRecipes();
-//        loadCreatedRecipes();
         handleAccountController.setListOfRecipes(recipesListView);
     }
 
+    /**
+     * Loads the favorite recipes of a user.
+     *
+     * @Author: Salma Omar
+     */
     @FXML
     private void loadFavoriteRecipes() {
         try {
@@ -116,6 +119,11 @@ public class HandleAccountStage implements Initializable {
         }
     }
 
+    /**
+     * Loads the created recipes of a user on the GUI.
+     *
+     * @Author: Salma Omar
+     */
     private void loadCreatedRecipes() {
         try {
             System.out.println("Reached loadCreatedRecipes method");
@@ -127,6 +135,11 @@ public class HandleAccountStage implements Initializable {
         }
     }
 
+    /**
+     * Handles the action toggling between the two categories (favorite recipes & own recipes).
+     *
+     * @Author: Salma Omar
+     */
     private void handleToggleCategoryButton() {
         try {
             if (showingFavoriteRecipes) {
@@ -155,7 +168,7 @@ public class HandleAccountStage implements Initializable {
     }
 
     /**
-     * Handles the action of removing a selected recipe from the favorites list.
+     * Handles the action of removing a selected recipe from the recipes list.
      *
      * @Author: Salma Omar
      */

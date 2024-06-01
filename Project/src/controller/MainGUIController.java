@@ -174,6 +174,21 @@ public class MainGUIController {
         return recipeController;
     }
 
+    /**
+     * Opens the recipe creation scene in a new stage.
+     * <p>
+     * This method checks if a user is logged in by querying the {@code userController}.
+     * If no user is logged in, the method returns {@code false}. If a user is logged in,
+     * it loads the Recipe Creation FXML file and displays it in a new stage.
+     * </p>
+     *
+     * @return {@code true} if the recipe creation scene is successfully opened,
+     *         {@code false} if no user is logged in.
+     * @throws IOException if there is an error loading the FXML file.
+     *
+     * @Author: Anton Persson
+     * @Author: Salma Omar
+     */
     @FXML
     public boolean openRecipeCreationScene() throws IOException {
         if (userController.getLoggedInUser() == null) {

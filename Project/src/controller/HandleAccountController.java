@@ -32,20 +32,12 @@ public class HandleAccountController {
         this.userRecipeController = userRecipeController;
     }
 
-    /**
-     * Sets the current user and updates the UI with the user's data.
-     *
-     * @param user The user to set as the current user.
-     * @Author: Salma Omar
-     */
     public void setCurrentUser(User user) {
         this.currentUser = user;
-//        updateUIWithFavoriteRecipes();
-//        updateUIWithCreatedRecipes();
     }
 
     /**
-     * Updates the UI components with the current user's data.
+     * Updates the UI with the favorite recipes of the current user.
      *
      * @Author: Salma Omar
      */
@@ -59,8 +51,13 @@ public class HandleAccountController {
         listOfRecipes.getItems().addAll(favoriteRecipes);
     }
 
+    /**
+     * Updates the UI with the created recipes of a user.
+     *
+     * @Author: Salma Omar
+     */
     public void updateUIWithCreatedRecipes() {
-        System.out.println("Reched method that updates GUI with created recipes ------------------------");
+        System.out.println("Reached method that updates GUI with created recipes ------------------------");
         listOfRecipes.getItems().clear();
         ArrayList<Recipe> createdRecipes = userRecipeController.getUsersOwnRecipes();
         System.out.println(createdRecipes);
