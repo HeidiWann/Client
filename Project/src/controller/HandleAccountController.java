@@ -1,9 +1,18 @@
 package controller;
 
+import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import model.Recipe;
 import model.User;
 
 import javafx.scene.control.ListView;
+import view.mainStage.SouthPanel;
 
 import java.util.ArrayList;
 
@@ -14,6 +23,7 @@ import java.util.ArrayList;
  * @Author: Salma Omar
  */
 public class HandleAccountController {
+    private MainGUIController mainGUIController;
     private UserRecipeController userRecipeController;
     private User currentUser;
     private ListView<Recipe> listOfRecipes;
@@ -25,11 +35,15 @@ public class HandleAccountController {
      * @Author: Salma Omar
      */
     public HandleAccountController() {
-
+        this.mainGUIController = new MainGUIController();
     }
 
     public void setUserRecipeController(UserRecipeController userRecipeController) {
         this.userRecipeController = userRecipeController;
+    }
+
+    public void setConnectionController(ConnectionController connectionController) {
+        this.connectionController = connectionController;
     }
 
     public void setCurrentUser(User user) {
@@ -41,14 +55,16 @@ public class HandleAccountController {
      *
      * @Author: Salma Omar
      */
-    public void updateUIWithFavoriteRecipes(ListView listView) {
-        listOfRecipes = listView;
+    public void updateUIWithFavoriteRecipes(ListView listViewInput) {
+        listOfRecipes = listViewInput;
         listOfRecipes.getItems().clear();
+
         ArrayList<Recipe> favoriteRecipes = userRecipeController.getFavoriteRecipes();
         for (Recipe recipe : favoriteRecipes) {
             System.out.println(recipe.toString());
         }
         listOfRecipes.getItems().addAll(favoriteRecipes);
+
     }
 
     /**
@@ -86,7 +102,7 @@ public class HandleAccountController {
      * @Author: Salma Omar
      */
     public void viewRecipe(Recipe selectedRecipe) {
-        // Implementation for viewing the selected recipe.
+        mainGUIController.getRecipeGUIController().showSelectedRecipe(selectedRecipe);
     }
 
     public void setListOfRecipes(ListView<Recipe> listOfRecipes) {

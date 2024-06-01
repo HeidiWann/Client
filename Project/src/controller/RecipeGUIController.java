@@ -44,14 +44,31 @@ public class RecipeGUIController {
         ArrayList<String> recipesCategories = getFormattedCategories(recipeToShow.getDish().getTypeOfFood());
         double totalCostOfRecipe = getTotalCostOfRecipe(recipeToShow.getDish().getIngredients());
 
-        Image tempImageInRecipe = recipeToShow.getImageViewOfRecipe().getImage();
+        // Fönstret visas utan bild när man trycker på en favoritrecept & skapad recept
+        Image tempImageInRecipe = null;
+        if (recipeToShow.getImageViewOfRecipe() != null) {
+            tempImageInRecipe = recipeToShow.getImageViewOfRecipe().getImage();
+        }
+
+        if (tempImageInRecipe == null) {
+            System.err.println("Error: The recipe image is null.");
+        } else {
+            ImageView imageInRecipe = new ImageView(tempImageInRecipe);
+            imageInRecipe.setFitHeight(209);
+            imageInRecipe.setFitWidth(400);
+            recipeCenterPanel.insertImage(imageInRecipe);
+        }
+
+
+        // Antons ursprungliga kod (där bilden visas på recepten på mainstagen)
+        /*Image tempImageInRecipe = recipeToShow.getImageViewOfRecipe().getImage();
         ImageView imageInRecipe = new ImageView(tempImageInRecipe);
         imageInRecipe.setFitHeight(209);
-        imageInRecipe.setFitWidth(400);
+        imageInRecipe.setFitWidth(400);*/
 
         recipeMainScene.createRecipeWindow();
         recipeCenterPanel.insertIngredientInfo(ingredientsInRecipe, String.valueOf(totalCostOfRecipe), "ICA");
-        recipeCenterPanel.insertImage(imageInRecipe);
+        //recipeCenterPanel.insertImage(imageInRecipe); // Denna måste avkommenteras för att bild på recepten ska visas när man trycker på recepten i mainstagen
         recipeSouthPanel.insertInstructions(recipeInstructions);
         recipeNorthPanel.setHeaders(nameOfAuthor, nameOfRecipe, recipesCategories.toString());
     }

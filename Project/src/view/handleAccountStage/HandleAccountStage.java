@@ -1,6 +1,7 @@
 package view.handleAccountStage;
 
 import controller.HandleAccountController;
+import javafx.scene.image.ImageView;
 import model.GetGUIController;
 import model.Recipe;
 import model.User;
@@ -28,6 +29,8 @@ import java.util.ResourceBundle;
 public class HandleAccountStage implements Initializable {
     @FXML
     public ListView<Recipe> recipesListView;
+    @FXML
+    ImageView imageOfSelectedRecipe;
     private final HandleAccountController handleAccountController;
     @FXML
     private Label usernameLabel;
@@ -52,6 +55,7 @@ public class HandleAccountStage implements Initializable {
      */
     public HandleAccountStage() {
         handleAccountController = GetGUIController.getHandleAccountController();
+
     }
 
     /**
@@ -101,6 +105,7 @@ public class HandleAccountStage implements Initializable {
         changePassword.setOnAction(new ButtonHandler());
         toggleCategoryButton.setOnAction(new ButtonHandler());
         handleAccountController.setListOfRecipes(recipesListView);
+        setUser(GetGUIController.getGuiController().getUserController().getLoggedInUser());
     }
 
     /**

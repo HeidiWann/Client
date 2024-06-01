@@ -19,6 +19,7 @@ import java.util.HashMap;
 import static controller.Constants.*;
 
 public class ConnectionController {
+    private HandleAccountController handleAccountController;
     private final MainGUIController mainGUIController;
     private ClientConnection clientConnection;
     private final UserController userController;
@@ -38,7 +39,8 @@ public class ConnectionController {
         this.userRecipeController = userRecipeController;
         recipeCreationController.setConnectionController(this);
         userController.setConnectionController(this);
-
+        this.handleAccountController = GetGUIController.getHandleAccountController();
+        handleAccountController.setConnectionController(this);
     }
 
     public void connectToServer() throws IOException {
