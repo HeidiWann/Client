@@ -100,14 +100,15 @@ public class HandleAccountStage implements Initializable {
         removeRecipeButton.setOnAction(new ButtonHandler());
         changePassword.setOnAction(new ButtonHandler());
         toggleCategoryButton.setOnAction(new ButtonHandler());
-        loadFavoriteRecipes();
-        loadCreatedRecipes();
+//        loadFavoriteRecipes();
+//        loadCreatedRecipes();
+        handleAccountController.setListOfRecipes(recipesListView);
     }
 
     @FXML
     private void loadFavoriteRecipes() {
         try {
-            handleAccountController.updateUIWithFavoriteRecipes();
+            handleAccountController.updateUIWithFavoriteRecipes(recipesListView);
             categoryLabel.setText("Favorite Recipes");
             showingFavoriteRecipes = true;
         } catch (Exception e) {
@@ -117,6 +118,7 @@ public class HandleAccountStage implements Initializable {
 
     private void loadCreatedRecipes() {
         try {
+            System.out.println("Reached loadCreatedRecipes method");
             handleAccountController.updateUIWithCreatedRecipes();
             categoryLabel.setText("Created Recipes");
             showingFavoriteRecipes = false;

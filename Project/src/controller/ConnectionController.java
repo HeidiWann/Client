@@ -114,6 +114,7 @@ public class ConnectionController {
                 break;
             case C_USER_WANT_OWN_RECIPES:
                 ArrayList<Recipe> ownRecipes = (ArrayList<Recipe>) object;
+                System.out.println("REACHED C_USER_WANT_OWN_RECIPES ----------------------------");
                 userRecipeController.setUsersOwnRecipes(ownRecipes);
                 clientConnection.setListenForIntention(true);
                 clientConnection.setListenForObject(false);

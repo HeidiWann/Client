@@ -11,10 +11,12 @@ public class UserRecipeController {
     private ConnectionController connectionController;
 
     public UserRecipeController() {
+        GetGUIController.getHandleAccountController().setUserRecipeController(this);
         favoriteRecipes = new ArrayList<>();
         usersOwnRecipes = new ArrayList<>();
         GetGUIController.getRecipeCreationController().setUserRecipeController(this);
         this.connectionController = GetGUIController.getRecipeCreationController().getConnectionController();
+
     }
 
     public void setHandleAccountController(HandleAccountController handleAccountController) {
@@ -33,11 +35,15 @@ public class UserRecipeController {
     }
 
     public ArrayList<Recipe> getUsersOwnRecipes() {
+        System.out.println("Nu är users own recipes" + usersOwnRecipes);
         return usersOwnRecipes;
     }
 
     public void setUsersOwnRecipes(ArrayList<Recipe> usersOwnRecipes) {
         this.usersOwnRecipes = usersOwnRecipes;
+        for (Recipe recipe : usersOwnRecipes) {
+            System.out.println("Receptet kom till UserRecipeController " + recipe.toString());
+        }
     }
 
     public void addFavoriteRecipes(Recipe recipe) {

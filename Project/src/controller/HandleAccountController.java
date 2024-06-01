@@ -1,12 +1,9 @@
 package controller;
 
-import javafx.fxml.FXML;
 import model.Recipe;
 import model.User;
 
 import javafx.scene.control.ListView;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 
 import java.util.ArrayList;
 
@@ -19,8 +16,7 @@ import java.util.ArrayList;
 public class HandleAccountController {
     private UserRecipeController userRecipeController;
     private User currentUser;
-    private ListView<Recipe> favoriteRecipesList;
-    private ListView<Recipe> createdRecipesList;
+    private ListView<Recipe> listOfRecipes;
     private ConnectionController connectionController;
 
     /**
@@ -29,8 +25,11 @@ public class HandleAccountController {
      * @Author: Salma Omar
      */
     public HandleAccountController() {
-        this.userRecipeController = new UserRecipeController();
-        this.userRecipeController.setHandleAccountController(this);
+
+    }
+
+    public void setUserRecipeController(UserRecipeController userRecipeController) {
+        this.userRecipeController = userRecipeController;
     }
 
     /**
@@ -41,8 +40,8 @@ public class HandleAccountController {
      */
     public void setCurrentUser(User user) {
         this.currentUser = user;
-        updateUIWithFavoriteRecipes();
-        updateUIWithCreatedRecipes();
+//        updateUIWithFavoriteRecipes();
+//        updateUIWithCreatedRecipes();
     }
 
     /**
@@ -50,22 +49,25 @@ public class HandleAccountController {
      *
      * @Author: Salma Omar
      */
-    public void updateUIWithFavoriteRecipes() {
-        favoriteRecipesList.getItems().clear();
+    public void updateUIWithFavoriteRecipes(ListView listView) {
+        listOfRecipes = listView;
+        listOfRecipes.getItems().clear();
         ArrayList<Recipe> favoriteRecipes = userRecipeController.getFavoriteRecipes();
         for (Recipe recipe : favoriteRecipes) {
             System.out.println(recipe.toString());
         }
-        favoriteRecipesList.getItems().addAll(favoriteRecipes);
+        listOfRecipes.getItems().addAll(favoriteRecipes);
     }
 
     public void updateUIWithCreatedRecipes() {
-        createdRecipesList.getItems().clear();
+        System.out.println("Reched method that updates GUI with created recipes ------------------------");
+        listOfRecipes.getItems().clear();
         ArrayList<Recipe> createdRecipes = userRecipeController.getUsersOwnRecipes();
+        System.out.println(createdRecipes);
         for (Recipe recipe: createdRecipes) {
             System.out.println(recipe.toString());
         }
-        createdRecipesList.getItems().addAll(createdRecipes);
+        listOfRecipes.getItems().addAll(createdRecipes);
     }
 
     /**
@@ -90,17 +92,17 @@ public class HandleAccountController {
         // Implementation for viewing the selected recipe.
     }
 
-    public void setFavoriteRecipesList(ListView<Recipe> favoriteRecipesList) {
-        this.favoriteRecipesList = favoriteRecipesList;
+    public void setListOfRecipes(ListView<Recipe> listOfRecipes) {
+        this.listOfRecipes = listOfRecipes;
     }
 
     public void removeFavoriteRecipe(Recipe selectedRecipe) {
         userRecipeController.getFavoriteRecipes().remove(selectedRecipe);
-        favoriteRecipesList.getItems().remove(selectedRecipe);
+        listOfRecipes.getItems().remove(selectedRecipe);
     }
 
     public void removeCreatedRecipe(Recipe selectedRecipe) {
         userRecipeController.getUsersOwnRecipes().remove(selectedRecipe);
-        createdRecipesList.getItems().remove(selectedRecipe);
+        listOfRecipes.getItems().remove(selectedRecipe);
     }
 }
