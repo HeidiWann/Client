@@ -202,6 +202,11 @@ public class MainGUIController {
         return true;
     }
 
+    /**
+     * This method checks if the user is logged in and either starts the window that allows the user to log in
+     * or gives info to the user based on wheather the user is logged in or not
+     * @author Anton Persson
+     */
     public void startLogInWindow() {
         if (userController.getLoggedInUser() == null) {
             UserMainScene userMainScene = new UserMainScene();

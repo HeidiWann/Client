@@ -2,6 +2,11 @@ package model;
 
 import controller.*;
 
+/**
+ * This class contains static variables in order to make the application work with the same instaces since JavaFX creates
+ * everything on its own
+ * @author Anton Persson
+ */
 public class GetGUIController {
     private static MainGUIController mainGuiController;
     private static UserGUIController userGUIController;

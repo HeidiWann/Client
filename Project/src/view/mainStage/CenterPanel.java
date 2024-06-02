@@ -10,7 +10,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.paint.Color;
 import model.FoodCategory;
 import model.GetGUIController;
 
@@ -155,6 +154,10 @@ public class CenterPanel implements Initializable {
         }
     }
 
+    /**
+     * Private class that allows the user to serach for recipes by pressing enter
+     * @author Anton Persson
+     */
     private class SearchHandler implements EventHandler<KeyEvent> {
         @Override
         public void handle(KeyEvent keyEvent) {

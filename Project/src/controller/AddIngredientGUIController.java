@@ -93,6 +93,14 @@ public class AddIngredientGUIController {
         }
     }
 
+    /**
+     * This method returns the cost of an ingredient after its calculated for the amount and measurment as a String
+     * @param oldCostOfIngredient
+     * @param amountOfIngredient
+     * @param measurement
+     * @return
+     * @author Anton Persson
+     */
     public String getCorrectPirce (String oldCostOfIngredient, String amountOfIngredient, String measurement) {
         double newCostOfIngredient = Double.parseDouble(oldCostOfIngredient);
         double ingredientAmount = Double.parseDouble(amountOfIngredient);

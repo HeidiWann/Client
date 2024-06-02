@@ -123,61 +123,12 @@ public class ClientConnection extends Thread {
                     }
                 }
             }
-        } catch (Exception e){ //TODO Make this MVC?
-//            Platform.runLater(() -> {
-//                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//                alert.setTitle("Tappade anslutning");
-//                alert.setHeaderText(null);
-//                alert.setContentText("Anslutningen till servern tappades. När anslutningen återkopplas blir du meddelad");
-//                alert.showAndWait();
-//                reconnectToServer();
-//            });
+        } catch (Exception e){
             e.printStackTrace();
         } finally {
             closeResources();
         }
     }
-
-    /*
-    private void reconnectToServer() {
-        boolean hasReconnected = false;
-        while (!hasReconnected && !Thread.interrupted()) {
-            try {
-                Thread.sleep(1000);
-                hasReconnected = reestablishConnection();
-
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Uppkopplad");
-        alert.setHeaderText(null);
-        alert.setContentText("Anslutningen till servern har etablerats igen");
-        alert.showAndWait();
-        return;
-    }
-
-     */
-
-    /*
-    private boolean reestablishConnection() {
-        try {
-            socket = new Socket(host, port);
-            oos = new ObjectOutputStream(socket.getOutputStream());
-            ois = new ObjectInputStream(socket.getInputStream());
-
-            setListenForIntention(true);
-            setListenForObject(false);
-            System.out.println("Connected to server at " + host + ":" + port);
-            return true;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-     */
 
     /**
      * This method gives values to some instance variables and by doing this, it also creates a connection to the server

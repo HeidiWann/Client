@@ -116,14 +116,24 @@ public class ConnectionController {
                 break;
             case C_USER_WANT_OWN_RECIPES:
                 ArrayList<Recipe> ownRecipes = (ArrayList<Recipe>) object;
+                ArrayList<Recipe> ownRecipesConverted = new ArrayList<>();
+                for (Recipe recipe : ownRecipes) {
+                    Recipe convertRecipe = recipeCreationController.convertRecipe(recipe);
+                    ownRecipesConverted.add(convertRecipe);
+                }
                 System.out.println("REACHED C_USER_WANT_OWN_RECIPES ----------------------------");
-                userRecipeController.setUsersOwnRecipes(ownRecipes);
+                userRecipeController.setUsersOwnRecipes(ownRecipesConverted);
                 clientConnection.setListenForIntention(true);
                 clientConnection.setListenForObject(false);
                 break;
             case C_USER_WANT_FAVORITES:
                 ArrayList<Recipe> favoriteRecipes = (ArrayList<Recipe>) object;
-                userRecipeController.setFavoriteRecipes(favoriteRecipes);
+                ArrayList<Recipe> usersFavoriteRecipes = new ArrayList<>();
+                for (Recipe recipe : favoriteRecipes) {
+                    Recipe convertRecipe = recipeCreationController.convertRecipe(recipe);
+                    usersFavoriteRecipes.add(convertRecipe);
+                }
+                userRecipeController.setFavoriteRecipes(usersFavoriteRecipes);
                 clientConnection.setListenForIntention(true);
                 clientConnection.setListenForObject(false);
         }
@@ -133,6 +143,7 @@ public class ConnectionController {
      * This method reveals the intention of a client and then does something based on the intention.
      *
      * @param intention An int  that decides what happens
+     * @author Anton Persson
      */
     public void revealClientIntention(int intention) {
         switch (intention) {

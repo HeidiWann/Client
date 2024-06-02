@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 /**
  * This method launches JavaFX and starts the procces of reading the FXML files
  * @author Anton Persson
+ * @author Heidi Wännman
  */
 
 public class MainStage extends Application {
@@ -30,18 +31,7 @@ public class MainStage extends Application {
         ConnectionController connectionController = new ConnectionController(userController, recipeController,userRecipeController);
         connectionController.connectToServer();
 
-        /*
-        Thread.sleep(1000); // Måste vänta så uppkopplingen hinner skapas
-        connectionController.sendIntention(30);
-        connectionController.sendObject(new User("Anton","1234"));
-
-        connectionController.sendIntention(30);
-        connectionController.sendObject(new User("Anton","1234"));
-
-         */
-        
         primaryStage.setOnCloseRequest(event -> {
-            System.out.println("Lambada works");
             connectionController.serverDisconnected();
             System.exit(0);
         });

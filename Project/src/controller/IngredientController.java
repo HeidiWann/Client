@@ -5,6 +5,10 @@ import model.Ingredient;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * This class stores the ingredients in the application
+ * @author Anton Persson
+ */
 public class IngredientController {
     HashMap<String, Ingredient> ingredientHashMap;
 

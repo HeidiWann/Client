@@ -9,6 +9,11 @@ import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * This method handles the users in the application
+ * @author Anton Persson
+ * @author Christoffer Salomonsson
+ */
 public class UserController {
     private HashMap<String, User> users; // <username, user>
     private User loggedInUser;
@@ -37,8 +42,6 @@ public class UserController {
 
     public boolean tryToLogIn(String userName, String enteredPassword) {
         String usersPassword = users.get(userName).getPassword();
-        System.out.println("Det angivna lösenordet: " + enteredPassword);
-        System.out.println("Det faktiska lösenordet: " + usersPassword);
         if (usersPassword.equals(enteredPassword)) {
             loggedInUser = users.get(userName);
             return true;
@@ -85,6 +88,7 @@ public class UserController {
     public void aquireOwnRecipes(){
         connectionController.getOwnRecipes(loggedInUser);
     }
+
     public void aquireFavoriteRecipes(){
         connectionController.getFavoriteRecipes(loggedInUser);
     }

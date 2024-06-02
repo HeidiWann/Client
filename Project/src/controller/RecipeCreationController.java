@@ -1,6 +1,5 @@
 package controller;
 
-import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -11,18 +10,13 @@ import view.recipeCreationStage.RecipeCreationBottomLayer;
 import view.recipeCreationStage.RecipeCreationBottomMiddleLayer;
 import view.recipeCreationStage.RecipeCreationTopMiddleLayer;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 
 /**
  * Controller class for handling the creation of recipes in the application.
  * It manages the user input from the GUI and interacts with the model to create and store new recipes.
  *
- * @Author: Salma Omar
  * @Author: Anton Persson
  * @Author: Christoffer Salomonsson
  */
@@ -42,6 +36,7 @@ public class RecipeCreationController {
      * Closes the window associated with the given button.
      *
      * @param button the button whose window should be closed.
+     * @author Anton Persson
      */
     public void closeWindow(Button button) {
         Stage stage = (Stage) button.getScene().getWindow();
@@ -49,11 +44,11 @@ public class RecipeCreationController {
     }
 
     /**
-     * Creates a recipe using the data provided by the GUI layers.
+     * This method takes the information from the GUI provided by the user and then calls another method with the information
+     * to create a recipe
      *
-     * @return true if the recipe is successfully created, false otherwise
-     * @Author: Anton Persson
-     * @Author: Salma Omar
+     * @return boolean that returns true if all the essential information is given, false otherwise
+     * @author Anton Persson
      */
     public boolean createRecipe() {
         String author = GetGUIController.getGuiController().getUserController().getLoggedInUser().getUserName();
@@ -68,7 +63,6 @@ public class RecipeCreationController {
         } else {
             createNewRecipe(author, recipeInstruction, imageOfRecipe, ingredients, recipeName, categories);
         }
-
 
         return true;
     }

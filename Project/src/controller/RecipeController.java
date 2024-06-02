@@ -5,6 +5,10 @@ import model.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * This class controls the recipes in the application
+ * @author Anton Persson
+ */
 public class RecipeController {
     private MainGUIController mainGUIController;
     private ArrayList<Recipe> recipes;

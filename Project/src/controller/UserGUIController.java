@@ -7,6 +7,11 @@ import view.userStage.*;
 
 import javax.swing.*;
 
+/**
+ * This class controlls the information going in and out of the userGUI
+ * @author Anton Persson
+ * @author Christoffer Salomonsson
+ */
 public class UserGUIController {
     private UserWestPanel userWestPanel;
     private UserMainScene userMainScene;

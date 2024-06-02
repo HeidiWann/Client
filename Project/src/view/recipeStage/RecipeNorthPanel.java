@@ -8,6 +8,10 @@ import model.GetGUIController;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Class that handles the nortpanel of the recipe GUI
+ * @author Anton Persson
+ */
 public class RecipeNorthPanel implements Initializable {
     @FXML
     private Label authorID;

@@ -53,8 +53,7 @@ public class SouthPanel implements Initializable {
     /**
      * This method initializes the components from the FXML file SouthPanel. It also creates a custom "CellFactory" to
      * allow us to store both text and images in the {@link ListView}. It uses a lambada "->" expression to
-     * automatically format each item that is added to the list as the custom {@link ListCell}. You need to (I think)
-     * crate a cell in order to store something in the ListVIew.
+     * automatically format each item that is added to the list as the custom {@link ListCell}.
      *
      * @param url
      * @param resourceBundle
@@ -73,8 +72,8 @@ public class SouthPanel implements Initializable {
                 if (empty) {
                     setGraphic(null);
                 } else {
-                    HBox hBox = new HBox(15);
-                    hBox.setAlignment(Pos.CENTER);
+                    HBox recipesInfo = new HBox(15);
+                    recipesInfo.setAlignment(Pos.CENTER);
 
                     ImageView imageView = recipe.getImageViewOfRecipe();
                     imageView.setFitWidth(150);
@@ -82,8 +81,8 @@ public class SouthPanel implements Initializable {
 
                     Label nameLabel = new Label(recipe.getRecipeName());
 
-                    hBox.getChildren().addAll(imageView, nameLabel);
-                    setGraphic(hBox);
+                    recipesInfo.getChildren().addAll(imageView, nameLabel);
+                    setGraphic(recipesInfo);
                 }
             }
         });
@@ -113,7 +112,7 @@ public class SouthPanel implements Initializable {
      *
      * @author Anton Persson
      */
-    private class ListViewHandler extends Thread implements EventHandler<MouseEvent> { // -Testa om den verligen behöver ärva en tråd
+    private class ListViewHandler implements EventHandler<MouseEvent> {
         @Override
         public void handle(MouseEvent mouseEvent) {
             mainGuiController.getRecipeGUIController().showSelectedRecipe(recipeField.getSelectionModel().getSelectedItem());

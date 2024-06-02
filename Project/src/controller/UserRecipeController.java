@@ -4,6 +4,11 @@ import model.Recipe;
 
 import java.util.ArrayList;
 
+/**
+ * This class handles the recipes that a user has created and favorited
+ * @author Christoffer Salomonsson
+ * @author Anton Persson
+ */
 public class UserRecipeController {
     private HandleAccountController handleAccountController;
     private ArrayList<Recipe> favoriteRecipes;
